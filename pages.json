@@ -579,6 +579,13 @@
 				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
+			"path" : "pages/Guide/Guide",
+			"style" : {
+				"navigationBarTitleText": "新手指南",
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
+			}
+		},{
 			"path" : "pages/WebOnline/WebOnline",
 			"style" : {
 				"navigationBarTitleText": "在线客服",
@@ -681,33 +688,33 @@
 		"backgroundColor": "#ffffff",
 		"list": [
 			{
-				"iconPath": "/static/tabBar/tab_01.png",
-				"selectedIconPath": "/static/tabBar/tab_02.png",
+				"iconPath": "/static/tabBar/home.svg",
+				"selectedIconPath": "/static/tabBar/home-s.svg",
 				"pagePath": "pages/home/home",
 				"text": ""
 			},
 			
 			{
-				"iconPath": "/static/tabBar/tab_03.png",
-				"selectedIconPath": "/static/tabBar/tab_04.png",
-				"pagePath": "pages/Market/Market",
+				"iconPath": "/static/tabBar/server.svg",
+				"selectedIconPath": "/static/tabBar/server.svg",
+				"pagePath": "pages/WebOnline/WebOnline",
 				"text": ""
 			},
 			{
-				"iconPath": "/static/tabBar/tab_05.png",
-				"selectedIconPath": "/static/tabBar/tab_06.png",
+				"iconPath": "/static/tabBar/quotation.svg",
+				"selectedIconPath": "/static/tabBar/quotation-s.svg",
 				"pagePath": "pages/discover/discover",
 				"text": ""
 			},
 			{
-				"iconPath": "/static/tabBar/tab_07.png",
-				"selectedIconPath": "/static/tabBar/tab_08.png",
+				"iconPath": "/static/tabBar/trade.svg",
+				"selectedIconPath": "/static/tabBar/trade-s.svg",
 				"pagePath": "pages/Account/Account",
 				"text": ""
 			},
 			{
-				"iconPath": "/static/tabBar/tab_09.png",
-				"selectedIconPath": "/static/tabBar/tab_10.png",
+				"iconPath": "/static/tabBar/my.svg",
+				"selectedIconPath": "/static/tabBar/my-s.svg",
 				"pagePath": "pages/my/my",
 				"text": ""
 			}
