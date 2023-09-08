@@ -265,7 +265,7 @@
 			/*消息点击*/
 			onMessage() {
 				uni.navigateTo({
-					url: '/pages/NotificationMessage/NotificationMessage'
+					url: '/pages/Message/Message'
 				})
 			},
 			/**

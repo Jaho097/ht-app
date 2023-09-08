@@ -610,7 +610,7 @@
 		,{
 			"path" : "pages/Message/Message",
 			"style" : {
-				"navigationBarTitleText": "消息",
+				"navigationBarTitleText": "站内信",
 				"navigationBarTextStyle":"black",
 				"navigationBarBackgroundColor": "#f4e4b7"
 			}

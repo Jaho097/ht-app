@@ -1,5 +1,5 @@
 <template>
-	<view class="page">
+	<!-- <view class="page">
 		<view class="inform-list">
 			<view class="list" v-for="(item,index) in messgae" :key="index">
 				<view class="date">
@@ -14,6 +14,22 @@
 					</view>
 				</view>
 			</view>
+		</view>
+	</view> -->
+	<view class="page am-list-body">
+		<view class="am-list-view-scrollview">
+			<view class="list-view-section-body" v-for="(item,index) in messgae" :key="index">
+				<view class="egPtT">
+					<view class="hd">
+						<text class="title">{{item.title}}</text>
+					</view>
+					<view class="bd">
+						<text class="brief">{{item.info}}</text>
+						<div class="date">{{item.create_time}}</div>
+					</view>
+				</view>
+			</view>
+			<div class="am-list-footer"><div style="text-align: center;">---- 已到底部 ----</div></div>
 		</view>
 	</view>
 </template>

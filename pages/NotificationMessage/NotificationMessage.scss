@@ -6,8 +6,74 @@
 	height: 100%;
 	background-color: #f6f6f6;
 }
-
-
+html:not([data-scale]) .am-list-body {
+    border-bottom: none;
+}
+html:not([data-scale]) .am-list-body:before {
+    -webkit-transform: scaleY(.33);
+    -ms-transform: scaleY(.33);
+    transform: scaleY(.33);
+}
+html:not([data-scale]) .am-list-body:before {
+    content: "";
+    position: absolute;
+    background-color: #ddd;
+    display: block;
+    z-index: 1;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: scaleY(.5);
+    -ms-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.egPtT {
+    display: block;
+    padding: 5px 15px;
+    color: rgb(142, 142, 147);
+    border-bottom: 1px solid rgb(232, 232, 232);
+    background-color: rgb(255, 255, 255);
+}
+.egPtT .hd {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.egPtT .hd .title {
+    font-size: 16px;
+    color: rgb(37, 37, 37);
+    line-height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1 1 0%;
+}
+.egPtT .bd {
+    font-size: 14px;
+}
+.egPtT .bd .brief {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.egPtT .bd .date {
+    text-align: right;
+    line-height: 30px;
+}
+.am-list-footer {
+    padding: 9px 15px 15px;
+    font-size: 14px;
+    color: #888;
+}
 .inform-list{
 	padding: 20rpx 4%;
 	.list{
