@@ -1,0 +1,84 @@
+.page{
+	//position: absolute;
+	//left: 0;
+	//bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #f6f6f6;
+}
+/* 设置列表 */
+.setting-list{
+	padding: 0 4%;
+	background-color: #FFFFFF;
+	border-radius: 20rpx;
+	margin: 20rpx auto;
+	//padding-bottom: 140rpx;
+	.list{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		height: 100rpx;
+		border-bottom: 2rpx solid #f6f6f6;
+		.title{
+			display: flex;
+			align-items: center;
+			text{
+				font-size: 32rpx;
+				color: #222222;
+			}
+		}
+		.more-content{
+			display: flex;
+			align-items: center;
+			width: 70%;
+			.left{
+				text-align: left;
+			}
+			.right{
+				text-align: right;
+			}
+			.content{
+				width: 100%;
+				font-size: 28rpx;
+				color: #959595;
+				span{
+					background: #fe3b5c;
+					color: #fff;
+					border-radius: 10px;
+					padding: 3px 10px;
+				}
+			}
+			.more{
+				font-size: 24rpx;
+				color: #959595;
+				margin-left: 20rpx;
+			}
+			.red{
+				color: $base;
+			}
+		}
+	}
+}
+
+/* 退出登录 */
+.quit-login{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 90%;
+	height: 40px;
+	margin: 0px auto;
+	background: -webkit-linear-gradient(left, #fe3b0f, #fc603a);
+	background: linear-gradient(to right, #fe3b0f, #fc603a);
+	border-radius: 35px;
+	box-shadow: 0 5px 5px #fe3b0f;
+	text{
+		//width: 100%;
+		color: #f6f6f6;
+		font-size: 32rpx;
+	}
+}
+.bottom{
+	height: 20rpx;
+}

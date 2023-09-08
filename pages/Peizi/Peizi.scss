@@ -1,0 +1,440 @@
+.page{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #f6f6f6;
+}
+/* 顶部返回 */
+.head-back{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100rpx;
+	background-color: #FFFFFF;
+	/* #ifdef APP-PLUS */
+	height: calc(100rpx + var(--status-bar-height));
+	padding-top: var(--status-bar-height);
+	/* #endif */
+	.back{
+		position: absolute;
+		left: 0;
+		top: 0;
+		/* #ifdef APP-PLUS */
+		padding-top: var(--status-bar-height);
+		/* #endif */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100rpx;
+		height: 100%;
+		text{
+			width: 20rpx;
+			height: 20rpx;
+			border-left: 2rpx solid #555555;
+			border-bottom: 2rpx solid #555555;
+			transform: rotate(45deg);
+		}
+	}
+	.title{
+		display: flex;
+		align-items: center;
+		text{
+			font-size: 32rpx;
+			//font-weight: bold;
+			color: #222222;
+		}
+	}
+	.more-icon{
+		position: absolute;
+		right: 0;
+		top: 0;
+		/* #ifdef APP-PLUS */
+		right: 0rpx;
+		padding-top: var(--status-bar-height);
+		/* #endif */
+		display: flex;
+		align-items: center;
+		height: 100%;
+		.icon-list{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 80rpx;
+			height: 100%;
+			text{
+				font-size: 34rpx;
+				color: #222222;
+			}
+		}
+	}
+}
+
+/* 订单tab */
+.order-tab{
+	position: fixed;
+	left: 0;
+	top: 100rpx;
+	/* #ifdef APP-PLUS */
+	top: calc(100rpx + var(--status-bar-height));
+	/* #endif */
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 100rpx;
+	background-color: #FFFFFF;
+	.tab{
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 33.3%;
+		height: 80%;
+		text{
+			font-size: 26rpx;
+			color: #959595;
+		}
+	}
+	.action{
+		text{
+			color: $base;
+			font-weight: bold;
+		}
+		.line{
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			width: 50%;
+			height: 6rpx;
+			background: linear-gradient(to right,$base,#f6f6f6);
+			transform: translate(-50%,0);
+		}
+	}
+}
+/* 订单列表 */
+.order-list{
+	width: 100%;
+	margin-top: 210rpx;
+	/* #ifdef APP-PLUS */
+	margin-top: calc(210rpx + var(--status-bar-height));
+	/* #endif */
+	.list{
+		padding: 0 4%;
+		min-height: 400rpx;
+		background-color: #FFFFFF;
+		border-radius: 20rpx;
+		margin-bottom: 20rpx;
+		/* 填写 */
+		.input-info{
+			padding: 0 6%;
+			//min-height: 480rpx;
+			//padding: 30px 0;
+			.info{
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-webkit-flex-direction: column;
+				flex-direction: column;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				width: 100%;
+				input{
+				  width: 100%;
+				  height: 50px;
+				  font-size: 26rpx;
+				  color: #222222;
+				  border: 1px solid #d1d1d1;
+				  border-radius: 50px;
+				  padding: 0 20px;
+				  text-align: center;
+				  font-weight: bold;
+				  font-size: 18px;
+				}
+				.uni-input-placeholder{
+					font-size: 14px;
+					font-weight: normal;
+				}
+				picker{
+					width: 100%;
+					height: 50px;
+					.normal{
+						font-size: 14px;
+						font-weight: normal;
+						color: #888787;
+					}
+					label{
+						width: 100%;
+						height: 50px;
+						font-size: 16px;
+						color: #222222;
+						border: 1px solid #d1d1d1;
+						border-radius: 50px;
+						padding: 0 20px;
+						text-align: center;
+						display: inline-block;
+						line-height: 47px;
+						font-weight: bold;
+					}	
+				}
+				.title{
+					width: 100%;
+					text-align: center;
+					font-size: 16px;
+					font-weight: bold;
+					margin-top: 20px;
+					color: #dd0505;
+				}
+				.more{
+					text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					height: 50px;
+					font-size: 18px;
+					.iconfont{
+						font-size: 34rpx;
+					}
+					.mo{
+						font-size: 26rpx;
+						padding-left: 20rpx;
+						margin-left: 10rpx;
+						border-left: 2rpx solid #EEEEEE;
+					}
+				}
+				.form{
+					text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					height: 50px;
+					font-size: 18px;
+					width:100%;
+				}
+				.input{
+				  width: 88%;
+				  height: 50px;
+				  font-size: 26rpx;
+				  color: #222222;
+				  border: 1px solid #d1d1d1;
+				  border-radius: 50px;
+				  padding: 0 20px;
+				  text-align: center;
+				  display: inline-block;
+				  line-height: 47px;
+				}
+			}
+		}
+		.wallet{
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			flex-direction: column;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			width: 100%;
+			.more{
+				text-align: center;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				height: 50px;
+				font-size: 18px;
+			}
+			.wallet-list{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				width: 97%;
+				.on{
+					border: 2px solid $base !important;
+					background: linear-gradient(to right, #fe3b0f, #fc603a);
+					.bigMoney{
+						text{
+							color: #FFFFFF !important;
+						}
+					}
+					.give{
+						text{
+							color: #FFFFFF !important;
+						}
+					}
+				}
+				.beishu-list{
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					width: 48%;
+					height: 120rpx;
+					background-color: #FFFFFF;
+					border: 2rpx solid #EEEEEE;
+					border-radius: 10rpx;
+					margin-bottom: 20rpx;
+					.bigMoney{
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						width: 100%;
+						text{
+							font-size: 32rpx;
+							font-weight: bold;
+							color: #555555;
+						}
+					}
+					.give{
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						width: 100%;
+						margin-top: 10rpx;
+						text{
+							font-size: 26rpx;
+							color: #959595;
+							line-height: 20px;
+						}
+					}
+				}
+			}
+		}
+		.goods-list{
+			width: 100%;
+			.goods{
+				display: flex;
+				align-items: center;
+				width: 100%;
+				height: 200rpx;
+				.thumb{
+					display: flex;
+					align-items: center;
+					width: 30%;
+					height: 100%;
+					image{
+						width: 160rpx;
+						height: 160rpx;
+						border-radius: 10rpx;
+					}
+				}
+				.item{
+					display: flex;
+					align-items: center;
+					width: 70%;
+					height: 100%;
+					.goods-name{
+						width: 70%;
+						text{
+							font-size: 26rpx;
+							color: #555555;
+						}
+					}
+					.goods-price{
+						display: flex;
+						align-items: center;
+						justify-content: flex-end;
+						width: 30%;
+						text{
+							color: #222222;
+						}
+						.min{
+							font-size: 26rpx;
+						}
+						.max{
+							font-size: 34rpx;
+						}
+					}
+				}
+			}
+		}
+		.status-btn{
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			width: 100%;
+			height: 100rpx;
+			.btn{
+				padding: 10rpx 30rpx;
+				border: 2rpx solid #EEEEEE;
+				border-radius: 100rpx;
+				margin-left: 20rpx;
+				text{
+					font-size: 26rpx;
+					color: #555555;
+				}
+			}
+			.action{
+				border: 2rpx solid $base;
+				text{
+					color: $base;
+				}
+			}
+		}
+	}
+	
+}
+/* 按钮 */
+.btn-info{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100rpx;
+	.btn{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 90%;
+		height: 80rpx;
+		background: linear-gradient(to right,$base,$change-clor);
+		border-radius: 100rpx;
+		color: #FFFFFF;
+		font-size: 28rpx;
+		opacity: 0.4;
+	}
+}
+/*lz自定义*/ 
+.order-tab{top: calc(var(--top-window-height) + calc(44px + env(safe-area-inset-top)));height: 88rpx;}
+.order-tab .tab{height: 100%;}
+.order-list{margin-top: 100rpx;}
+.order-list .list{border-radius: 0;}
+.order-tab .action uni-text{color: #ee0a24;}
+.order-tab .action .line{background: #ee0a24;border-radius: 4rpx;}
+.order-list .order-li .order-number{padding: 12rpx 0;height: auto;}
+
+.lz-pos-rel{position: relative;}
+.lz-pos-rel .uni-icons{position: absolute;top: 14rpx;left: 20rpx;}
+.lz-input{height: 74rpx;line-height: 74rpx;font-size: 32rpx;border:4rpx solid #EEEEEE;border-radius: 8rpx;padding: 0 64rpx;box-sizing: border-box;}
+// 配资金额 tag
+.lz-wallet-tag{
+	font-weight: 700;
+	width: 42%;
+	text-align: center;
+	line-height: 40rpx;
+	font-size: 24rpx;
+	padding: 20rpx 10rpx;
+	box-sizing: border-box;
+	border: 2rpx solid #eeeeee !important;
+	color: #959595;
+}
+.order-list .list .wallet .wallet-list .active{
+    border: 2rpx solid #ee0a24 !important;
+	color: #FFF;
+    background: linear-gradient(to right, #fe3b0f, #ee0a24);
+}

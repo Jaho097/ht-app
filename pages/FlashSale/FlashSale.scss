@@ -1,0 +1,825 @@
+.page {
+	//position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #ece6e6;
+	overflow-x: hidden;
+	//overflow-y: auto;
+	//padding-bottom: 100rpx;
+}
+
+.goods-head{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	//height: 100rpx;
+	//background:rgba(255,255,255,0);
+	background-color: #DE4A29;
+	/* #ifdef APP-PLUS||H5 */
+	height: calc(88rpx + var(--status-bar-height));
+	//padding-top: var(--status-bar-height);
+	/* #endif */
+	/* #ifdef MP */
+	height: 176rpx;
+	/* #endif */
+	.back{
+		//position: absolute;
+		//left: 0;
+		//top: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 88rpx;
+		height: 100%;
+		/* #ifdef APP-PLUS */
+		padding-top: 50rpx;
+		/* #endif */
+		/* #ifdef MP */
+		padding-top: 88rpx;
+		/* #endif */
+		// 返回
+		.back-one{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 50rpx;
+			height: 50rpx;
+			background-color: rgba(0,0,0,0.3);
+			border-radius: 100%;
+			text{
+				display: flex;
+				width: 20rpx;
+				height: 20rpx;
+				border-left: 4rpx solid #FFFFFF;
+				border-bottom: 4rpx solid #FFFFFF;
+				transform: rotate(45deg);
+			}
+		}
+		.action{
+			background-color: transparent;
+			text{
+				border-color: #FFF;
+			}
+		}
+	}
+	// tab切换
+	.head-tab{
+		display: flex;
+		align-items: center;
+		height: 100%;
+		width: 80%;
+		/* #ifdef APP-PLUS */
+		padding-top: 50rpx;
+		/* #endif */
+		/* #ifdef MP */
+		padding-top: 100rpx;
+		/* #endif */
+		.tab{
+			position: relative;
+			margin: 0 auto;
+			padding: 0 10rpx;
+			.tab-name{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			.name{
+				font-size: 32rpx;
+				line-height: normal;
+			}
+			.code{
+				line-height: normal;
+			}
+			text{
+				color: #FFF;
+				font-size: 26rpx;
+			}
+		}
+		.action{
+			text{
+				color: #333333;
+				font-size: 28rpx;
+			}
+			.line{
+				position: absolute;
+				left: 0;
+				bottom: -10rpx;
+				width: 100%;
+				height: 6rpx;
+				background: linear-gradient(to right,$base,rgba(255,255,255,0.3));
+			}
+		}
+	}
+	// 分享更多
+	.share-more{
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 140rpx;
+		height: 100%;
+		/* #ifdef APP-PLUS */
+		padding-top: 50rpx;
+		/* #endif */
+		/* #ifdef MP */
+		padding-top: 100rpx;
+		/* #endif */
+		.share-more-one{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding-right: 20rpx;
+			height: 100%;
+			.list{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 50rpx;
+				height: 50rpx;
+				background-color: rgba(0,0,0,0.3);
+				border-radius: 100%;
+				text{
+					font-size: 28rpx;
+					color: #FFFFFF;
+				}
+			}
+		}
+		.action{
+			.list{
+				background-color: transparent;
+				text{
+					color: #555555;
+				}
+			}
+		}
+		.list-more{
+			position: fixed;
+			right: 20rpx;
+			top: 100rpx;
+			/* #ifdef MP */
+			top: 180rpx;
+			/* #endif */
+			width: 200rpx;
+			background-color: rgba(255,255,255,0.9);
+			border-radius: 10rpx;
+			.list{
+				display: flex;
+				align-items: center;
+				width: 90%;
+				height: 80rpx;
+				margin: 0 auto;
+				border-bottom: 2rpx solid #C8C7CC;
+				padding: 0 4%;
+				.icon{
+					display: flex;
+					align-items: center;
+					width: 60rpx;
+					text{
+						font-size: 34rpx;
+					}
+				}
+				.title{
+					display: flex;
+					align-items: center;
+					text{
+						font-size: 26rpx;
+					}
+				}
+			}
+		}
+	}
+}
+/* banner 标题 */
+.banner-title{
+	background-color: #FFFFFF;
+	padding-bottom: 20rpx;
+	margin: 20rpx;
+	border-radius: 10px;
+	height: 740rpx;
+}
+
+// 属性规格
+.attr-size{
+	padding: 0 4%;
+	//height: 80%;
+	//padding-bottom: 40rpx;
+	overflow-y: auto;
+	overflow-x: hidden;
+	.attr-list{
+		width: 100%;
+		margin: 30rpx 0;
+		.title{
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: 80rpx;
+			text{
+				font-size: 26rpx;
+				color: #222222;
+			}
+		}
+		.list{
+			display: inline-block;
+			padding: 10rpx 30rpx;
+			background-color: #EEEEEE;
+			border-radius: 50rpx;
+			margin: 0 1.5%;
+			box-sizing: border-box;
+			border: 2rpx solid #ddd;
+			width: 22%;
+			text-align: center;
+			text{
+				font-size: 24rpx;
+				color: #222222;
+			}
+		}
+		.action{
+			background-color: $rgba-03;
+			border: 2rpx solid $base;
+			box-sizing: border-box;
+			text{
+				color: $base;
+			}
+		}
+		
+	}
+	
+}
+/* 价格 */
+.price-info{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 4%;
+	height: 80rpx;
+	border-bottom: 1px solid #e6e3e3;
+	margin: 0 20rpx;
+	.red{
+		.min{
+			color: #FF0000 !important;
+		}
+		.max{
+			color: #FF0000 !important;
+		}
+	}
+	.price{
+		display: flex;
+		width: 65%;
+		align-items: center;
+		flex-direction: column;
+		.price-rate{
+			display: flex;
+			//flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 0 20rpx;
+			width: 100%;
+			height: 28px;
+		}
+		.left{
+			text-align: left;
+		}
+		.right{
+			text-align: right;
+		}
+		.min{
+			color: #068e0e;
+			font-size: 28rpx;
+			font-weight: bold;
+			width: 50%;
+			text-align: center;
+		}
+		.max{
+			color: #068e0e;
+			font-size: 48rpx;
+			font-weight: bold;
+			height: 100%;
+		}
+	}
+	.info{
+		display: flex;
+		align-items: center;
+		height: 100%;
+		width: 35%;
+		.list{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 0 20rpx;
+			width: 100%;
+			text{
+				font-size: 24rpx;
+				color: #555555;
+			}
+			.iconfont{
+				font-size: 34rpx;
+				margin-bottom: 10rpx;
+				color: #333333;
+				width: 100%;
+				.red{
+					color: #FF0000;
+				}
+				.left{
+					text-align: left;
+					padding-right: 10rpx;
+					color: #555555;
+				}
+				.right{
+					text-align: left;
+				}
+			}
+			.action{
+				color: $base;
+			}
+		}
+	}
+}
+.attr-price{
+	padding: 0 4%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text{
+		color: $base;
+		font-size: 26rpx;
+	}
+}
+.attr-maine{
+	padding: 0 4%;
+	//height: 80%;
+	//padding-bottom: 40rpx;
+	overflow-y: auto;
+	overflow-x: hidden;
+	.attr-number{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		height: 100rpx;
+		.tit{
+			font-size: 24rpx;
+			color: #222222;
+		}
+		.number{
+			display: flex;
+			align-items: center;
+			width: 85%;
+			text{
+				font-size: 26rpx;
+				color: #222222;
+			}
+			.great{
+				
+			}
+			.red{
+				border: 1px solid $base;
+			}
+			input{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 80rpx;
+				font-size: 24rpx;
+				color: #222222;
+				background-color: #EEEEEE;
+				margin: 0 20rpx;
+				border-radius: 6rpx;
+				border: 1px solid #ddd;
+			}
+		}
+		.kuang{
+			display: inline-block;
+			border: 2rpx solid #DDDDDD;
+			border-radius: 6rpx;
+			width: 10%;
+			height: 100%;
+			padding: 4%;
+			box-shadow: 0px 0px 5px #ccc;
+		}
+	}
+}
+.attr-btn{
+	//position: fixed;
+	//left: 0;
+	//bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100rpx;
+	background-color: #FFFFFF;
+	padding: 0 4%;
+	.add-sell{
+		//position: fixed;
+		//left: 0;
+		//bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100rpx;
+		background: linear-gradient(to right, #1cbbb4, #39b54a);
+		border-radius: 5px;
+		color: #ffffff;
+		font-size: 32rpx;
+	}
+	.add-buy{
+		//position: fixed;
+		//left: 0;
+		//bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100rpx;
+		background: linear-gradient(to right, #e54d42, #fe3b0f);
+		border-radius: 5px;
+		color: #ffffff;
+		font-size: 32rpx;
+	}
+	.confirm{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 70rpx;
+		background-color: $base;
+		color: #FFFFFF;
+		font-size: 28rpx;
+		border-radius: 70rpx;
+	}
+}
+/* 标题 */
+.goods-title{
+	padding: 0 4%;
+	margin: 20rpx auto;
+	text{
+		font-size: 28rpx;
+		color: #333333;
+	}
+}
+
+/* 买卖档 */
+.goods-discounts{
+	padding: 0 4%;
+	background-color: #FFFFFF;
+	border-radius: 20rpx;
+	overflow: hidden;
+	margin-top: 120rpx;
+	margin-bottom: 20rpx;
+	margin-left: 20rpx;
+	margin-right: 20rpx;
+	/* #ifdef APP-PLUS */
+	margin-top: calc(120rpx + var(--status-bar-height));
+	/* #endif */
+	height: 380rpx;
+	.list{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 4%;
+		height: 100rpx;
+		border-bottom: 2rpx solid #f6f6f6;
+		.title{
+			display: flex;
+			align-items: center;
+			width: 50%;
+			height: 100%;
+			font-size: 28rpx;
+			color: #333333;
+			text{
+				text-align: center;
+				display: inline-block;
+				width: 100%;
+			}
+		}
+		.action{
+			font-weight: bold;
+			font-size: 32rpx;
+		}
+		.br-red{
+			border-bottom: 4px solid #fe3b0f;
+		}
+		.br-green{
+			border-bottom: 4px solid #39b54a;
+		}
+		.content{
+			display: flex;
+			align-items: center;
+			width: 80%;
+			height: 100%;
+			text{
+				font-size: 20rpx;
+				color: #555555;
+			}
+			.left{
+				margin-left: 20rpx;
+				text{
+					font-size: 20rpx;
+					color: #555555;
+				}
+			}
+			.right{
+				text{
+					text-align: right;
+					display: inline-block;
+					width: 100%;
+				}
+				text{
+					font-size: 20rpx;
+					color: #555555;
+				}
+			}
+			.red{
+				text{
+					color: #FF0000 !important;
+				}
+			}
+			.price{
+				text{
+					font-size: 24rpx;
+					color: #068e0e;
+				}
+			}
+			.dist{
+				display: flex;
+				align-items: center;
+				//margin-right: 20rpx;
+				width: 32%;
+				.iconfont{
+					font-size: 26rpx;
+					color: $base;
+					margin-right: 10rpx;
+				}
+			}
+			.coupon-list{
+				position: relative;
+				display: flex;
+				align-items: center;
+				// width: 100rpx;
+				height: 30rpx;
+				border: 2rpx solid $base;
+				border-radius: 6rpx;
+				margin-right: 20rpx;
+				view{
+					display: inline-block;
+					padding: 0 5rpx;
+					color: $base;
+					font-size: 24rpx;
+					transform: scale(0.8);
+				}
+			}
+			.coupon-list:before{
+				position: absolute;
+				left: -10rpx;
+				top: 50%;
+				content: "";
+				width: 12rpx;
+				height: 12rpx;
+				background-color: #fff;
+				border-right: 2rpx solid $base;
+				border-radius: 100%;
+				transform: translate(0,-50%);
+			}
+			.coupon-list:after{
+				position: absolute;
+				right: -10rpx;
+				top: 50%;
+				content: "";
+				width: 12rpx;
+				height: 12rpx;
+				background-color: #fff;
+				border-left: 2rpx solid $base;
+				border-radius: 100%;
+				transform: translate(0,-50%);
+			}
+		}
+		.more{
+			display: flex;
+			align-items: center;
+			text{
+				font-size: 24rpx;
+				color: #CCCCCC;
+			}
+		}
+	}
+}
+/*持仓数据*/
+.position{
+	padding: 20rpx 0;
+	border-radius: 20rpx;
+	border-bottom: 2rpx solid #ddd;
+	background-color: #FFFFFF;
+	padding-bottom: 20rpx;
+	margin: 20rpx;
+	height: 30%;
+	//overflow-y: auto;
+	.title{
+		padding-bottom: 20rpx;
+		border-bottom: 2rpx dashed #ddd;
+		margin: 0 20rpx;
+		text{
+			width: 25%;
+			display: inline-block;
+			text-align: center;
+			color: #888888;
+		}
+	}
+	.info-ul{
+		height: 88%;
+		overflow-y: auto;
+		.none{
+			margin: 10%;
+		    height: 50px;
+			line-height: 50px;
+		}
+	}
+	.list{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 10rpx 0;
+		height: 80rpx;
+		width: 100%;
+		border-bottom: 2rpx dashed #ddd;
+		.green{
+			color: #007c00 !important;
+		}
+		.big{
+			color: #333333;
+		}
+		.info{
+			//display: flex;
+			align-items: center;
+			width: 25%;
+			height: 100%;
+			font-size: 24rpx;
+			color: #888888;
+			text{
+				display: inline-block;
+				text-align: center;
+				align-items: center;
+				justify-content: space-between;
+				width: 100%;
+			}
+		}
+	}
+}
+/*子账户选择 */
+.sub-win{
+	.cu-dialog{
+		border-radius: 20rpx 20rpx 0 0 !important;
+	}
+	.pay-list{
+		padding: 20rpx 4%;
+		.list{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			height: 100rpx;
+			border-bottom: 2rpx solid #f6f6f6;
+			.pay{
+				display: flex;
+				align-items: center;
+				width: 80%;
+				image{
+					width: 44rpx;
+					height: 44rpx;
+				}
+				text{
+					//font-size: 28rpx;
+					color: #222222;
+					margin-left: 20rpx;
+				}
+			}
+			.check{
+				display: flex;
+				align-items: center;
+				text{
+					font-size: 38rpx;
+					color: #959595;
+				}
+				.action{
+					color: $base;
+				}
+			}
+		}
+	}
+}
+/* 底部 */
+.page-footer{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	width: 100%;
+	height: 140rpx;
+	background-color: #FFFFFF;
+	border-top: 2rpx solid #f6f6f6;
+	padding: 0 4%;
+	.footer-fn{
+		display: flex;
+		align-items: center;
+		width: 17%;
+		height: 100%;
+		margin-right: 15px;
+		.list{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			//width: 50%;
+			height: 100%;
+			text{
+				font-size: 24rpx;
+				color: #555555;
+			}
+			.iconfont{
+				font-size: 42rpx;
+				color: #333333;
+			}
+			.action{
+				color: $base;
+			}
+		}
+	}
+	.footer-buy{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 79%;
+		height: 100%;
+		.cart-add{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 48%;
+			height: 80rpx;
+			background: linear-gradient(to right,#e54d42, #fe3b0f);
+			border-radius: 10rpx;
+			text{
+				font-size: 26rpx;
+				color: #FFFFFF;
+			}
+		}
+		.buy-at{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 48%;
+			height: 80rpx;
+			background: linear-gradient(to right,#1cbbb4, #39b54a);
+			border-radius: 10rpx;
+			text{
+				font-size: 26rpx;
+				color: #FFFFFF;
+			}
+		}
+	}
+}
+
+.button-sp-area{
+	border: 2rpx solid #ddd;
+	background: #ddd;
+	border-radius: 20rpx;
+	width: 90%;
+	margin: 0 auto;
+	padding: 0 10px;
+	overflow: hidden;
+	.action{
+		//border-bottom: 4rpx solid $base !important;
+		background: #fff !important;
+		border: 1px solid #ddd;
+		margin-top: 3px;
+	}
+	.mini-btn{
+		display: inline-block;
+		line-height: 2.3;
+		font-size: 13px;
+		margin-top: 6rpx;
+		width: 20%;
+		padding: 0;
+		//margin: 0;
+		border-bottom: 2rpx solid #ddd;
+		border-radius: 10rpx;
+		background: #ddd;
+	}
+	.mini-btn::after {
+		content: " ";
+		width: 200%;
+		height: 200%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: 0;
+		box-sizing: border-box;
+		border-radius: 0;
+	}
+}

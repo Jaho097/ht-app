@@ -1,0 +1,584 @@
+.page{
+	position: relative;
+	width: 100%;
+	// height: 100%;
+	padding-bottom: 100rpx;
+	//background-color: #f6f6f6;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+.my-top{
+	position: fixed;
+	width: 100%;
+	/* #ifdef APP-PLUS||H5*/
+	height: calc(320rpx + var(--status-bar-height));
+	/* #endif */
+	background: linear-gradient(to left,#39b54a, #1cbbb4);
+	//border-radius: 0 0 50% 50% / 0% 0% 15% 15%;
+	overflow: hidden;
+	.head{
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 100;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		height: 100rpx;
+		/* #ifdef APP-PLUS */
+		height: calc(100rpx + var(--status-bar-height));
+		padding-top: var(--status-bar-height);
+		/* #endif */
+		background-color: rgba(255,255,255,0);
+		// transition: all 1s;
+		.back{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 120rpx;
+			height: 100%;
+			text{
+				width: 20rpx;
+				height: 20rpx;
+				border-left: 2rpx solid #ffffff;
+				border-bottom: 2rpx solid #ffffff;
+				transform: rotate(45deg);
+			}
+		}
+		.heat-title{
+			width: 100%;
+			height: 60px;
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+		}
+		.portrait{
+			display: flex;
+			width: 60rpx;
+			height: 60rpx;
+			margin-left: 20rpx;
+			image{
+				width: 100%;
+				height: 100%;
+				border-radius: 100%;
+			}
+		}
+		.title{
+			display: flex;
+			align-items: center;
+			text{
+				color: #333333;
+				font-size: 28rpx;
+			}
+		}
+		.setting-mess{
+			display: flex;
+			align-items: center;
+			height: 100%;
+			margin-right: 20rpx;
+			.setting{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 80rpx;
+				height: 100%;
+				.iconfont{
+					color: #FFFFFF;
+					font-size: 38rpx;
+				}
+			}
+			.mess{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 80rpx;
+				height: 100%;
+				position: relative;
+				.iconfont{
+					color: #FFFFFF;
+					font-size: 38rpx;
+				}
+			}
+			.num{
+				position: absolute;
+				right: 10rpx;
+				top: 20rpx;
+				padding: 4rpx;
+				font-size: 18rpx;
+				color: $base;
+				border: 2rpx solid $base;
+				border-radius: 100%;
+				background-color: #FFFFFF;
+				line-height: 10px;
+				height: 9px;
+				width: 9px;
+				text-align: center;
+			}
+		}
+	}
+	/* 用户信息 */
+	.user-info{
+		display: flex;
+		align-items: center;
+		padding: 0 5%;
+		//height: 120rpx;
+		margin-top: 100rpx;
+		/* #ifdef APP-PLUS */
+		margin-top: 130rpx;
+		/* #endif */
+		.portrait{
+			width: 33%;
+			height: 60px;
+			margin-right: 10px;
+			box-sizing: border-box;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			font-size: 16px;
+			color: #fff;
+			text-align: right;
+		}
+		.info{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			height: 50%;
+			.nickname{
+				width: 30%;
+				padding: 5px 0;
+				margin: 0 auto;
+				text-align: center;
+				border: 1px solid #fff;
+				border-radius: 5px;
+				text{
+					color: #FFFFFF;
+					font-size: 28rpx;
+				}
+			}
+			picker{
+				width: 60%;
+				height: 50px;
+				margin: 0 auto;
+				.normal{
+					width: 100%;
+					display: inline-block;
+					line-height: 60rpx;
+					font-size: 14px;
+					font-weight: normal;
+					color: #ffffff;
+				}
+				label{
+					width: 100%;
+					//height: 50px;
+					font-size: 16px;
+					color: #ffffff;
+					border: 1px solid #d1d1d1;
+					border-radius: 50px;
+					padding: 0 20px;
+					text-align: center;
+					display: inline-block;
+					line-height: 60rpx;
+					font-weight: bold;
+				}	
+			}
+			.rank{
+				display: flex;
+				align-items: center;
+				width: 120rpx;
+				height: 30rpx;
+				padding: 0 10rpx;
+				border: 2rpx solid #F0AD4E;
+				border-radius: 30rpx;
+				image{
+					width: 24rpx;
+					height: 24rpx;
+				}
+				text{
+					font-size: 24rpx;
+					color: #FFFFFF;
+					margin-left: 10rpx;
+				}
+			}
+		}
+	}
+	/* 关注区 */
+	.focus-area{
+		display: flex;
+		align-items: center;
+		width: 100%;
+		/* #ifdef APP-PLUS||H5*/
+		height: calc(120rpx + var(--status-bar-height));
+		/* #endif */
+		.list{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			.num{
+				display: flex;
+				align-items: center;
+				text{
+					color: #FFFFFF;
+					font-size: 32rpx;
+					font-weight: bold;
+				}
+			}
+			.title{
+				display: flex;
+				align-items: center;
+				margin-top: 5rpx;
+				text{
+					color: #FFFFFF;
+					font-size: 24rpx;
+				}
+			}
+		}
+	}
+	/* vip */
+	.vip-info{
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		justify-content: space-between;
+		padding: 0 4%;
+		width: 96%;
+		height: 180rpx;
+		background-color: #464C5B;
+		transform: translate(-50%,0);
+		border-radius: 10rpx 10rpx 0 0;
+		display: flex;
+		align-items: center;
+		.vip{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			.big{
+				text{
+					color: #ffe678;
+					font-size: 40rpx;
+				}
+			}
+			.click{
+				font-size: 24rpx;
+				color: #818181;
+			}
+			text{
+				color: #ffe678;
+				font-size: 26rpx;
+			}
+			.line{
+				position: absolute;
+				right: 0;
+				top: 40%;
+				width: 2rpx;
+				height: 20rpx;
+				background-color: #ffe678;
+			}
+		}
+		.vip-explain{
+			display: flex;
+			align-items: center;
+			height: 60rpx;
+			margin: 0 10rpx;
+			text{
+				color: #ffe678;
+				font-size: 24rpx;
+			}
+		}
+		.vip-btn{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 140rpx;
+			height: 40rpx;
+			background-color: #ffe678;
+			border-radius: 30rpx;
+			margin-top: 10rpx;
+			text{
+				font-size: 24rpx;
+				color: #464C5B;
+		
+			}
+		}	
+	}
+}
+.order-info{
+	position: fixed;
+	display: flex;
+	width: 96%;
+	margin: 2%;
+	top: 200rpx;
+	/* #ifdef APP-PLUS */
+	top: calc(200rpx + var(--status-bar-height));
+	//padding-top: var(--status-bar-height);
+	/* #endif */
+	height: 200rpx;
+	border-radius: 20rpx;
+	background-color: #FFFFFF;
+	//margin: 20rpx auto;
+	.order-li{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		.icon{
+			position: relative;
+			display: flex;
+			align-items: center;
+			color: #6739b6;
+			.iconfont{
+				font-size: 38rpx;
+				color: #333333;
+			}
+			.num{
+				position: absolute;
+				right: -2rpx;
+				top: 0rpx;
+				padding: 2rpx;
+				font-size: 18rpx;
+				color: $base;
+				border: 2rpx solid $base;
+				border-radius: 100%;
+				background-color: #fe3b0f;
+				width: 1px;
+				height: 1px;
+			}
+		}
+		.title{
+			display: flex;
+			align-items: center;
+			margin-top: 10rpx;
+			text{
+				color: #333333;
+				font-size: 24rpx;
+			}
+		}
+	}
+}
+.my-info{
+	overflow-y: auto;
+	margin-top: 160px;
+	/* 订单信息 */
+	
+	.my-service{
+		width: 96%;
+		background-color: #FFFFFF;
+		border-radius: 20rpx;
+		margin: 20rpx auto;
+		/* #ifdef APP-PLUS||H5*/
+		margin-top: calc(110rpx + var(--status-bar-height));
+		/* #endif */
+		.service-list{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 4%;
+			height: 160rpx;
+			border-top: 2rpx solid #f6f6f6;
+			.title{
+				//display: flex;
+				align-items: center;
+				.mobile{
+					font-size: 22rpx;
+					color: #888;
+				}
+			}
+			.more{
+				//width: 55%;
+				.list{
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					width: 45px;
+					height: 45px;
+					border-radius: 50%;
+					border: 1px solid #ddd;
+					box-shadow: 0px 0px 5px #ccc;
+					margin-left: 10px;
+					overflow: hidden;
+					.icon{
+						position: relative;
+						display: flex;
+						align-items: center;
+						.num{
+							position: absolute;
+							right: -2rpx;
+							top: 0rpx;
+							padding: 2rpx;
+							font-size: 18rpx;
+							color: $base;
+							border: 2rpx solid $base;
+							border-radius: 100%;
+							background-color: #fe3b0f;
+							width: 1px;
+							height: 1px;
+						}
+					}
+					.title{
+						display: flex;
+						align-items: center;
+						font-size: 16rpx;
+						text{
+							color: #333333;
+							font-size: 16rpx;
+						}
+					}
+				}
+				.action{
+					border: 1px solid #6739b6 !important;
+					box-shadow: 0px 0px 5px #6739b6 !important;
+					text{
+						color: #6739b6 !important;
+					}
+				}
+				display: flex;
+				align-items: center;
+				text{
+					color: #959595;
+					font-size: 28rpx;
+				}
+			}
+			.red{
+				color: $base !important;
+			}
+		}
+	}
+	
+}
+/* 为你推荐 */
+.recommend-info{
+  width: 100%;
+  background-color: #f2f2f2;
+  .recommend-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100rpx;
+    .title{
+      display: flex;
+      align-items: center;
+      image{
+        width: 416rpx;
+        height: 40rpx;
+      }
+    }
+  }
+  .goods-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 30rpx;
+    .list{
+      width: 49%;
+      height: 540rpx;
+      margin-bottom: 20rpx;
+      background-color: #FFFFFF;
+      border-radius: 10rpx;
+      overflow: hidden;
+      .pictrue{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        image{
+          height: 350rpx;
+        }
+      }
+      .title-tag{
+        // display: flex;
+        height: 100rpx;
+        padding: 20rpx;
+        .tag{
+          float: left;
+          margin-right: 10rpx;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          white-space: normal;
+          font-size: 26rpx;
+          line-height: 40rpx;
+          text{
+            font-size: 24rpx;
+            color: #FFFFFF;
+            padding: 4rpx 16rpx;
+            background: linear-gradient(to right,$base,$change-clor);
+            border-radius: 6rpx;
+            margin-right: 10rpx;
+          }
+        }
+      }
+      .price-info{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20rpx;
+        height: 80rpx;
+        .user-price{
+          display: flex;
+          align-items: center;
+          text{
+            color: $price-clor;
+          }
+          .min{
+            font-size: 24rpx;
+          }
+          .max{
+            font-size: 32rpx;
+          }
+        }
+        .vip-price{
+          display: flex;
+          align-items: center;
+          image{
+            width: 26rpx;
+            height: 26rpx;
+            margin-right: 10rpx;
+          }
+          text{
+            color: #fcb735;
+            font-size: 24rpx;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 客服热线弹窗 */
+.serve-hotline{
+	.cu-dialog{
+		width: 100%;
+		border-radius: 20rpx 20rpx 0 0 !important;
+		.contact-list{
+			width: 100%;
+			.list{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100rpx;
+				text{
+					color: #222222;
+					font-size: 32rpx;
+				}
+			}
+		}
+	}
+}
