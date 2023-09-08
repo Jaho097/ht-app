@@ -3,7 +3,7 @@
 		<view :class="{ 'uni-navbar--fixed': fixed, 'uni-navbar--shadow': shadow, 'uni-navbar--border': border }"
 			:style="{ 'background-color': themeBgColor }" class="uni-navbar__content">
 			<status-bar v-if="statusBar" />
-			<view :style="{ color: themeColor,backgroundColor: themeBgColor ,height:navbarHeight}"
+			<view :style="{ color: themeColor,backgroundColor: themeBgColor ,height:navbarHeight  }"
 				class="uni-navbar__header">
 				<view @tap="onClickLeft" class="uni-navbar__header-btns uni-navbar__header-btns-left"
 					:style="{width:leftIconWidth}">
@@ -25,7 +25,7 @@
 						</view>
 					</slot>
 				</view>
-				<view @click="onClickRight" class="uni-navbar__header-btns uni-navbar__header-btns-right"
+				<view @click="onClickRight" v-show="isRight" class="uni-navbar__header-btns uni-navbar__header-btns-right"
 					:style="{width:rightIconWidth}">
 					<slot name="right">
 						<view v-if="rightIcon.length">
@@ -135,6 +135,10 @@
 				type: [Number, String],
 				default: 60
 			},
+			isRight:{
+				type: [Boolean],
+				default: false
+			}
 		},
 		computed: {
 			themeBgColor() {
@@ -143,10 +147,10 @@
 					if (this.backgroundColor) {
 						return this.backgroundColor
 					} else {
-						return this.dark ? '#333' : '#FFF'
+						return this.dark ? '#333' : 'transparent'
 					}
 				}
-				return this.backgroundColor || '#FFF'
+				return this.backgroundColor || 'transparent'
 			},
 			themeColor() {
 				if (this.dark) {
@@ -154,7 +158,7 @@
 					if (this.color) {
 						return this.color
 					} else {
-						return this.dark ? '#fff' : '#333'
+						return this.dark ? '' : '#333'
 					}
 				}
 				return this.color || '#333'
@@ -237,6 +241,8 @@
 		flex-direction: row;
 		height: $nav-height;
 		font-size: 12px;
+		opacity: 1;
+		display: none;
 	}
 
 	.uni-navbar__header-btns {
