@@ -537,7 +537,7 @@
 	.tabsbtn-box{width: 65%;text-align: center;display: flex;}
 //顶部导航栏
 .my-top{padding-top: 0;}
-.head-navbar{display: flex;color: #FFF;height: 88rpx;}
+.head-navbar{display: flex;color: #FFF;height: 88rpx;	background-image: url('/static/new/sub-banner.png');}
 .head-navbar .nav-title,.head-navbar .nav-btnbox{flex: 1;padding: 0 10rpx;}
 .head-navbar .nav-title{text-align: right;line-height: 88rpx;font-weight: 600;font-size: 32rpx;}
 .head-navbar .nav-btnbox{text-align: left;display: flex;align-items: center;font-size: 28rpx;}

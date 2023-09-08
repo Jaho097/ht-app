@@ -1,10 +1,13 @@
 <template>
 	<view class="page">
 		<view class="message-list">
+			<image style="height:322rpx;width: 100%;background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;" src="/static/new/banner.jpg" mode=""></image>
 			<uni-list>
 				<uni-list-item showArrow @click="onMessage(item.id,item.model)" v-for="(item,index) in notice" :key="index" link :title="item.title" />
 			</uni-list>
-				
+			
 			<!-- <view class="list" @click="onMessage(item.id,item.model)" v-for="(item,index) in notice" :key="index">
 				<view class="icon-data">
 					<view class="icon">
@@ -47,7 +50,7 @@
 			}
 			if(params.id==9){
 				uni.setNavigationBarTitle({
-					title:'帮助中心'
+					title:'新手指南'
 				})
 			}
 			this.getColumns(this.token,params.id,params.page);//获取子账号信息

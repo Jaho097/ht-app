@@ -588,9 +588,12 @@
 //顶部导航栏
 .head-navbar{
 	display: flex;
-	color: #FFF;
+	color: #000;
 	height: 88rpx;
-	background-color: rgb(222, 74, 41);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-image: url('/static/new/sub-banner.png');
 	.pos-absl{
 		// position: absolute;top: 0;left: 0;
 		// width: 44px;height: 44px;

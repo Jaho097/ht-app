@@ -1,26 +1,30 @@
 .page{
 	position: absolute;
-	left: 0;
-	top: 0;
+	left: 0rpx;
+	top: 90rpx;
 	width: 100%;
-	height: 100%;
-	background-color: #ff6029;
+	// height: 100%;
+	position: relative;
+	    padding-bottom: 667.778%;
+	background-image: url('../../static/new/app-new-bg.jpg');
+	background-size: cover;
+	background-position: center center;
 	.banner{
 		text-align: center;
 		max-width: 750px;
 		width: 100%;
 		//max-height: 544px;
-		//height: 34%;
-		margin: 88rpx auto 0;
-		background-color: #ff6029;
 		image{
 			width: 750upx;
-			height: 544upx;
+			height: 100vh;
+			
+			// height: 544upx;
 		}
 	}
 }
 /* 顶部返回 */
 .head-back{
+	color:#000;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -30,7 +34,7 @@
 	justify-content: center;
 	width: 100%;
 	height: 88rpx;
-	background-color: #ff6029;
+	background-color: rgb(244, 228, 183);
 	/* #ifdef APP-PLUS */
 	height: 88rpx;
 	//height: calc(100rpx + var(--status-bar-height));
@@ -58,8 +62,8 @@
 		text{
 			width: 20rpx;
 			height: 20rpx;
-			border-left: 4rpx solid #ffffff;
-			border-bottom: 4rpx solid #ffffff;
+			border-left: 4rpx solid #000;
+			border-bottom: 4rpx solid #000;
 			transform: rotate(45deg);
 		}
 	}
@@ -69,7 +73,6 @@
 		text{
 			font-size: 28rpx;
 			font-weight: 600;
-			color: #fff;
 		}
 	}
 	.more-icon{
@@ -95,7 +98,7 @@
 			height: 100%;
 			text{
 				font-size: 34rpx;
-				color: #ffffff;
+				color: #000;
 			}
 		}
 	}
@@ -104,44 +107,54 @@
 .card-data{
 	width: 100%;
 	margin: 40rpx auto 0;
-	position: relative;
+	position: absolute;
+	top: 440rpx;
 	z-index: 999;
 	// 其他支付方式
 	.payment-way{
 		width: 100%;
-		height: 200rpx;
+		display: flex;
+		justify-content: space-around;
 		.title{
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 80%;
-			height: 80rpx;
-			margin: 30rpx auto;
-			background: linear-gradient(to right,#75B526, #34B39B);
-			border-radius: 70rpx;
-			box-shadow: 0 10rpx 10rpx #de4a29;
-			text{
-				color: #fff;
-				font-size: 32rpx;
-			}
+			width: 310rpx;
+			height: 100rpx;
+			background-size: cover;
+			background-position: center center;
+			background-image: url('../../static/new/ap.png');
+			// position: relative;
+			// display: flex;
+			// align-items: center;
+			// justify-content: center;
+			// width: 80%;
+			// height: 80rpx;
+			// margin: 30rpx auto;
+			// background: linear-gradient(to right,#75B526, #34B39B);
+			// border-radius: 70rpx;
+			// text{
+			// 	color: #000;
+			// 	font-size: 32rpx;
+			// }
 		}
 		.btn{
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 80%;
-			height: 80rpx;
-			margin: 30rpx auto;
-			background: linear-gradient(to right,#fbbd08,#fbbd08);
-			border-radius: 70rpx;
-			box-shadow: 0 10rpx 10rpx #de4a29;
-			text{
-				color: #FFF;
-				font-size: 32rpx;
-			}
-			
+			width: 310rpx;
+			height: 100rpx;
+			background-size: cover;
+			background-position: center center;
+			background-image: url('../../static/new/az.png');
+			// position: relative;
+			// display: flex;
+			// align-items: center;
+			// justify-content: center;
+			// width: 80%;
+			// height: 80rpx;
+			// margin: 30rpx auto;
+			// background: linear-gradient(to right,#fbbd08,#fbbd08);
+			// border-radius: 70rpx;
+			// box-shadow: 0 10rpx 10rpx #de4a29;
+			// text{
+			// 	color: #000;
+			// 	font-size: 32rpx;
+			// }
 		}
 	}
 }

@@ -8,22 +8,28 @@
 				<text>APP下载</text>
 			</view>
 		</view>
-		<view class="banner">
-			<image src="../../static/img/down_banner_1.png" mode="aspectFill"></image>
-		</view>
+		<!-- <view class="banner">
+			<image src="../../static/new/app-new-bg.jpg" mode="aspectFill"></image>
+		</view> -->
 		<view class="card-data">
 			<view class="payment-way">
 				<view class="btn" @click="onDownApk">
-					<text>下载安卓端</text>
 				</view>
 				<view class="title" @click="onDownIos">
-					<text>下载苹果端</text>
 				</view>
 			</view>
 		</view>
-		<view class="banner">
-			<image src="../../static/img/down_banner_2.png" mode="aspectFill"></image>
+		<view class="card-data" style="top: 4600rpx;">
+			<view class="payment-way">
+				<view class="btn" @click="onDownApk">
+				</view>
+				<view class="title" @click="onDownIos">
+				</view>
+			</view>
 		</view>
+		<!-- <view class="banner">
+			<image src="../../static/img/down_banner_2.png" mode="aspectFill"></image>
+		</view> -->
 	</view>
 </template>
 
