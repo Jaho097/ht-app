@@ -8,11 +8,11 @@
 				"app-plus":{
 					"titleNView":false    //去掉当前页的顶部导航栏
 				},
-				"navigationBarTextStyle":"white",
+				"navigationBarTextStyle":"black",
 				// #endif
 				// #ifdef MP
 				"navigationBarTitleText": "首页",
-				"navigationBarBackgroundColor": "#DE4A29",
+				"navigationBarBackgroundColor": "#f4e4b7",
 				// #endif
 				"h5":{
 					"titleNView": false
@@ -23,8 +23,8 @@
 			"path" : "pages/Peizi/Peizi",
 			"style" : {
 				"navigationBarTitleText": "配资申请",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},
 		{
@@ -33,8 +33,8 @@
 				"app-plus":{
 					"titleNView":false
 				},
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29",
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7",
 				"navigationBarTitleText": "自选"
 			}
 		},
@@ -44,8 +44,8 @@
 				"app-plus":{
 					"titleNView":false
 				},
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29",
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7",
 				"navigationBarTitleText": "行情"
 			}
 		}
@@ -55,8 +55,8 @@
 				"app-plus":{
 					"titleNView":false
 				},
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29",
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7",
 				"navigationBarTitleText": "交易"
 			}
 		},{
@@ -117,43 +117,43 @@
 			"path" : "pages/AccoutSet/AccoutSet",
 			"style" : {
 				"navigationBarTitleText": "操盘详情",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Renewal/Renewal",
 			"style" : {
 				"navigationBarTitleText": "申请延期",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Addmoney/Addmoney",
 			"style" : {
 				"navigationBarTitleText": "追加保证金",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Expend/Expend",
 			"style" : {
 				"navigationBarTitleText": "扩大配资",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Profit/Profit",
 			"style" : {
 				"navigationBarTitleText": "提取盈利",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Agreement/Agreement",
 			"style" : {
 				"navigationBarTitleText": "操盘协议",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		
@@ -161,24 +161,24 @@
 			"path" : "pages/ConfirmOrder/ConfirmOrder",
 			"style" : {
 				"navigationBarTitleText": "填写订单",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/CashierDesk/CashierDesk",
 			"style" : {
 				"navigationBarTitleText": "收银台",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/PayResult/PayResult",
 			"style" : {
 				"navigationBarTitleText": "订单支付成功",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
@@ -197,32 +197,32 @@
 			"path" : "pages/ArticleDetails/ArticleDetails",
 			"style" : {
 				"navigationBarTitleText": "详情",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/GoodsOn/GoodsOn",
 			"style" : {
 				"navigationBarTitleText": "商品关注",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ContentCollection/ContentCollection",
 			"style" : {
 				"navigationBarTitleText": "喜欢的内容",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/BrowsingHistory/BrowsingHistory",
 			"style" : {
 				"navigationBarTitleText": "浏览记录",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
@@ -234,148 +234,148 @@
 			"path" : "pages/MyOrderList/QueryOrder",
 			"style" : {
 				"navigationBarTitleText": "交易查询",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/OrderDetails/OrderDetails",
 			"style" : {
 				"navigationBarTitleText": "订单详情",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/AfterSaleType/AfterSaleType",
 			"style" : {
 				"navigationBarTitleText": "选择售后类型",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ReturnDetails/ReturnDetails",
 			"style" : {
 				"navigationBarTitleText": "售后",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/IntegralDetails/IntegralDetails",
 			"style" : {
 				"navigationBarTitleText": "积分",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ExchangeDetails/ExchangeDetails",
 			"style" : {
 				"navigationBarTitleText": "兑换详情",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ExchangeResult/ExchangeResult",
 			"style" : {
 				"navigationBarTitleText": "兑换结果",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ExchangeRecord/ExchangeRecord",
 			"style" : {
 				"navigationBarTitleText": "兑换记录",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/IntegralRecord/IntegralRecord",
 			"style" : {
 				"navigationBarTitleText": "积分明细",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/MyCoupon/MyCoupon",
 			"style" : {
 				"navigationBarTitleText": "优惠券",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/MyWallet/MyWallet",
 			"style" : {
 				"navigationBarTitleText": "充值",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Withdraw/Withdraw",
 			"style" : {
 				"navigationBarTitleText": "提现",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ConsumeRecord/ConsumeRecord",
 			"style" : {
 				"navigationBarTitleText": "消费明细",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/SignIn/SignIn",
 			"style" : {
 				"navigationBarTitleText": "签到",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/PaymentCode/PaymentCode",
 			"style" : {
 				"navigationBarTitleText": "付款码",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/Experience/Experience",
 			"style" : {
 				"navigationBarTitleText": "免费体验",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/Feedback/Feedback",
 			"style" : {
 				"navigationBarTitleText": "意见反馈",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/AfterSalesOrder/AfterSalesOrder",
 			"style" : {
 				"navigationBarTitleText": "我的配资列表",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/MoneyLog/MoneyLog",
 			"style" : {
 				"navigationBarTitleText": "资金明细",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/MyShare/MyShare",
@@ -385,7 +385,7 @@
 				"app-plus":{
 					"titleNView":false    //去掉当前页的顶部导航栏
 				},
-				"navigationBarTextStyle":"white",
+				"navigationBarTextStyle":"black",
 				// #endif
 				"h5":{
 					"titleNView": false
@@ -400,7 +400,7 @@
 				"app-plus":{
 					"titleNView":false    //去掉当前页的顶部导航栏
 				},
-				"navigationBarTextStyle":"white",
+				"navigationBarTextStyle":"black",
 				// #endif
 				"h5":{
 					"titleNView": false
@@ -410,54 +410,54 @@
 			"path" : "pages/ShareList/ShareList",
 			"style" : {
 				"navigationBarTitleText": "推广明细",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/AccountInfo/AccountInfo",
 			"style" : {
 				"navigationBarTitleText": "账户信息",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Setting/Setting",
 			"style" : {
 				"navigationBarTitleText": "设置",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/Information/Information",
 			"style" : {
 				"navigationBarTitleText": "个人信息",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/AddressList/AddressList",
 			"style" : {
 				"navigationBarTitleText": "银行卡列表",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/AddressEdit/AddressEdit",
 			"style" : {
 				"navigationBarTitleText": "编辑",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/AccountSecurity/AccountSecurity",
 			"style" : {
 				"navigationBarTitleText": "账户安全",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
@@ -468,7 +468,7 @@
 				"app-plus":{
 					"titleNView":false    //去掉当前页的顶部导航栏
 				},
-				"navigationBarTextStyle":"white",
+				"navigationBarTextStyle":"black",
 				// #endif
 				"h5":{
 					"titleNView": false
@@ -479,189 +479,189 @@
 			"path" : "pages/realName/realName",
 			"style" : {
 				"navigationBarTitleText": "实名认证",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ChangePassword/ChangePassword",
 			"style" : {
 				"navigationBarTitleText": "修改密码",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/ModifyPhone/ModifyPhone",
 			"style" : {
 				"navigationBarTitleText": "修改手机号",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/AssociatedmMailbox/AssociatedmMailbox",
 			"style" : {
 				"navigationBarTitleText": "关联邮箱",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/PaymentPassword/PaymentPassword",
 			"style" : {
 				"navigationBarTitleText": "支付密码",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/PaymentEdit/PaymentEdit",
 			"style" : {
 				"navigationBarTitleText": "修改支付密码",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/PaymentForget/PaymentForget",
 			"style" : {
 				"navigationBarTitleText": "忘记支付密码",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/InvoiceList/InvoiceList",
 			"style" : {
 				"navigationBarTitleText": "发票信息",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/InvoiceAdd/InvoiceAdd",
 			"style" : {
 				"navigationBarTitleText": "添加发票信息",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/MembersOpened/MembersOpened",
 			"style" : {
 				"navigationBarTitleText": "超级会员",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/MyMemberInterest/MyMemberInterest",
 			"style" : {
 				"navigationBarTitleText": "超级会员",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/SettingCommon/SettingCommon",
 			"style" : {
 				"navigationBarTitleText": "通用",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/AboutUs/AboutUs",
 			"style" : {
 				"navigationBarTitleText": "关于我们",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/WebOnline/WebOnline",
 			"style" : {
 				"navigationBarTitleText": "在线客服",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/Help/Help",
 			"style" : {
 				"navigationBarTitleText": "帮助中心",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
 			"path" : "pages/ArticleInfo/ArticleInfo",
 			"style" : {
 				"navigationBarTitleText": "新闻中心",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/Message/Message",
 			"style" : {
 				"navigationBarTitleText": "消息",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/DiscountsActivity/DiscountsActivity",
 			"style" : {
 				"navigationBarTitleText": "公告信息",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/NotificationMessage/NotificationMessage",
 			"style" : {
 				"navigationBarTitleText": "通知消息",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/login/login",
 			"style" : {
-			  "navigationBarTextStyle":"white",
+			  "navigationBarTextStyle":"black",
 			  "navigationBarTitleText": "登录",
-			  "navigationBarBackgroundColor": "#DE4A29"
+			  "navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/register/register",
 			"style" : {
-			  "navigationBarTextStyle":"white",
+			  "navigationBarTextStyle":"black",
 			  "navigationBarTitleText": "注册",
-			  "navigationBarBackgroundColor": "#DE4A29"
+			  "navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/GoodsEvaluateList/GoodsEvaluateList",
 			"style" : {
 				"navigationBarTitleText": "商品评价",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 		,{
 			"path" : "pages/MyEvaluatePush/MyEvaluatePush",
 			"style" : {
 				"navigationBarTitleText": "评价商品",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},
 		{
 			"path" : "pages/trial/trial",
 			"style" : {
 				"navigationBarTitleText": "免费体验",
-				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#DE4A29"
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		}
 	],

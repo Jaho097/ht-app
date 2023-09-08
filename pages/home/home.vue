@@ -3,19 +3,22 @@
 		<!-- 搜索 -->
 		<!--自选/行情切换-->
 		<!-- 自定义插槽 -->
-		<view class="box-bg" style="padding: 0;">
-			<uni-nav-bar color="#FFF" backgroundColor="#DE4A29" :border="false">
+		<view class="box-bg" style="padding-top: -120rpx;">
+			<uni-nav-bar color="#FFF"  :shadow="true" :border="false">
+				<!-- 页头消息 -->
 				<block slot="left">
-					<uni-icons custom-prefix="iconfont" type="icon-laba" size="25" color="#FFF" @click="onMessage()"></uni-icons>
+					<image style="width: 180rpx;height: 60rpx" src="/static/logo.jpg" mode=""></image>
+					<!-- <uni-icons custom-prefix="iconfont" type="icon-laba" size="25" color="#FFF" @click="onMessage()"></uni-icons> -->
 					<!-- <view>
 						<text class="uni-nav-bar-text">首页</text>
 					</view> -->
 				</block>
 				<view class="lz-tabsbtn-view">
-					<text class="navbar-title">{{confData.website}}</text>
+					<input style="padding-left:30rpx;color: black;background-color: lightgray;border-radius: 50rpx;width: 100%;height: 60rpx;"  maxlength="26"  placeholder="搜索股票名称">
+					<!-- <text class="navbar-title">{{confData.website}}</text> -->
 				</view>
-				<block slot="right">
-					<uni-icons custom-prefix="iconfont" type="icon-sousuo" size="25" color="#FFF" @click="onSearch()"></uni-icons>
+				<block slot="right" v-show="false" >
+					<!-- <uni-icons custom-prefix="iconfont" type="icon-sousuo" size="25" color="#FFF" @click="onSearch()"></uni-icons> -->
 				</block>
 			</uni-nav-bar>
 		</view>
@@ -29,7 +32,7 @@
                    :top="0">
 		<view class="main">
 			<!-- banner -->
-			<view>
+			<view style="width:100%">
 				<swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
 					<swiper-item v-for="(item,index) in swiperList" :key="index">
 						<img-cache :src="item.img_url" mode="aspectFill"></img-cache>
@@ -42,10 +45,9 @@
 					text="uni-app 版正式发布，开发一次，同时发布iOS、Android、H5、微信小程序、支付宝小程序、百度小程序、头条小程序等7大平台。" />
 			</view> -->
 			
-			<view class="inform">
+			<!-- <view class="inform">
 				<view class="inform-info">
 					<view class="picture">
-						<!-- <image src="/static/gg_ico.png" mode=""></image> -->	
 						<uni-icons custom-prefix="iconfont" type="icon-laba" size="30" color="#d81e06"></uni-icons>
 					</view>
 					<view class="info">
@@ -64,9 +66,10 @@
 						</swiper>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<!-- 宫格菜单导航 -->
-			<view class="menu-nav uni-mt-10">
+			<view style="position: relative;top:-100rpx" class="main-con">
+			<view class="menu-nav uni-m-10 uni-mt-10 uni-pd-10" style="border-radius: 15rpx;background-color: #fff;">
 				<scroll-view scroll-x @scroll="ScrollMenu" class="nav-list">
 					<view class="nav" ref="nav" :style="navList.length<=10?'flex-direction:row':''">
 						<view class="list" v-for="(item,index) in navList"
@@ -148,8 +151,96 @@
 					</view>
 				</view>
 			</view>
+			<!-- 广告 -->
+			<view class="uni-mt-5">
+				<image style="width:100%;height: 120rpx;" src="/static/new/experience.png" mode=""></image>
+			</view>
+			<view class="box">
+				<view class="box1" @click="changeCur(1)" :class="{'actived':curActived==1}">
+					<span>认证账号</span>
+					<span>共赢财富</span>
+				</view>
+				<view class="box1" @click="changeCur(2)":class="{'actived':curActived==2}">
+					<span>实盘交易</span>
+					<span>实时数据</span>
+				</view>
+				<view class="box1" @click="changeCur(3)" :class="{'actived':curActived==3}">
+					<span>配资交易</span>
+					<span>15倍收益</span>
+				</view>
+			</view>
+			
+			<view class="box2" @click="changeCur(3)" :class="{'actived':curActived==3}">
+				<view class="box2-1">
+					{{box2Desc[curActived]['item1']}}
+				</view>
+				<view class="box2-2">
+					{{box2Desc[curActived]['item2']}}
+					<br>
+					{{box2Desc[curActived]['item3']}}
+				</view>
+				<view class="box2-3" @click="toReg">
+					立即注册账号
+				</view>
+			</view>
+			<view class="" style="background:#fff;margin-top:20rpx;border-radius:16px">
+				
+			<view class="n-box">
+				<view class="n-box-1" v-for="item in marketBat" >
+					<view class="n-box-2">
+						{{item.name}}
+					</view>
+					<view class="n-box-3" style="color:red" :class="{'green':item.price_range<0}">
+						{{parseFloat(item.current_price).toFixed(2)||'0.00'}}
+					</view>
+					<view class="n-box-4" style="color:red" :class="{'green':item.price_range<0}">
+						<span>{{item.price_range||'0.00'}}</span>
+						<span>{{item.price_rate||'0.00'}}%</span>
+					</view>
+				</view>
+				<view class="n-box-2" >
+					
+				</view>
+			</view>
+			<view class="box3" style="width:95%">
+				<view class="box3-1" @click="changeCur1(1)" :class="{'acitved1':curActived1==1}">
+					分时线
+				</view>
+				<view class="box3-1" @click="changeCur1(2)":class="{'acitved1':curActived1==2}">
+					日k线
+				</view>
+				<view class="box3-1" @click="changeCur1(3)" :class="{'acitved1':curActived1==3}">
+					周K线
+				</view>
+				<view class="box3-1" @click="changeCur1(4)" :class="{'acitved1':curActived1==4}">
+					月K线
+				</view>
+			</view>
+			<view class="chart-panel tab-panel active" v-show="curActived1==1">
+				<view class="chart-wrap">
+					<image  src="http://image.sinajs.cn/newchart/min/n/sh000001.gif" mode=""></image>
+				</view>
+			</view>
+			<view class="chart-panel tab-panel" v-show="curActived1==2">
+				<view class="chart-wrap">
+					<image  src="http://image.sinajs.cn/newchart/daily/n/sh000001.gif" mode=""></image>
+				</view>
+			</view>
+
+			<view class="chart-panel tab-panel" v-show="curActived1==3">
+				<view class="chart-wrap">
+					<image  src="http://image.sinajs.cn/newchart/weekly/n/sh000001.gif" mode=""></image>
+				</view>
+			</view>
+
+			<view class="chart-panel tab-panel" v-show="curActived1==4">
+				<view class="chart-wrap">
+					<image  src="http://image.sinajs.cn/newchart/monthly/n/sh000001.gif" mode=""></image>
+				</view>
+			</view>
+			</view>
 			<!-- 为你推荐 -->
-			<view class="recommend-info">
+			<!-- <view class="recommend-info">
 				<view class="recommend-title">
 					<view class="title">
 						<image src="/static/wntj_title.png" mode=""></image>
@@ -169,7 +260,6 @@
 						</view>
 						<view class="price-info">
 							<view class="user-price">
-								<!--text class="min">￥</text-->
 								<text class="min">{{item.alt}}</text>
 							</view>
 							<view class="vip-price">
@@ -179,7 +269,7 @@
 						</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<!-- 资讯中心 -->
 	<!--		<view class="news-product" >
 				<view class="product-title">
@@ -206,6 +296,7 @@
 			</view>
 		</view>-->
 		</view>
+		</view>
     </mescroll-body>
     <!-- 提示框 -->
     <DialogBox ref="DialogBox"></DialogBox>
@@ -230,13 +321,45 @@
 				confData :uni.getStorageSync('confData'),
 				notice:[],
 				marketBat:[],
-				mescroll: null, // mescroll实例对象 (此行可删,mixins已默认)
+				mescroll: null, 
 				downOption: {auto: false},// 下拉刷新的配置(可选, 绝大部分情况无需配置)
-				upOption: {use: false},// 上拉加载的配置(可选, 绝大部分情况无需配置)
+				upOption: {use: false},
 				swiperList: uni.getStorageSync('swiperList'),
 				slideNum: 0,
 				url:'https://www.jin10.com/example/jin10.com.html?fontSize=14px&theme=white',
 				navList: [
+					{
+						id: 6,
+						name: '新手指南',
+						path: 'help',
+						iconname: 'icon-aixin',
+						iconsize:'30',
+						iconcolor: '#F6B30B'
+					},
+					{
+						id: 8,
+						name: '我要推广',
+						path: 'aboutus',
+						iconname: 'icon-zixuan-copy',
+						iconsize:'30',
+						iconcolor: '#F6B30B'
+					},
+					{
+						id: 8,
+						name: '牛股诊断',
+						path: 'Market',
+						iconname: 'icon-zixuan-copy',
+						iconsize:'30',
+						iconcolor: '#F6B30B'
+					},
+					{
+						id: 7,
+						name: 'APP下载',
+						path: 'mess',
+						iconname: 'icon-WDzichan',
+						iconsize:'30',
+						iconcolor: '#51A3FF'
+					},
 					{
 						id: 1,
 						name: '行情',
@@ -274,28 +397,6 @@
 						name: '配资申请',
 						path: 'peizi',
 						iconname: 'icon-WDzichan',
-						iconsize:'30',
-						iconcolor: '#F6B30B'
-					},{
-						id: 6,
-						name: '新手指引',
-						path: 'help',
-						iconname: 'icon-aixin',
-						iconsize:'30',
-						iconcolor: '#F6B30B'
-					},
-					{
-						id: 7,
-						name: 'APP下载',
-						path: 'mess',
-						iconname: 'icon-WDzichan',
-						iconsize:'30',
-						iconcolor: '#51A3FF'
-					},{
-						id: 8,
-						name: '关于我们',
-						path: 'aboutus',
-						iconname: 'icon-zixuan-copy',
 						iconsize:'30',
 						iconcolor: '#F6B30B'
 					}
@@ -353,6 +454,22 @@
 				version  : 0,
 				vNumber  : 0,//云端版本
 				nNumber  : 0,//当前版本
+				curActived  : 1,
+				curActived1  : 1,
+				box2Desc  : [{
+					item1:'金融安全系统 一键快速认证',
+					item2:'无需繁琐步骤 免费认证账号',
+					item3:'行业领先技术 保障资金安全',
+				},{
+					item1:'实盘交易 数据实时同步',
+					item2:'全量股市数据 加入自选更便捷',
+					item3:'详细股票信息 数据精确放心购',
+				},{
+					item1:'您炒股 我出钱 小钱生大钱',
+					item2:'最高15倍配资 享15倍收益',
+					item3:'小本钱也可以做大做强',
+				}]
+				
 			}
 		},
 		onReady() {
@@ -366,7 +483,7 @@
 			// if(!loginRes){return;}
 			// console.log(loginRes);
 			// this.token = loginRes[2];
-			
+			this.market()
 			this.getSlider();
 			this.confData = this.getconf();
 		},
@@ -382,6 +499,17 @@
 			console.log('到底了');
 		},
 		methods:{
+			toReg(){
+				uni.navigateTo({
+				  url: '/pages/login/login'
+				})
+			},
+			changeCur(idx){
+				this.curActived = idx
+			},
+			changeCur1(idx){
+				this.curActived1 = idx
+			},
 			/*下拉刷新的回调*/
 			downCallback(mescroll){
 				mescroll.resetUpScroll(); 
@@ -489,15 +617,15 @@
 			async market(){//加载上证，深成，创业 指数
 				//uni.showLoading({'title':"加载中"});
 				uni.request({
-					url: this.apiServer+'/market/index/market_bat?code=sh000001,399001,399006',
+					url: this.apiServer+'/market/index/stock_bat?code=sh000001,sz399001,sz399006',
 					header: {'content-type' : "application/x-www-form-urlencoded"},
 					method: 'GET',
 					timeout: 50000,
 					success: res => {
 						this.marketBat = res.data.data;
-						console.log(this.marketBat);
+						console.log(this.marketBat,'sh000001,sz399001,sh000300,sz399006');
 					},
-					complete:function(){
+					complete:function(){ 
 						//uni.stopPullDownRefresh();
 					},
 					fail: (e) => {
@@ -706,12 +834,10 @@
 
 // lz
 	.box-bg {
-		background-color: #FFF;
-		padding: 10rpx 0;
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 11;
+		z-index: 1;
 		width: 100%;
 	}
 	// 自选、行情 tabs
@@ -729,4 +855,129 @@
 		align-items: center;
 	}
 	.navbar-title{font-size: 16px;font-weight: 600;}
+	.main{
+		position: relative;
+		background-color: rgb(229, 229, 229);
+		margin-top: 0 !important;
+		.main-con{
+			margin-left: 24rpx;
+			margin-right: 24rpx;
+			margin-bottom: 24rpx;
+		}
+	}
+	.page{
+		background-color: lightgray;
+	}
+	.box{
+		display: flex;
+		justify-content: space-between;
+		.box1{
+			cursor: pointer;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			width: 230rpx;
+			height: 108rpx;
+			background-image: url('/static/new/button.png');
+			background-size: cover;
+			background-position: center center;
+		}
+		.actived{
+			background-image: url('/static/new/button_h.png');
+			background-size: cover;
+			background-position: center center;
+		}
+	}
+	.box2{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		width: 712rpx;
+		height: 290rpx;
+		background-image: url('/static/new//tab-content-bg.png');
+		background-size: cover;
+		background-position: center center;
+		margin-top: 24rpx;
+		.box2-1{
+			font-weight: 700;
+			font-size: 32rpx;
+			color: rgb(205, 168, 103);
+		}
+		.box2-2{
+			font-weight: 400;
+			font-size: 24rpx;
+			color: rgb(40, 40, 40);
+		}
+		.box2-3{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 700;
+			font-size: 11px;
+			color: rgb(255, 255, 255);
+			background: linear-gradient(94.8deg, rgb(220, 190, 127) 9.85%, rgb(179, 141, 74) 95.47%);
+			width: 51.43%;
+			height: 34px;
+			border-radius: 90px;
+		}
+	}
+	.n-box{
+		background-color: #fff;
+		border-radius: 12rpx;
+		margin-top: 24rpx;
+		display: flex;
+		justify-content: space-between;
+		padding:24rpx;
+		.n-box-1{
+			display: flex;
+			flex-direction: column;
+			border: 1px  rgba(37,37,37,.1) solid;
+			flex:1;
+			align-items: center;
+			width: 230rpx;
+			justify-content: space-around;
+			height: 184rpx;
+		}
+		.n-box-2{
+			font-size: 28rpx
+		}
+		.n-box-3{
+			font-size: 36rpx
+		}
+		.n-box-4{
+			display: flex;
+			width: 80%;
+			justify-content: space-between;
+			font-size: 24rpx
+		}
+	}
+	.box3{
+		background-color: rgb(220, 222, 224);
+		display: flex;
+		border-radius: 6px;
+		margin: 12px 12px 0px;
+		height: 64rpx;
+		width: 100%;
+		justify-content: space-around;
+		align-items: center;
+		.acitved1{
+			background-color: red;
+			color:#fff;
+		}
+		.box3-1{
+			cursor: pointer;
+			text-align: center;
+			flex:1;
+			border-radius: 6px;
+		}
+	}
+	.chart-panel{
+		width: 100%;
+		image{
+			width: 100%;
+			margin-top:15rpx;
+		}
+	}
 </style>
