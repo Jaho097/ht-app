@@ -170,14 +170,14 @@
 				</view>
 			</view>
 			
-			<view class="box2" @click="changeCur(3)" :class="{'actived':curActived==3}">
+			<view class="box2" :class="{'actived':curActived==3}">
 				<view class="box2-1">
-					{{box2Desc[curActived]['item1']}}
+					{{box2Desc[curActived-1]['item1']}}
 				</view>
 				<view class="box2-2">
-					{{box2Desc[curActived]['item2']}}
+					{{box2Desc[curActived-1]['item2']}}
 					<br>
-					{{box2Desc[curActived]['item3']}}
+					{{box2Desc[curActived-1]['item3']}}
 				</view>
 				<view class="box2-3" @click="toReg">
 					立即注册账号
@@ -345,7 +345,7 @@
 						iconcolor: '#F6B30B'
 					},
 					{
-						id: 8,
+						id: 9,
 						name: '牛股诊断',
 						path: 'Market',
 						iconname: 'icon-zixuan-copy',

@@ -242,7 +242,6 @@
 		height: $nav-height;
 		font-size: 12px;
 		opacity: 1;
-		display: none;
 	}
 
 	.uni-navbar__header-btns {
