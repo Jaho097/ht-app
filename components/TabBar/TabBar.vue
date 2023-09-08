@@ -4,10 +4,10 @@
 			<view class="list" v-for="(item,index) in TabBarList" 
 			@click="onTabBar(item,index)"
 			:key="index">
-				<!--image :src="item.acImg" mode="widthFix" v-show="tabBarShow === index"></image>
-				<image :src="item.img" mode="widthFix" v-show="tabBarShow != index"></image-->
-				<text :class="item.actiClass" mode="widthFix" v-show="tabBarShow === index"></text>
-				<text :class="item.iconClass" mode="widthFix" v-show="tabBarShow != index"></text>
+				<image :src="item.acImg" mode="widthFix" v-show="tabBarShow === index"></image>
+				<image :src="item.img" mode="widthFix" v-show="tabBarShow != index"></image
+				<text mode="widthFix" v-show="tabBarShow === index"></text>
+				<text mode="widthFix" v-show="tabBarShow != index"></text>
 				<text :class="{'action':tabBarShow===index}">{{item.name}}</text>
 			</view>
 		</view>
@@ -22,42 +22,42 @@
 					{
 						index: 0,
 						name: '首页',
-						img: '/static/tabBar/tab_01.png',
-						acImg: '/static/tabBar/tab_02.png',
-						iconClass: 'iconfont icon-shouye icon_20',
-						actiClass: 'iconfont icon-shouye icon_20 action'
+						img: '/static/tabBar/home.svg',
+						acImg: '/static/tabBar/home-s.svg',
+						// iconClass: 'iconfont icon-shouye icon_24',
+						// actiClass: 'iconfont icon-shouye icon_24 action'
 					},
 					{
 						index: 1,
-						name: '自选',
-						img: '/static/tabBar/tab_03.png',
-						acImg: '/static/tabBar/tab_04.png',
-						iconClass: 'iconfont icon-zixuan icon_20',
-						actiClass: 'iconfont icon-zixuan icon_20 action'
+						name: '在线客服',
+						img: '/static/tabBar/server.svg',
+						acImg: '/static/tabBar/server.svg',
+						// iconClass: 'iconfont icon-zixuan icon_24',
+						// actiClass: 'iconfont icon-zixuan icon_24 action'
 					},
 					{
 						index: 2,
 						name: '行情',
-						img: '/static/tabBar/tab_05.png',
-						acImg: '/static/tabBar/tab_06.png',
-						iconClass: 'iconfont icon-dianboxindiantu icon_22',
-						actiClass: 'iconfont icon-dianboxindiantu icon_22 action'
+						img: '/static/tabBar/quotation.svg',
+						acImg: '/static/tabBar/quotation-s.svg',
+						// iconClass: 'iconfont icon-dianboxindiantu icon_24',
+						// actiClass: 'iconfont icon-dianboxindiantu icon_24 action'
 					},
 					{
 						index: 3,
-						name: '账户',
-						img: '/static/tabBar/tab_07.png',
-						acImg: '/static/tabBar/tab_08.png',
-						iconClass: 'iconfont icon-yingli icon_22',
-						actiClass: 'iconfont icon-yingli icon_22 action'
+						name: '交易',
+						img: '/static/tabBar/trade.svg',
+						acImg: '/static/tabBar/trade-s.svg',
+						// iconClass: 'iconfont icon-yingli icon_24',
+						// actiClass: 'iconfont icon-yingli icon_24 action'
 					},
 					{
 						index: 4,
 						name: '我的',
-						img: '/static/tabBar/tab_09.png',
-						acImg: '/static/tabBar/tab_10.png',
-						iconClass: 'iconfont icon-wode1 icon_20',
-						actiClass: 'iconfont icon-wode1 icon_20 action'
+						img: '/static/tabBar/my.svg',
+						acImg: '/static/tabBar/my-s.svg',
+						// iconClass: 'iconfont icon-wode1 icon_24',
+						// actiClass: 'iconfont icon-wode1 icon_24 action'
 					},
 				],
 				codeheight: 0,

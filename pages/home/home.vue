@@ -205,6 +205,7 @@
 				
 			</view>
 		</view>-->
+		</view>
     </mescroll-body>
     <!-- 提示框 -->
     <DialogBox ref="DialogBox"></DialogBox>
