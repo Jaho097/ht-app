@@ -310,7 +310,7 @@
 				hotBat: uni.getStorageSync('hotBat') || '',
 				hotIndex: uni.getStorageSync('hotIndex') || '',
 				confData: uni.getStorageSync('confData') || '',
-				current:1,
+				current:0,
 				mySelectList:[]
 			}
 		},

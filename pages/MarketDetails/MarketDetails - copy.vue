@@ -159,7 +159,7 @@
 			</view>
 			
 			<!-- 股票K线图区域 #101010 -->
-			<view style='background-color: #101010;'>
+			<view style='background-color: #fff;'>
 				<HQChartControl ref="HQChartCtrl" DefaultChart="{Type:'KLine'}" :DefaultSymbol="Symbol">
 				</HQChartControl>
 			</view>
@@ -185,7 +185,7 @@
 				<view class="deal-dl">
 					<view class="deal-dt">买盘档</view>
 					<view class="deal-dd" v-for="(item,index) in 5" :key="index">
-						<text class="txt clr-black">买{{index+1}}</text>
+						<text class="txt clr-black">买{{fontList[index]}}</text>
 						<text style="padding-left: 12%;" class="txt" :class="(marketData[funbs('buy',index+1,'price')]>=Y)?'clr-red':'clr-black'">{{marketData[funbs('buy',index+1,'price')]}}</text>
 						<text class="txt clr-black text-right">{{marketData[funbs('buy',index+1,'amount')]}}</text>
 					</view>
@@ -195,7 +195,7 @@
 				<view class="deal-dl">
 					<view class="deal-dt">卖盘档</view>
 					<view class="deal-dd" v-for="(item,index) in 5" :key="index">
-						<text class="txt clr-black">卖{{index+1}}</text>
+						<text class="txt clr-black">卖{{fontList[index]}}</text>
 						<view style="padding-left: 12%;" class="txt" :class="{'clr-red':marketData[funbs('sell',index+1,'price')]>=Y}">
 							<text>{{marketData[funbs('sell',index+1,'price')]}}</text>
 						</view>
@@ -488,7 +488,8 @@ export default
 			Height: 0,
 			isShowRight: true,
 			
-			hqchartObj: ''
+			hqchartObj: '',
+			fontList:['一','二','三','四','五']
 		};
 		
 		return data;

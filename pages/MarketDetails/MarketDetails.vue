@@ -2,7 +2,7 @@
 	<view class="pageWrap" id="pageWrap">
 		<view class="goods-head">
 			<!-- 返回 -->
-			<view class="back" @click="onBack">
+			<view class="back" style="color:#101010 !important" @click="onBack">
 				<view class="back-one action">
 					<text></text>
 				</view>
@@ -59,7 +59,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="lz-price-content border-btm uni-px-5  uni-py-5">
+			<!-- <view class="lz-price-content border-btm uni-px-5  uni-py-5">
 				<view class="price-row">
 					<view class="price-col text-left">
 						<text class="price-name">{{getDayDate()||"2021-01-01"}} </text>
@@ -88,7 +88,7 @@
 						<text class="price-number clr-green">{{marketData.drop_price}}</text>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<view class="lz-price-content uni-px-5  uni-py-5">
 				<view class="price-row">
 					<view class="price-col text-left" style="flex: 1.4;">
@@ -128,7 +128,7 @@
 		<!-- 走势图、K线图 -->
 		<!--view class="changeType" id="changeType" @click="popup" data-position="right"></view-->
 		<view class="borderHor" id="borderHor"></view>
-		<view class="btnGroup" id="typeBtnGroup">
+		<view class="btnGroup" style="display:none;" id="typeBtnGroup">
 			<view class="btn" :class="{active:isShowMinuteChart}" @click="ChangeChartType('minutetype')">走势图</view>
 			<view class="btn" :class="{active:!isShowMinuteChart}" @click="ChangeChartType('klinetype')">K线图</view>
 		</view>
@@ -146,6 +146,12 @@
 			
 			<view class="periodRightWrap" id="periodRightWrap" v-show="!isShowMinuteChart">
 				<view class="btnGroup periodWrap">
+					<!-- 分钟 -->
+					<view class="btn" :class="{active:indexPeroid !== -1}">
+						<picker @change="bindPeriodChange" :value="indexPeroid" :range-key='"Name"' :range="kMPeriodAry">
+							<view class="picker">{{indexPeroid == -1 ? '分钟' : kMPeriod.Name}}</view>
+						</picker>
+					</view>
 					<!-- 日线、周线、月线、 -->
 					<view class="btn" :class="{active:indexKPeriod === idx}" 
 						@click="ChangekPeriod(period.ID)" 
@@ -154,25 +160,20 @@
 					>
 							{{period.Name}}
 					</view>
-					<!-- 分钟 -->
-					<view class="btn" :class="{active:indexPeroid !== -1}">
-						<picker @change="bindPeriodChange" :value="indexPeroid" :range-key='"Name"' :range="kMPeriodAry">
-							<view class="picker">{{indexPeroid == -1 ? '分钟' : kMPeriod.Name}}</view>
-						</picker>
-					</view>
+					
 				</view>
 				<!-- 前复权、后复权、不复权 -->
-				<view class="btnGroup rightWrap" v-show="isShowRight">
+				<!-- <view class="btnGroup rightWrap" v-show="isShowRight">
 					<view class="btn active">
 						<picker @change="bindRightChange" :value="indexRight" :range-key='"Name"' :range="rightAry">
 							<view class="picker">{{rightAry[indexRight].Name}}</view>
 						</picker>
 					</view>
-				</view>
+				</view> -->
 			</view>
 			
 			<!-- 股票K线图区域 -->
-			<view style='background-color:#101010;'>
+			<view style='background-color:#fff;'>
 				<HQChartControl ref="HQChartCtrl" DefaultChart="{Type:'KLine'}" :DefaultSymbol="Symbol">
 				</HQChartControl>
 			</view>
@@ -508,7 +509,7 @@ export default
 			customStyle: '',
 			overlayStyle: '',
 			subPageIndex: 0,
-			isShowMinuteChart: true,
+			isShowMinuteChart: false,
 			minuteDayCountAry: DefaultData.GetMinuteDayMenu(),
 			indexMinute: -1,
 			kPeriodAry: DefaultData.GetKLineDayPeriodMenu(),
@@ -550,6 +551,7 @@ export default
 		if(str){
 			_self.getMarket(str);
 		}
+		this.ChangeChartType('klinetype')
 	},
 	onReady()
 	{
@@ -1109,7 +1111,7 @@ export default
 	}
 	
 	.periodWrap{
-		width: 85%;
+		width: 100%;
 		border-right: 1rpx solid #ededed;
 	}
 	

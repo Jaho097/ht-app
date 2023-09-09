@@ -107,7 +107,12 @@
 		,{
 			"path" : "pages/search/search",
 			"style" : {
-				"navigationStyle":"custom"
+				// "app-plus":{
+				// 	"titleNView":false
+				// },
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7",
+				"navigationBarTitleText": "股票查询"
 			}
 		}
 		,{

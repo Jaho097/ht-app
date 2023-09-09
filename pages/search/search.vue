@@ -3,49 +3,45 @@
 		<!-- 搜索 -->
 		<!--自选/行情切换-->
 		<!-- 自定义插槽 -->
-		<view class="box-bg" style="padding: 0;">
-			<uni-nav-bar color="#FFF" backgroundColor="#DE4A29" shadow>
-				<block slot="left">
-					<uni-icons type="left" color="#FFF" size="22" @click="onBack" />
-					<!--<uni-icons type="left" color="#FFF" size="22" @click="onBackHome" />
-					<view>
-						<text class="uni-nav-bar-text">首页</text>
-					</view> -->
-				</block>
-				<view class="lz-tabsbtn-view">
-					<!-- 搜索框 -->
-					<view class="tabsbtn-box" id="tabsbtn-box">
-						<uni-icons class="input-uni-icon" type="search" size="18" color="#999" />
-						<input type="text" v-model="keyword" :auto-focus="firstFocus" @input="onInput" placeholder="请输入股票代码 / 名称 / 简称" />
-					</view>
-				</view>
-				<block slot="right">
-					<text class="uni-nav-bar-text" @click="onCancel">取消</text>
-				</block>
-			</uni-nav-bar>
-		</view>
-		
 		<!-- 搜索历史记录 -->
-		<view class="search-record"  v-if="noHistory && !noSearchRecordData">
+		<!-- <form class="am-search am-search-start" action="#">
+			<div class="am-search-input">
+				<div class="am-search-synthetic-ph" style="width: 220px;"><span
+						class="am-search-synthetic-ph-container"><i class="am-search-synthetic-ph-icon"></i><span
+							class="am-search-synthetic-ph-placeholder" style="visibility: none;">123请输入股票代码 / 名称 /
+							简称</span></span></div>
+							<input type="search" class="am-search-value"
+					placeholder="请输入股票代码 / 名称 / 简称" maxlength="6" value="123">
+					<a class="am-search-clear"></a>
+			</div>
+			<div class="am-search-cancel am-search-cancel-show am-search-cancel-anim" style="margin-right: 0px;">取消
+			</div>
+		</form> -->
+		<view class="am-search" >
+			<input type="search"  class="s-input" 
+			placeholder="请输入股票代码 / 名称 / 简称" maxlength="6" @input="onInput" v-model="keyword">
+			<view @click="onBack()" class="" style="width:80rpx;text-align: center;">
+				取消
+			</view>
+		</view>
+		<view class="search-record" v-if="noHistory && !noSearchRecordData">
 			<view class="search-title">
-				<view class="title" style="font-weight: 600;">搜索历史</view>
+				<view class="title" style="font-weight: 600;">历史搜索</view>
 				<!-- 清除 -->
 				<view class="iconfont icon-laji" @click="onDels()">清除历史</view>
 			</view>
 			<view class="record-list">
-				<view class="list" v-for="(item,index) in searchRecordData"
-				@click="onRecord(item.code)"
-				 :key="index">
+				<view class="list" v-for="(item,index) in searchRecordData" @click="onRecord(item.code)" :key="index">
 					<text>{{item.code_title}}</text><text>{{item.code}}</text>
 				</view>
 			</view>
 		</view>
 		<!-- 搜索结果 -->
-		<view class="search-found" v-if="!noHistory" style="margin-top: 100rpx;">
-			<view class="search-title">
+		<view class="search-found" v-if="!noHistory" >
+			<!-- <view class="search-title">
 				<view class="title" style="font-weight: 600;">搜索发现</view>
 				<view class="iconfont icon-laji"></view>
-			</view>
+			</view> -->
 			<view class="found-list">
 				<view class="list" v-for="(item,index) in dataList" :key="index">
 					<view class="left" @click="onSearch(item.code,item)">
@@ -61,81 +57,88 @@
 				</view>
 			</view>
 		</view>
-		
-		
-		
-		
+
+
+
+
 		<!-- 大家都在搜 -->
-		<view class="search-record" :style="{'margin-top': noHistory&&noSearchRecordData?'100rpx':'0'}" v-if="noHistory">
+		<view class="search-record" :style="{'margin-top': noHistory&&noSearchRecordData?'100rpx':'0'}"
+			v-if="noHistory">
 			<view class="search-title">
 				<view class="title" style="font-weight: 600;">大家都在搜</view>
 				<!-- 清除 -->
 				<view class="iconfont icon-laji" @click="onDel()">清除历史</view>
 			</view>
 			<view class="record-list">
-				<view class="list" v-for="(item,index) in SearchRecordArr"
-				@click="onRecord(item.code)"
-				 :key="index">
+				<view class="list" v-for="(item,index) in SearchRecordArr" @click="onRecord(item.code)" :key="index">
 					<text>{{item.code_title}}</text><text>{{item.code}}</text>
 				</view>
 			</view>
 		</view>
-		
+
 	</view>
 </template>
 
 <script>
-	var _self,loginRes;
+	var _self, loginRes;
 	export default {
 		data() {
 			return {
-				uid:'',
-				token:'',
+				uid: '',
+				token: '',
 				AttentionShow: 0,
 				SearchRecordArr: [],
 				keyword: '',
-				dataList:{},
+				dataList: {},
 				firstFocus: true,
-				searchRecordData:[],
-				noHistory:true,//默认历史搜索结果
-				noSearchRecordData:true,//默认无搜索历史
+				searchRecordData: [],
+				noHistory: true, //默认历史搜索结果
+				noSearchRecordData: true, //默认无搜索历史
 			};
 		},
-		watch:{
-			dataList: function (val) {
-			  console.log(val.length);
-			  if(val.length !=0 ){
-				  this.noHistory = false
-			  } else {
-				  this.noHistory = true
-			  }
-			  
+		watch: {
+			dataList: function(val) {
+				console.log(val.length);
+				if (val.length != 0) {
+					this.noHistory = false
+				} else {
+					this.noHistory = true
+				}
+
 			},
-			searchRecordData: function (val) {
-			  console.log(val.length);
-			  if(val.length !=0 ){
-				  this.noSearchRecordData = false
-			  } else {
-				  this.noSearchRecordData = true
-			  }
-			  
+			searchRecordData: function(val) {
+				console.log(val.length);
+				if (val.length != 0) {
+					this.noSearchRecordData = false
+				} else {
+					this.noSearchRecordData = true
+				}
+
 			},
 		},
 		onLoad() {
-			if(uni.getStorageSync('SearchRecordArr')){
+			if (uni.getStorageSync('SearchRecordArr')==[]) {
 				this.SearchRecordArr = JSON.parse(uni.getStorageSync('SearchRecordArr'));
-			}else{
+			} else {
 				this.getHistory();
 			}
-			if(uni.getStorageSync('searchRecordData')){
+			if (uni.getStorageSync('searchRecordData')) {
 				this.searchRecordData = JSON.parse(uni.getStorageSync('searchRecordData'));
 			}
 		},
-		methods:{
-			async getHistory(){
+		activated(){
+			this.keyword  = ''
+		},
+		methods: {
+			back(){
+				uni.navigateBack()
+			},
+			async getHistory() {
 				uni.request({
-					url: this.apiServer+'/market/index/getHistory_secher',
-					header: {'content-type' : "application/x-www-form-urlencoded"},
+					url: this.apiServer + '/market/index/getHistory_secher',
+					header: {
+						'content-type': "application/x-www-form-urlencoded"
+					},
 					method: 'GET',
 					timeout: 5000,
 					success: res => {
@@ -144,32 +147,39 @@
 						uni.setStorageSync('SearchRecordArr', JSON.stringify(this.SearchRecordArr));
 						console.log(this.SearchRecordArr);
 					},
-					complete:function(){
-					    uni.stopPullDownRefresh();
+					complete: function() {
+						uni.stopPullDownRefresh();
 					},
 					fail: (e) => {
-						uni.showToast({title:"加载失败!",icon:"none"});
+						uni.showToast({
+							title: "加载失败!",
+							icon: "none"
+						});
 						console.log(e);
 					}
 				});
 			},
 			/*返回首页*/
-			onBackHome(){
-				uni.reLaunch({url:'/pages/home/home'})
+			onBackHome() {
+				uni.reLaunch({
+					url: '/pages/home/home'
+				})
 			},
 			/**
 			 * 返回点击
 			 */
-			onBack(){
+			onBack() {
 				uni.navigateBack();
 			},
 			/*搜索框输入内容*/
 			onInput(e) {
-				this.keyword = e.target.value;//监听获取输入框改变值
-				if(this.keyword){
+				this.keyword = e.target.value; //监听获取输入框改变值
+				if (this.keyword) {
 					uni.request({
-						url: this.apiServer+'/market/index/stock_search?key='+this.keyword,
-						header: {'content-type' : "application/x-www-form-urlencoded"},
+						url: this.apiServer + '/market/index/stock_search?key=' + this.keyword,
+						header: {
+							'content-type': "application/x-www-form-urlencoded"
+						},
 						method: 'GET',
 						timeout: 5000,
 						success: res => {
@@ -177,78 +187,87 @@
 							this.dataList = res.data.data;
 							console.log(this.dataList);
 						},
-						complete:function(){
-						    uni.stopPullDownRefresh();
+						complete: function() {
+							uni.stopPullDownRefresh();
 						},
 						fail: (e) => {
-							uni.showToast({title:"加载失败!",icon:"none"});
+							uni.showToast({
+								title: "加载失败!",
+								icon: "none"
+							});
 							console.log(e);
 						}
 					});
-				}else{
+				} else {
 					this.dataList = '';
 				}
 			},
 			/*取消*/
-			onCancel(){
+			onCancel() {
 				this.keyword = "";
-				this.dataList= "";
+				this.dataList = "";
 			},
 			/**
 			 * 搜索点击
 			 */
-			onSearch(code,item){
-			
-				var newArr=false;
-				if(this.searchRecordData.length!=0){
-					
-					this.searchRecordData.map((item,index)=>{
-						if(item.code==code){
-							newArr=true;
+			onSearch(code, item) {
+
+				var newArr = false;
+				if (this.searchRecordData.length != 0) {
+
+					this.searchRecordData.map((item, index) => {
+						if (item.code == code) {
+							newArr = true;
 						}
-						
+
 					})
-					if(newArr===false){
-						  var storage= JSON.parse(uni.getStorageSync('searchRecordData'))
-								var newstr={
-									code:item.code,
-									code_title:item.name,
-									pin:item.pin
-								}
-							 var arr=[newstr,...storage];	
-							 this.searchRecordData =arr;
+					if (newArr === false) {
+						var storage = JSON.parse(uni.getStorageSync('searchRecordData'))
+						var newstr = {
+							code: item.code,
+							code_title: item.name,
+							pin: item.pin
+						}
+						var arr = [newstr, ...storage];
+						this.searchRecordData = arr;
 						uni.setStorageSync('searchRecordData', JSON.stringify(arr))
 					}
-				}else{
-					var newstr={
-						code:item.code,
-						code_title:item.name,
-						pin:item.pin
+				} else {
+					var newstr = {
+						code: item.code,
+						code_title: item.name,
+						pin: item.pin
 					}
-					var arr=[newstr];
-						 this.searchRecordData =arr;
+					var arr = [newstr];
+					this.searchRecordData = arr;
 					uni.setStorageSync('searchRecordData', JSON.stringify(arr))
 				}
-				
+
 				uni.navigateTo({
 					url: '/pages/MarketDetails/MarketDetails?code=' + encodeURIComponent(code),
 				})
 			},
-			onDel(){
+			onDel() {
 				this.SearchRecordArr = "";
 				uni.removeStorageSync('SearchRecordArr');
-				uni.showToast({title:"清理成功",icon: "none"});
+				uni.showToast({
+					title: "清理成功",
+					icon: "none"
+				});
 			},
 			//删除搜索发现
-			onDels(){
+			onDels() {
 				this.searchRecordData = "";
 				uni.removeStorageSync('searchRecordData');
-				uni.showToast({title:"清理成功",icon: "none"});
+				uni.showToast({
+					title: "清理成功",
+					icon: "none"
+				});
 			},
 			/**
 			 * 记录点击
 			 */
-			onRecord(val){
+			onRecord(val) {
 				uni.navigateTo({
 					//url: '/pages/GoodsDetails/Candle?code=' + encodeURIComponent(val),
 					url: '/pages/MarketDetails/MarketDetails?code=' + encodeURIComponent(val),
@@ -257,57 +276,75 @@
 			/* 自选点击*/
 			onAttention(item) {
 				loginRes = this.checkLogin();
-				if(!loginRes){return;}
+				if (!loginRes) {
+					return;
+				}
 				console.log(loginRes);
-				this.uid   = loginRes[0];
+				this.uid = loginRes[0];
 				this.token = loginRes[2];
 				if (this.AttentionShow === 0) {
 					this.AttentionShow = 1;
 					uni.request({
-						url: this.apiServer+'/market/index/add_my_select',
-						header: {'content-type' : "application/x-www-form-urlencoded"},
+						url: this.apiServer + '/market/index/add_my_select',
+						header: {
+							'content-type': "application/x-www-form-urlencoded"
+						},
 						method: 'POST',
 						timeout: 5000,
-						data:{
+						data: {
 							uid: this.uid,
 							token: this.token,
 							name: item.name,
 							code: item.code,
 						},
 						success: res => {
-							if(res.data.status == 1){
-								uni.showToast({title: res.data.message,icon: 'none'})
+							if (res.data.status == 1) {
+								uni.showToast({
+									title: res.data.message,
+									icon: 'none'
+								})
 							}
 						},
-						complete:function(){
+						complete: function() {
 							uni.stopPullDownRefresh();
 						},
-						fail:function(e){
-							uni.showToast({title:"加载失败!",icon:"none"});
+						fail: function(e) {
+							uni.showToast({
+								title: "加载失败!",
+								icon: "none"
+							});
 						}
 					});
 				} else {
 					this.AttentionShow = 0;
 					uni.request({
-						url: this.apiServer+'/market/index/del_my_select',
-						header: {'content-type' : "application/x-www-form-urlencoded"},
+						url: this.apiServer + '/market/index/del_my_select',
+						header: {
+							'content-type': "application/x-www-form-urlencoded"
+						},
 						method: 'POST',
 						timeout: 5000,
-						data:{
+						data: {
 							token: this.token,
 							code: item.code,
 						},
 						success: res => {
-							if(res.data.status == 1){
-								uni.showToast({title: res.data.message,icon: 'none'})
+							if (res.data.status == 1) {
+								uni.showToast({
+									title: res.data.message,
+									icon: 'none'
+								})
 							}
-							
+
 						},
-						complete:function(){
+						complete: function() {
 							uni.stopPullDownRefresh();
 						},
-						fail:function(e){
-							uni.showToast({title:"加载失败!",icon:"none"});
+						fail: function(e) {
+							uni.showToast({
+								title: "加载失败!",
+								icon: "none"
+							});
 						}
 					});
 				}
@@ -318,9 +355,10 @@
 
 <style scoped lang="scss">
 	@import 'search.scss';
-	
-// lz
+
+	// lz
 	$nav-height: 30px;
+
 	.box-bg {
 		background-color: #FFF;
 		padding: 10rpx 0;
@@ -330,8 +368,9 @@
 		z-index: 11;
 		width: 100%;
 	}
+
 	// 自选、行情 tabs
-	.lz-tabsbtn-view{
+	.lz-tabsbtn-view {
 		/* #ifndef APP-PLUS-NVUE */
 		display: flex;
 		/* #endif */
@@ -342,55 +381,172 @@
 		margin: 14rpx 0;
 		justify-content: center;
 		align-items: center;
-		
+
 		width: 100%;
 		padding: 0 10px;
 		background-color: #FFF;
 		border-radius: 30rpx;
 	}
-	.tabsbtn-box{width: 100%;text-align: center;display: flex;}
-	.screen-info{top: 90rpx;}
-	
-	.goods-data{margin-top: 0;padding-top: 90rpx;}
-	
+
+	.tabsbtn-box {
+		width: 100%;
+		text-align: center;
+		display: flex;
+	}
+
+	.screen-info {
+		top: 90rpx;
+	}
+
+	.goods-data {
+		margin-top: 0;
+		padding-top: 90rpx;
+	}
+
 	// 搜索输入框
 	.input-view {
-			/* #ifndef APP-PLUS-NVUE */
-			display: flex;
-			/* #endif */
-			flex-direction: row;
-			// width: 500rpx;
-			flex: 1;
-			background-color: #f8f8f8;
-			height: $nav-height;
-			border-radius: 15px;
-			padding: 0 15px;
-			flex-wrap: nowrap;
-			margin: 7px 0;
-			line-height: $nav-height;
-			overflow: hidden;
-		}
-	
-		.input-uni-icon {
-			line-height: $nav-height;
-		}
-	
-		.nav-bar-input {
-			width: 100%;
-			height: $nav-height;
-			line-height: $nav-height;
-			/* #ifdef APP-PLUS-NVUE */
-			width: 100%;
-			/* #endif */
-			padding: 0 5px;
-			font-size: 12px;
-			background-color: #f8f8f8;
-		}
-		
-		// 搜索框：输入框表单
-		#tabsbtn-box uni-input{height: 30px;line-height:30px;font-size: 14px;width: 100%;}
-		#tabsbtn-box input{color: #333;text-align: left;}
-		
-		// 清除历史icon
-		.search-record .search-title .iconfont{font-size: 14px;}
+		/* #ifndef APP-PLUS-NVUE */
+		display: flex;
+		/* #endif */
+		flex-direction: row;
+		// width: 500rpx;
+		flex: 1;
+		background-color: #f8f8f8;
+		height: $nav-height;
+		border-radius: 15px;
+		padding: 0 15px;
+		flex-wrap: nowrap;
+		margin: 7px 0;
+		line-height: $nav-height;
+		overflow: hidden;
+	}
+
+	.input-uni-icon {
+		line-height: $nav-height;
+	}
+
+	.nav-bar-input {
+		width: 100%;
+		height: $nav-height;
+		line-height: $nav-height;
+		/* #ifdef APP-PLUS-NVUE */
+		width: 100%;
+		/* #endif */
+		padding: 0 5px;
+		font-size: 12px;
+		background-color: #f8f8f8;
+	}
+
+	// 搜索框：输入框表单
+	#tabsbtn-box uni-input {
+		height: 30px;
+		line-height: 30px;
+		font-size: 14px;
+		width: 100%;
+	}
+
+	#tabsbtn-box input {
+		color: #333;
+		text-align: left;
+	}
+
+	// 清除历史icon
+	.search-record .search-title .iconfont {
+		font-size: 14px;
+	}
+	.s-input{
+		width: 100%;
+		background-color: #fff;
+		// z-index: 2;
+		text-align: left;
+		display: block;
+		color: #000;
+		height: 28px;
+		font-size: 15px;
+		border: 0;
+		broder-radius:10px;
+		padding-left: 15px;
+	}
+	.am-search,
+	.am-search-input {
+		position: relative;
+		overflow: hidden;
+		width: 720rpx !important;
+	}
+
+	.am-search {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-align: center;
+		align-items: center;
+		height: 44px;
+		padding: 0 8px;
+		margin-right: 0 !important;
+		width: 100% !important;
+		background-color: #efeff4;
+	}
+
+	span {
+		width: 100% !important;
+	}
+
+	.am-search-input {
+		-ms-flex: 1;
+		flex: 1 1;
+		width: 100%;
+		height: 28px;
+		background-color: #fff;
+		background-clip: padding-box;
+		border-radius: 3px;
+	}
+
+	.am-search,
+	.am-search-input {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.am-search-input .am-search-synthetic-ph {
+		-webkit-box-sizing: content-box;
+		box-sizing: content-box;
+		z-index: 1;
+		height: 28px;
+		line-height: 28px;
+		width: 100%;
+		-webkit-transition: width .3s;
+		-o-transition: width .3s;
+		transition: width .3s;
+		display: block;
+		text-align: center;
+	}
+
+	.am-search-input input[type=search] {
+		z-index: 2;
+		opacity: 0;
+		width: 100%;
+		text-align: left;
+		display: block;
+		color: #000;
+		height: 28px;
+		font-size: 15px;
+		background-color: transparent;
+		border: 0;
+	}
+
+	.am-search-input .am-search-synthetic-ph-icon {
+		display: inline-block;
+		margin-right: 5px;
+		width: 15px;
+		height: 15px;
+		overflow: hidden;
+		vertical-align: -2.5px;
+		background-repeat: no-repeat;
+		background-size: 15px auto;
+		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='38' height='36' viewBox='0 0 38 36' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M29.05 25.23a15.81 15.81 0 0 0 3.004-9.294c0-8.8-7.17-15.934-16.017-15.934C7.192.002.02 7.136.02 15.936c0 8.802 7.172 15.937 16.017 15.937a16 16 0 0 0 10.772-4.143l8.873 8.232 2.296-2.45-8.927-8.282zM16.2 28.933c-7.19 0-13.04-5.788-13.04-12.903 0-7.113 5.85-12.904 13.04-12.904 7.19 0 12.9 5.79 12.9 12.904 0 7.115-5.71 12.903-12.9 12.903z' fill='%23bbb' fill-rule='evenodd'/%3E%3C/svg%3E");
+	}
+
+	.am-search-input .am-search-synthetic-ph-placeholder {
+		color: #bbb;
+		font-size: 15px;
+	}
 </style>
