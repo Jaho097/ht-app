@@ -382,9 +382,11 @@
 			overflow-x: auto;
 			overflow-y: hidden;
 			background-color: #fff;
-			border-bottom: 1px solid #f0eeee;
+			display: flex;
+			justify-content: space-around;
 			//padding: 7px 15px;
 			.list{
+				flex:1;
 				position: relative;
 				display:inline-block;
 				width: 20%;
@@ -399,10 +401,21 @@
 				
 			}
 			.action{
+				color: rgb(86, 159, 248);
+				font-weight: bold;
 				text{
 					font-size: 32rpx;
 					opacity: 1;
 				}
+			}
+			.list.action span::after {
+			    content: "";
+			    display: block;
+			    width: 50%;
+			    height: 4px;
+			    border-radius: 2px;
+			    background-color: rgb(86, 159, 248);
+			    margin-top: 4px;
 			}
 		}
 		.title-h2{
@@ -823,12 +836,13 @@
 				justify-content: space-between;
 				.code-name{
 					color: #888;
-					width: 54%;
+					width: 100%;
 					font-size: 24rpx;
 					display: inline-block;
 					.name{
 						display: inline-block;
 						width: 100%;
+						text-align: center;
 					}
 					.min{
 						display: inline-block;
@@ -852,13 +866,17 @@
 					}
 				}
 				.code-price{
+					color: #888;
+					    width: 100%;
+					    display: flex;
+					    justify-content: space-around;
 					.max{
-						color: #fcb735;
+						// color: #fcb735;
 						font-size: 24rpx;
 						margin: 1px 0;
 					}
 					.min{
-						color: #fcb735;
+						// color: #fcb735;
 						font-size: 20rpx;
 					}
 					

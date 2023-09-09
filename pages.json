@@ -49,12 +49,12 @@
 		{
 			"path" : "pages/discover/discover",
 			"style" : {
-				"app-plus":{
-					"titleNView":false
-				},
+				// "app-plus":{
+				// 	"titleNView":false
+				// },
 				"navigationBarTextStyle":"black",
 				"navigationBarBackgroundColor": "#f4e4b7",
-				"navigationBarTitleText": "行情"
+				"navigationBarTitleText": "行情中心"
 			}
 		}
 		,{

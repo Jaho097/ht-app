@@ -486,6 +486,9 @@
 				//console.log("选择为：",this.time)//输出获取的值
 			},
 			onclick: function(multiple, e, index) {
+				if(!this.form.freeze){
+					return
+				}
 				this.current = index;
 				this.form.bigMoney = e * (this.form.freeze || 1);
 				this.form.multiple = multiple;
