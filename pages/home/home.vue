@@ -75,9 +75,9 @@
 						<view class="list" v-for="(item,index) in navList"
 						@click="onSkip(item.path)"
 						:key="item.id">
-							<!-- <image :src="'/static/nav/peizi_ico'+(index+1)+'.png'" mode=""></image> -->
-							<uni-icons custom-prefix="iconfont" :type="item.iconname" :size="item.iconsize" :color="item.iconcolor"></uni-icons>
-							<text>{{item.name}}</text>
+							<image :src="'/static/nav/'+item.img+'.svg'" mode=""></image>
+							<!-- <uni-icons custom-prefix="iconfont" :type="item.iconname" :size="item.iconsize" :color="item.iconcolor"></uni-icons> -->
+							<text>{{item.name }}</text>
 						</view>
 					</view>
 				</scroll-view>
@@ -333,6 +333,7 @@
 						name: '新手指南',
 						path: 'help',
 						iconname: 'icon-aixin',
+						img:'new-user',
 						iconsize:'30',
 						iconcolor: '#F6B30B'
 					},
@@ -342,6 +343,7 @@
 						path: 'aboutus',
 						iconname: 'icon-zixuan-copy',
 						iconsize:'30',
+						img:'promotion',
 						iconcolor: '#F6B30B'
 					},
 					{
@@ -350,6 +352,7 @@
 						path: 'Market',
 						iconname: 'icon-zixuan-copy',
 						iconsize:'30',
+						img:'diagnosis',
 						iconcolor: '#F6B30B'
 					},
 					{
@@ -358,45 +361,78 @@
 						path: 'mess',
 						iconname: 'icon-WDzichan',
 						iconsize:'30',
+						img:'app',
 						iconcolor: '#51A3FF'
 					},
+					// {
+					// 	id: 1,
+					// 	name: '行情',
+					// 	path: 'discover',
+					// 	iconname: 'icon-gupiao1',
+					// 	iconsize:'30',
+					// 	img:'capital-day',
+					// 	iconcolor: '#FF504B'
+					// },
+					// {
+					// 	id: 2,
+					// 	name: '持仓',
+					// 	path: 'MyOrderList',
+					// 	iconname: 'icon-jijinchicang',
+					// 	iconsize:'28',
+					// 	img:'capital-month',
+					// 	iconcolor: '#F7813B'
+					// },
+					// {
+					// 	id: 4,
+					// 	name: '免费体验',
+					// 	path: 'trial',
+					// 	iconname: 'icon-wode2',
+					// 	img:'capital-vip',
+					// 	iconsize:'30',
+					// 	iconcolor: '#F7813B'
+					// },
+					// {
+					// 	id: 3,
+					// 	name: '在线客服',
+					// 	path: 'kefu',
+					// 	iconname: 'icon-wode2',
+					// 	iconsize:'30',
+					// 	img:'capital-free',
+					// 	iconcolor: '#51A3FF'
+					// },	
 					{
 						id: 1,
-						name: '行情',
-						path: 'discover',
-						iconname: 'icon-gupiao1',
+						name: '按天配资',
+						path: 'peizi1',
+						iconname: 'icon-WDzichan',
+						img:'capital-day',
 						iconsize:'30',
-						iconcolor: '#FF504B'
-					},
+						iconcolor: '#F6B30B'
+					},					
 					{
 						id: 2,
-						name: '持仓',
-						path: 'MyOrderList',
-						iconname: 'icon-jijinchicang',
-						iconsize:'28',
-						iconcolor: '#F7813B'
-					},
-					{
-						id: 4,
-						name: '免费体验',
-						path: 'trial',
-						iconname: 'icon-wode2',
+						name: '按月配资',
+						path: 'peizi3',
+						iconname: 'icon-WDzichan',
+							img:'capital-month',
 						iconsize:'30',
-						iconcolor: '#F7813B'
+						iconcolor: '#F6B30B'
 					},
 					{
 						id: 3,
-						name: '在线客服',
-						path: 'kefu',
-						iconname: 'icon-wode2',
+						name: 'VIP配资',
+						path: 'peizi2',
+						iconname: 'icon-WDzichan',
+							img:'capital-vip',
 						iconsize:'30',
-						iconcolor: '#51A3FF'
+						iconcolor: '#F6B30B'
 					},					
 					{
-						id: 5,
-						name: '配资申请',
-						path: 'peizi',
+						id: 4,
+						name: '免费配资',
+						path: 'peizi0',
 						iconname: 'icon-WDzichan',
+						img:'capital-free',
 						iconsize:'30',
 						iconcolor: '#F6B30B'
 					}
@@ -713,9 +749,24 @@
 							//url: '/pages/Message/Message'
 						})
 						break;
-					case 'peizi':
+					case 'peizi0':
+						uni.navigateTo({
+							url: '/pages/Peizi/Peizi?type=0'
+						})
+						break;
+					case 'peizi1':
 						uni.navigateTo({
 							url: '/pages/Peizi/Peizi?type=1'
+						})
+						break;
+					case 'peizi2':
+						uni.navigateTo({
+							url: '/pages/Peizi/Peizi?type=2'
+						})
+						break;
+					case 'peizi3':
+						uni.navigateTo({
+							url: '/pages/Peizi/Peizi?type=3'
 						})
 						break;
 					case 'trial':
@@ -816,7 +867,7 @@
 .menu-nav, .menu-nav .nav-list, .menu-nav .nav-list .nav{
 	height: auto;
 }
-.menu-nav .nav-list .list{width: 25%;}
+.menu-nav .nav-list .list{width: 25%;margin-top: 20rpx;}
 // 公告喇叭
 .uniui-icon-laba{line-height: normal;}
 // 宫格

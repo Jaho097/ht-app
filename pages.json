@@ -28,6 +28,14 @@
 			}
 		},
 		{
+			"path" : "pages/Peizi1/Peizi",
+			"style" : {
+				"navigationBarTitleText": "确认申请",
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
+			}
+		},
+		{
 			"path":"pages/Market/Market",
 			"style":{
 				"app-plus":{

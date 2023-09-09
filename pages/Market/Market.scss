@@ -157,7 +157,7 @@
 .screen-info {
 	position: fixed;
 	left: 0;
-	top: 88rpx;
+	// top: 176rpx;
 	z-index: 11;
 	/* #ifdef APP-PLUS */
 	top: 150rpx;
@@ -269,6 +269,7 @@
 	.goods-list {
 		//padding: 0 25rpx;
 		//border-radius: 20rpx;
+		margin-top:90rpx;
 		overflow: hidden;		
 		.list-view {
 			float: left;

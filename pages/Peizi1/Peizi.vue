@@ -3,130 +3,105 @@
 		<!-- 配资tab -->
 		<view class="" style="background-color: #f4e4b7;height: 80rpx;">
 		</view>
-		<view class="sc-jtggT jvlxMk">
-			<view class="sc-ebFjAB ckTmlE">
-				<view class="item"><button class="sc-kkGfuU hoqqAL new-button-small"
-						:class="{'new-button-ghost':OrderType!=1}" @click="onOrderTab(1)">按天配资</button></view>
-				<view class="item"><button class="sc-kkGfuU hoqqAL new-button-small "
-						:class="{'new-button-ghost':OrderType!=2}" @click="onOrderTab(2)">VIP配资</button>
-				</view>
-				<view class="item"><button class="sc-kkGfuU hoqqAL new-button-small "
-						:class="{'new-button-ghost':OrderType!=3}" @click="onOrderTab(3)">按月配资</button></view>
-				<view class="item"><button class="sc-kkGfuU hoqqAL new-button-small "
-						:class="{'new-button-ghost':OrderType!=0}" @click="onOrderTab(0)">免息配资</button></view>
-			</view>
+		<div class="sc-jtggT jvlxMk">
+			<div class="sc-jKVCRD AaIAu">
+				<div class="item">
+					<div class="hd">总操盘资金</div>
+					<div class="num">{{Number(freeze)+Number(multiple*freeze)}}元</div>
+				</div>
+				<div class="item">
+					<div class="hd">保证金</div>
+					<div class="num">{{freeze}}元</div>
+				</div>
+				<div class="item">
+					<div class="hd">配资金额</div>
+					<div class="num">{{multiple*freeze}}元</div>
+				</div>
+			</div>
+		</div>
+		<div class="sc-jAaTju hpiOGL">
+			<div class="am-whitespace am-whitespace-md"></div>
+			<div class="am-wingblank am-wingblank-lg">
+				<div class="sc-LKuAh sc-hzNEM wHZBJ">
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">
+							<div style="display: flex; align-items: center;"><span>预警线</span><img
+									src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
+									alt="???"
+									style="margin-left: 2px; width: .8rem; height: .8rem; position: relative; left: 0.04rem;">
+							</div>
+						</div>
+						<div class="bd"><span class="sc-fjdhpX cEvEJT">{{price1()}}元</span><span
+								class="sc-chbbiW SmCRN">(配资资金+保证金 x 50%)</span></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">
+							<div style="display: flex; align-items: center;"><span>平仓线</span><img
+									src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
+									alt="???"
+									style="margin-left: 2px; width: .8rem; height: .8rem; position: relative; left: 0.04rem;">
+							</div>
+						</div>
+						<div class="bd"><span class="sc-fjdhpX cEvEJT">{{price2()}}元 </span><span
+								class="sc-chbbiW SmCRN">(配资资金+保证金 x 20%)</span></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">操盘时间</div>
+						<div class="bd"><span class="sc-fjdhpX cEvEJT">{{time}}{{type==1||type==0?'天':'月'}}</span><span
+								class="sc-chbbiW SmCRN">(默认开启到期自动续期)</span></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">配资管理费</div>
+						<div class="bd"><span class="sc-fjdhpX cEvEJT">{{price3()}}元</span><span class="sc-chbbiW SmCRN">(配资资金 x
+								操盘期限 x 0.90%)</span></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">操盘须知</div>
+						<div class="bd">单只股票最大持仓比例为 100%</div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">账户余额</div>
+						<div class="bd"><span class="sc-fjdhpX cEvEJT">{{memberMoney.account}}元</span><a class="sc-kxynE dZizzA"
+								 @click="charge()">充值</a></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">本次可抵扣</div>
+						<div class="bd"><span class="text-primary">2.70元</span></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">单次最多可抵扣</div>
+						<div class="bd"><span class="text-primary">2.70元</span></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">剩余管理费</div>
+						<div class="bd"><span class="text-primary">2087.10元</span></div>
+					</div>
+					<div class="sc-iBEsjs dJjmld">
+						<div class="title">确认支付</div>
+						<div class="bd"><span class="text-primary">202.70元</span></div>
+					</div>
+				</div>
+				<div class="sc-kaNhvL jDQKpL">
+					<label class="am-checkbox-wrapper">
+						<span
+							class="am-checkbox "
+							:class="{'am-checkbox-checked':isAgree==1}"
+							>
+							<!-- class="am-checkbox am-checkbox-checked"> -->
+							<input type="checkbox" @click="agree()" class="am-checkbox-input"
+								checked=""><span class="am-checkbox-inner"></span></span></label><span
+						class="link">我已阅读并同意 <a style="color:blue" @click="toAgree()" >《实盘交易平台操盘协议》</a></span></div>
+			</div>
+		</div>
+
+		<view class="uni-py-10 uni-px-8">
+			<button type="warn" style="width:100%;" class="uni-radius-5" v-if="form.freeze"
+				@click="form.freeze?goNext():''">下一步</button>
+			<button type="warn" style="width:100%;" class="uni-radius-5" v-else disabled="true">下一步</button>
 		</view>
-		<!-- <view class="order-tab">
-			<view class="tab" :class="{'action':OrderType==0}" @click="onOrderTab(0)">
-				<text>免费体验</text>
-				<text class="line"></text>
-			</view>
-			<view class="tab" :class="{'action':OrderType==1}" @click="onOrderTab(1)">
-				<text>按天配资</text>
-				<text class="line"></text>
-			</view>
-			<view class="tab" :class="{'action':OrderType==2}" @click="onOrderTab(2)">
-				<text>按周配资</text>
-				<text class="line"></text>
-			</view>
-			<view class="tab" :class="{'action':OrderType==3}" @click="onOrderTab(3)">
-				<text>按月配资</text>
-				<text class="line"></text>
-			</view>
-		</view> -->
-		<!--操作区-->
-
-
-		<!-- 订单列表 -->
-		<view class="order-list">
-			<view class="list">
-				<!-- <uni-section title="请输入保证金金额" subTitle="保证金为100的倍数且小于20000000" type="line" padding> -->
-				<view class="sc-jAaTju hpiOGL">
-					<view class="am-wingblank am-wingblank-lg">
-						<view class="sc-qrIAp gtQAIG">
-							<view class="title">请输入保证金金额</view><input v-model="form.freeze" type="number"
-								:placeholder="this.priceList[this.OrderType].item" class="sc-iqzUVk fYFaPR">
-						</view>
-						<view class="lz-pos-rel">
-							<picker class="lz-input fYFaPR" @change="bindTimeChange" :disabled="this.OrderType==0"
-								:range="timeArray">
-								<label v-if="index==null"
-									class="normal ">{{this.pickerList[this.OrderType].item}}</label>
-								<label v-else>{{timeArray[index]+" "+dataName}}</label>
-							</picker>
-						</view>
-						<!-- <view class="sc-qrIAp gtQAIG">
-							<view class="title">请选择操盘期限</view>
-							<view><button class="sc-ipZHIp fmypNd">操盘期限介于 1 - 12 月之间 <svg
-										class="am-icon am-icon-down am-icon-xxs">
-										<use xlink:href="#down"></use>
-									</svg></button></view>
-						</view> -->
-						<view class="sc-qrIAp gtQAIG">
-							<view class="title">请选择配资金额</view>
-							<view class="sc-dEoRIm hIMFYz">
-								<view class="sc-iGrrsa sc-bmyXtO dZkSuS"
-									:class="{ 'bgfff': form.freeze, 'color1': index == current }"
-									v-for="(item,index) in peiziList"
-									@click="onclick(index+1,item.idx,index)">
-									<!-- <view class="sc-iGrrsa sc-bmyXtO dZkSuS" @click="onclick(index+1,free_set[0]*form.freeze,index)" v-for="item in peiziList"> -->
-									<view class="hd" v-if="form.freeze"
-										:class="{ 'color2': index == current }">{{rePeizi(item)}}
-									</view>
-									<view class="hd" v-else="">配资金额</view>
-									<view class="num">{{item.idx}}倍</view>
-								</view>
-							</view>
-						</view>
-					</view>
-				</view>
-				<!-- <view class="">
-					请输入保证金金额
-				</view>
-				<view class="lz-pos-rel">
-					<uni-icons custom-prefix="iconfont" type="icon-WDzichan" size="18" color="#959595"></uni-icons>
-					<input type="number" v-model="form.freeze" focus="true" @input="onInput" class="lz-input"
-						placeholder="保证金介于 300000 - 20000000 元之间">
-				</view>
-				</uni-section>
-				<uni-section title="请选择操盘期限" subTitle="点击选择操盘期限" type="line" padding>
-					<view class="lz-pos-rel">
-						<uni-icons type="calendar-filled" size="18" color="#959595"></uni-icons>
-						<picker class="lz-input" @change="bindTimeChange" :range="timeArray">
-							<label v-if="index==null" class="normal">点击选择</label>
-							<label v-else>{{timeArray[index]+" "+dataName}}</label>
-						</picker>
-					</view>
-				</uni-section> -->
-				<!-- 选择倍数 -->
-				<!-- <view class="wallet">
-					<view class="more">
-						<text>配资金额</text>
-					</view>
-					<view class="wallet-list" v-if="this.OrderType == 0">
-						<uni-tag type="primary" class="lz-wallet-tag uni-mx-5 uni-my-5"
-							:text="(form.freeze>0)?((free_set[0]*form.unitNumber+form.unit)+' \n （ '+free_set[0]+'倍 ）'):('配资金额'+' \n （ '+free_set[0]+'倍 ）')"
-							v-bind:class="{active:index==current}" inverted="true" v-for="(item,index) in ratefree"
-							:key="index" size="normal" @click="onclick(index+1,free_set[0]*form.freeze,index)" />
-					</view>
-					<view class="wallet-list" v-else>
-						<uni-tag type="primary" class="lz-wallet-tag uni-mx-5 uni-my-5"
-							:text="(form.freeze>0)?((item*form.unitNumber+form.unit)+' \n （ '+item+'倍 ）'):('配资金额'+' \n （ '+item+'倍 ）')"
-							v-bind:class="{active:index==current}" inverted="true" v-for="(item,index) in rateCount"
-							:key="index" size="normal" @click="onclick(item,item*form.freeze,index)" />
-					</view>
-				</view> -->
-			</view>
-
-
-			<view class="uni-py-10 uni-px-8">
-				<button type="warn" style="width:100%;" class="uni-radius-5" v-if="form.freeze"
-					@click="form.freeze?goNext():''">下一步</button>
-				<button type="warn" style="width:100%;" class="uni-radius-5" v-else disabled="true">下一步</button>
-			</view>
-			<!-- 确认申请 -->
-			<goods-coupon ref="GoodsCoupon"></goods-coupon>
-		</view>
+		<!-- 确认申请 -->
+		<goods-coupon ref="GoodsCoupon"></goods-coupon>
+	</view>
 	</view>
 </template>
 
@@ -237,6 +212,13 @@
 					bigMoney: '', //配资金额
 				},
 				applyJson: '',
+				isAgree:0,
+				freeze:0,
+				multiple:0,
+				peizi:0,
+				time:0,
+				type:'',
+				memberMoney:{}
 			};
 		},
 		computed: {
@@ -261,37 +243,61 @@
 			}
 		},
 		onLoad(params) {
-			this.OrderType = params.type;
-			let barTitle
-			switch (this.OrderType) {
-				case "0":
-					barTitle = '免费配资';
-					break;
-				case "1":
-					barTitle = '按天配资';
-					break;
-				case "3":
-					barTitle = '按月配资';
-					break;
-				default:
-					break;
-			}
-			uni.setNavigationBarTitle({
-				title: barTitle
-			});
+			this.freeze = Number(params.freeze);
+			this.time = Number(params.time);
+			this.type = Number(params.type);
+			this.multiple = Number(params.multiple);
+			this.peizi = Number(this.freeze*this.multiple)
 			_self = this;
-			loginRes = this.checkLogin();
+			loginRes = _self.checkLogin();
 			if (!loginRes) {
 				return;
 			}
-			console.log(loginRes);
-			if (this.OrderType == 0) action = 'free_m';
-			if (this.OrderType == 1 || this.OrderType == '') action = 'day';
-			if (this.OrderType == 2) action = 'week';
-			if (this.OrderType == 3) action = 'month';
-			this.applyFree(action, loginRes[2]);
+			this.getMy(loginRes[2])
 		},
 		methods: {
+			toAgree(){
+				uni.navigateTo({
+					url: '/pages/Agreement/Agreement',
+				})
+			},
+			charge(){
+				uni.navigateTo({
+					url: '/pages/MyWallet/MyWallet',
+				})
+			},
+			getMy(token){
+				uni.request({
+					url: this.apiServer+'/apicom/member',
+					header: {'content-type' : "application/x-www-form-urlencoded"},
+					method: 'POST',
+					timeout: 5000,
+					data:{
+						token: token
+					},
+					success: res => {
+						if(res.data.status == 1){
+							this.memberMoney = res.data.data.money;
+							//console.log(res.data.data);
+						}
+					},
+					fail:function(e){
+						uni.showToast({title:"加载失败!",icon:"none"});
+					}
+				});
+			},
+			price1(){
+				return this.peizi+this.freeze*0.5
+			},
+			price2(){
+				return this.peizi+this.freeze*0.2
+			},
+			price3(){
+				return (this.peizi*this.time*0.009).toFixed(2)
+			},
+			agree(){
+				this.isAgree = !this.isAgree
+			},	
 			rePeizi(item) {
 				let formattedNum
 				let num = item.idx * (this.form.freeze || 1)
@@ -514,10 +520,7 @@
 					});
 					return;
 				}
-				uni.navigateTo({
-					url: '/pages/Peizi1/Peizi?freeze=' + this.form.freeze + '&multiple=' +(Number(this.form.multiple)+1)+ '&time=' +this.form.time+ '&type=' +this.OrderType,
-				})
-				// this.applySave(loginRes[2], this.form);
+				this.applySave(loginRes[2], this.form);
 			},
 			/**
 			 * 配资tab点击
@@ -541,66 +544,34 @@
 		position: relative;
 		overflow: hidden;
 		padding-bottom: 5px;
-		margin-top: 16px;
-		top: -30px;
+		margin-top: -30px;
 	}
 
-	.ckTmlE {
+	.AaIAu {
 		position: relative;
 		z-index: 1;
 		margin: 0px 15px;
-		padding: 0.3rem 0.4rem;
+		padding: 0.3rem .8rem;
 		background-color: rgb(255, 255, 255);
 		border-radius: 10px;
 		display: flex;
 		box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 4px;
 	}
 
-	.ckTmlE .item {
+	.AaIAu .item {
 		flex: 1 1 0%;
-		padding: 0 3px;
 		text-align: center;
+		border-right: 1px solid rgb(226, 226, 226);
 	}
 
-	.hoqqAL.new-button,
-	.hoqqAL.new-button-small {
-		font-size: 14px;
-		font-weight: 400;
-		height: 30px;
+	.AaIAu .item .hd {
+		color: rgb(142, 142, 147);
+		font-size: 15px;
 	}
 
-	.hoqqAL {
-		background-color: rgb(179, 141, 74);
-		background-image: linear-gradient(112deg, rgb(220, 190, 127) 0%, rgb(179, 141, 74) 100%);
-		border-radius: 4px;
-		font-family: PingFangSC-Semibold;
-		font-size: 16px;
-		color: rgb(255, 255, 255);
-		font-weight: 600;
-		border: none;
-		display: flex;
-		-webkit-box-pack: center;
-		justify-content: center;
-		-webkit-box-align: center;
-		align-items: center;
-		padding-left: 8px;
-		padding-right: 8px;
-		height: 44px;
-	}
-
-	.hoqqAL.new-button,
-	.hoqqAL.new-button-ghost {
-		background-color: transparent;
-		border: 1px solid rgb(179, 141, 74);
-		color: rgb(179, 141, 74);
-		background-image: none;
-	}
-
-	.hoqqAL.new-button,
-	.hoqqAL.new-button-small {
-		font-size: 14px;
-		font-weight: 400;
-		height: 30px;
+	.AaIAu .item .num {
+		font-size: 17px;
+		color: rgb(255, 69, 0);
 	}
 
 	.hpiOGL {
@@ -612,171 +583,128 @@
 		background-color: white;
 	}
 
+	.am-whitespace.am-whitespace-md {
+		height: 9px;
+	}
+
 	.am-wingblank.am-wingblank-lg {
 		margin-left: 15px;
 		margin-right: 15px;
 	}
 
-	.gtQAIG {
-		margin-bottom: 20px;
-	}
-
-	.gtQAIG .title {
-		font-size: 16px;
-		color: rgb(37, 37, 37);
-		line-height: 30px;
-		text-align: center;
-		margin: 6px 0px;
-	}
-
-	.fYFaPR {
-		font-size: 16px;
-		color: rgb(37, 37, 37);
-		padding: 5px 8px;
-		text-align: center;
-		line-height: 30px;
-		border: 1px solid rgb(232, 232, 232);
-		border-radius: 8px;
-		width: 100%;
-		box-sizing: border-box;
-	}
-
-	.gtQAIG {
-		margin-bottom: 20px;
-	}
-
-	.gtQAIG .title {
-		font-size: 16px;
-		color: rgb(37, 37, 37);
-		line-height: 30px;
-		text-align: center;
-		margin: 6px 0px;
-	}
-
-	.fmypNd {
-		box-sizing: border-box;
+	.wHZBJ {
+		margin: 0px 0px 15px;
 		background-color: rgb(255, 255, 255);
-		border-radius: 8px;
+		padding-left: 0px;
+		border-radius: 4px;
+	}
+
+	.dJjmld {
 		position: relative;
-		border: 1px solid rgb(232, 232, 232);
-		padding: 5px 8px;
-		text-align: center;
-		width: 100%;
-		line-height: 30px;
-		font-size: 16px;
-		color: rgb(90, 90, 98);
-	}
-
-	svg:not(:root) {
-		overflow: hidden;
-	}
-
-	.am-icon-xxs {
-		width: 15px;
-		height: 15px;
-	}
-
-	.am-icon {
-		fill: currentColor;
-		background-size: cover;
-		width: 22px;
-		height: 22px;
-	}
-
-	.gtQAIG:last-child {
-		margin-bottom: 0px;
-	}
-
-	svg:not(:root) {
-		overflow: hidden;
-	}
-
-	.am-icon-xxs {
-		width: 15px;
-		height: 15px;
-	}
-
-	.am-icon {
-		fill: currentColor;
-		background-size: cover;
-		width: 22px;
-		height: 22px;
-	}
-
-	.gtQAIG:last-child {
-		margin-bottom: 0px;
-	}
-
-	.gtQAIG .title {
-		font-size: 16px;
-		color: rgb(37, 37, 37);
-		line-height: 30px;
-		text-align: center;
-		margin: 6px 0px;
-	}
-
-	.hIMFYz {
+		min-height: 44px;
 		display: flex;
-		flex-wrap: wrap;
-		-webkit-box-pack: justify;
-		justify-content: space-between;
-	}
-
-	.dZkSuS {
-		border: 1px solid rgb(234, 234, 234);
-		width: 30%;
-		background-color: rgb(232, 232, 232);
-		color: rgb(142, 142, 147);
+		-webkit-box-align: center;
+		align-items: center;
+		padding: 0px 10px;
 		font-size: 14px;
-		border-radius: 5px;
-		text-align: center;
-		margin-bottom: 15px;
-		padding: 20px 0px;
 	}
 
-	.dZkSuS .hd {
+	.dJjmld>.title {
+		font-size: 16px;
+		flex: 1 1 0%;
+		color: rgb(37, 37, 37);
+	}
+
+	.dJjmld>.bd {
+		flex-basis: 65%;
 		color: rgb(142, 142, 147);
 	}
 
-	.dZkSuS .hd {
-		font-size: 18px;
-		line-height: 30px;
-		color: rgb(37, 37, 37);
+	.jDQKpL {
+		font-size: 14px;
 	}
 
-	.dZkSuS .num {
-		font-size: 16px;
+	.jDQKpL .link {
+		padding-left: 10px;
+		color: rgb(142, 142, 147);
+	}
+
+	.cEvEJT {
+		color: rgb(255, 69, 0);
+	}
+
+	.dZizzA {
+		color: rgb(255, 255, 255);
+		background-color: rgb(250, 68, 0);
+		border-radius: 3px;
+		padding: 0px 3px;
+		font-size: 13px;
+		display: inline-block;
 		line-height: 20px;
+		margin-left: 20px;
+		position: relative;
+		top: -2px;
 	}
 
-	.dZkSuS .num {
-		font-size: 16px;
-		line-height: 20px;
-	}
-
-	.fYFaPR {
-		font-size: 16px;
-		color: rgb(37, 37, 37);
-		padding: 5px 8px;
-		text-align: center;
-		line-height: 30px;
-		border: 1px solid rgb(232, 232, 232);
-		border-radius: 8px;
+	.am-checkbox-input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
 		width: 100%;
-		height: 84rpx;
+		height: 100%;
+		z-index: 2;
+		border: 0 none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+
+	.jDQKpL .am-checkbox.am-checkbox-checked .am-checkbox-inner {
+		background-color: rgb(255, 69, 0);
+		border-color: rgb(255, 69, 0);
+	}
+
+	.am-checkbox-inner {
+		position: absolute;
+		right: 0;
+		width: 21px;
+		height: 21px;
+		border: 1px solid #ccc;
+		border-radius: 50%;
+		-webkit-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 	}
 
-	.bgfff {
-		background-color: #fff !important;
+	.am-checkbox {
+		position: relative;
+		display: inline-block;
+		vertical-align: middle;
+		width: 21px;
+		height: 21px;
 	}
 
-	.color1 {
-		border-color: rgb(255, 69, 0);
-		color: rgb(255, 69, 0) !important;
+	.am-checkbox.am-checkbox-checked .am-checkbox-inner:after {
+		display: block;
+		border-color: #fff;
 	}
 
-	.color2 {
-		color: rgb(255, 69, 0) !important;
+	.am-checkbox-inner:after {
+		position: absolute;
+		display: none;
+		top: 1.5px;
+		right: 6px;
+		z-index: 999;
+		width: 5px;
+		height: 11px;
+		border-style: solid;
+		border-width: 0 1px 1px 0;
+		content: " ";
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
 	}
 </style>

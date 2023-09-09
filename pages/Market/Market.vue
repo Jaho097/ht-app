@@ -4,7 +4,7 @@
 		<!--自选/行情切换-->
 		<!-- 自定义插槽 -->
 		<view class="box-bg" style="padding: 0;">
-			<uni-nav-bar color="#FFF" backgroundColor="#DE4A29" shadow>
+			<uni-nav-bar color="#000" backgroundColor="#f4e4b7" shadow>
 				<block slot="left">
 					<!-- <uni-icons type="left" color="#FFF" size="22" @click="onBack" /> -->
 					<uni-icons type="left" color="#FFF" size="22" @click="onBackHome" />
@@ -38,6 +38,10 @@
 				
 			</view>
 		</view-->
+		<!-- <view class="screen-info" style="top: 85rpx;">
+			123123
+		</view> -->
+		<div style="top: 85rpx;" class="sc-qrIAp eNnJWy "><div class="header-inner"><input placeholder="请输入股票名称或股票代码" class="sc-iqzUVk jEtAry" value=""><div class="sc-ipZHIp kqNZAv">开始诊断</div></div></div>
 		<!-- 筛选 -->
 		<view class="screen-info">
 			<view class="screen-list">
@@ -340,6 +344,61 @@
 		justify-content: center;
 		align-items: center;
 	}
+	.eNnJWy {
+	    background-color: white;
+	    margin: 27px 16px 0px;
+	    padding: 6px;
+	    border-radius: 8px;
+		position: fixed;
+		left: 0;
+		z-index: 11;
+		width: 90%;
+		
+	}
+	.eNnJWy .header-inner {
+	    display: flex;
+	    flex-direction: row;
+	    overflow: hidden;
+	}
+	.jEtAry {
+		height:100%;
+	-webkit-box-flex: 1;
+	    flex-grow: 1;
+	    flex-shrink: 1;
+	    padding: 6px;
+	    border: none;
+	    font-family: PingFangSC;
+	    font-size: 16px;
+	    font-weight: 400;
+	    color: rgb(0, 0, 0);
+	    display: block;
+	    width: calc((100% - 90px) - 6px);
+		}
+		.kqNZAv {
+		    -webkit-box-flex: 0;
+		    flex-grow: 0;
+		    flex-shrink: 0;
+		    padding: 8px 0px;
+		    font-family: PingFangSC-Semibold;
+		    font-size: 16px;
+		    color: rgb(255, 255, 255);
+		    font-weight: 600;
+		    background-image: linear-gradient(112deg, rgb(220, 190, 127) 0%, rgb(179, 141, 74) 100%);
+		    border-radius: 4px;
+		    margin-left: 6px;
+		    cursor: pointer;
+		    transition: all 0.3s ease 0s;
+		    width: 90px;
+		    display: inline-flex;
+		    -webkit-box-pack: center;
+		    justify-content: center;
+		    -webkit-box-align: center;
+		    align-items: center;
+		}
+		.page{
+			position: relative;
+			top: 100rpx;
+		}
 	.tabsbtn-box{width: 50%;text-align: center;display: flex;}
 	// .screen-info{top: 45px;height: 68rpx;}
 	// .goods-data{margin-top: 200rpx;}
