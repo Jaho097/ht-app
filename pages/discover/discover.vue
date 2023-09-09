@@ -29,8 +29,8 @@
 		</view> -->
 		<view class="uni-margin-wrap">
 			<view class="sc-fhYwyz byMhH" style="margin-bottom: 20rpx;">
-				<view class="sc-jzgbtB jzFoqy active"><span>行情</span></view>
-				<view class="sc-jzgbtB jzFoqy"><span>自选</span></view>
+				<view class="sc-jzgbtB jzFoqy " :class="{'active':current==0}" @click="changeCur(0)"><span>行情</span></view>
+				<view class="sc-jzgbtB jzFoqy" :class="{'active':current==1}" @click="changeCur(1)" ><span>自选</span></view>
 			</view>
 			<swiper class="swiper" style="margin: 5px 24rpx 0 24rpx;" circular :indicator-dots="true" :autoplay="false">
 				<swiper-item>
@@ -79,7 +79,7 @@
 			</swiper>
 		</view>
 
-		<view class="am-card page-module-card">
+		<view class="am-card page-module-card" v-show="current==0">
 			<view class="sc-laTMn blcaAD"><a class="search-bar" href="javascript:void(0);" @click="toSearch()"><svg width="1em" height="1em"
 						viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
 						xmlns:xlink="http://www.w3.org/1999/xlink" class="antd-mobile-icon search-icon"
@@ -139,7 +139,7 @@
 				</view> -->
 
 
-				<view class="recommend-info">
+				<view class="recommend-info" v-show="current==0">
 					<view class="recommend-title">
 						<view class="title">
 							<text class="title-name">热门板块</text>
@@ -176,7 +176,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="goods-list">
+				<view class="goods-list" v-show="current==0">
 					<!-- 分类列表 -->
 					<view class="classify-list">
 						<view class="list" v-for="(item,index) in classList" :class="{'action':classifyShow==index}"
@@ -210,6 +210,42 @@
 							<view class="applies list">
 								<view class="tag" style="text-align: center;" :class="{'green':item.pricechange<0}">
 									<text>{{item.changepercent||'0.000'}}</text><text>%</text>
+								</view>
+							</view>
+							<view class="applies list">
+								<view class="min" style="text-align: center;color: rgb(37, 37, 37);" >
+									<text>{{item.high||'0.000'}}</text><text></text>
+								</view>
+							</view>
+							
+						</view>
+					</view>
+				</view>
+				<view class="goods-list" v-show="current==1">
+					<view class="" style="display: flex;justify	-content: space-around;padding-bottom: 20rpx;">
+						<view class="iMmIqG" style="flex:1;text-align: center;">名称</view>
+						<view class="iMmIqG" style="flex:1;text-align: center;">最新</view>
+						<view class="iMmIqG" style="flex:1;text-align: center;">涨幅</view>
+						<view class="iMmIqG" style="flex:1;text-align: center;">涨跌</view>
+					</view>
+					<view class="list-li" v-for="(item,index) in mySelectList" @click="toDeails(item.code)" :key="index">
+						<view class="item">
+							<view class="title list">
+								<text class="two-omit" style="text-align: center;">{{item.name||'名称'}}</text>
+								<text class="min" style="text-align: center;color: rgb(37, 37, 37);">{{item.code||'000000'}}</text>
+							</view>
+							<view class="price list">
+								<view class="retail-price">
+									<text class="max"
+									:class="{'green':item.price_range<0}">
+									{{item.current_price}}
+									</text>
+								</view>
+							</view>
+							<view class="applies list">
+								<view class="tag"
+								:class="{'green':item.price_range<0}">
+									<text>{{item.price_rate}}</text><text>%</text>
 								</view>
 							</view>
 							<view class="applies list">
@@ -274,6 +310,8 @@
 				hotBat: uni.getStorageSync('hotBat') || '',
 				hotIndex: uni.getStorageSync('hotIndex') || '',
 				confData: uni.getStorageSync('confData') || '',
+				current:1,
+				mySelectList:[]
 			}
 		},
 		onLoad() {
@@ -302,6 +340,10 @@
 		},
 		methods: {
 			/*返回首页*/
+			
+			changeCur(id){
+				this.current = id
+			},
 			toSearch(){
 				uni.navigateTo({
 					url: '/pages/search/search'
@@ -400,7 +442,7 @@
 					this.cListData = this.Bot10List;
 				}
 			},
-			async market() { //加载上证，深成，创业 指数
+			async market() { //加载上证，深成，创业 指数   +自选
 				http.get(this.apiServer +
 					'/market/index/stock_bat?code=sh000001,399001,399006,899050,sh000016,sh000300', {
 						header: {
@@ -419,6 +461,29 @@
 					console.log('加载失败', err);
 					//uni.showToast({title:"加载失败!",icon:"none"});
 				})
+				uni.request({
+					url: this.apiServer+'/market/index/my_select',
+					header: {'content-type' : "application/x-www-form-urlencoded"},
+					method: 'POST',
+					timeout: 5000,
+					data:{
+						uid: this.uid,
+						token: this.token
+					},
+					success: res => {
+						//console.log(res.data);
+						this.mySelectList = res.data.data;
+						console.log(this.mySelectList,'this.mySelectList')
+						uni.setStorageSync('mySelectList' , res.data.data);
+					},
+					complete:function(){
+					    uni.stopPullDownRefresh();
+					},
+					fail: (e) => {
+						uni.showToast({title:"自选加载失败!",icon:"none"});
+						console.log(e);
+					}
+				});
 			},
 			/*热门行业*/
 			async sinahy() { //加载行业板块
@@ -524,7 +589,9 @@
 		text-align: center;
 		display: flex;
 	}
-
+	.uni-swiper-item{
+		border-radius: 5px;
+	}
 	.screen-info {
 		top: 90rpx;
 	}
@@ -617,7 +684,7 @@
 	}
 
 	.swiper {
-		height: 200rpx;
+		height: 168rpx;
 		border-radius:5px;
 	}
 
@@ -682,6 +749,7 @@
 	    box-shadow: 0 0 6px rgba(0,0,0,.1);
 	    min-height: unset;
 	    padding-bottom: 0;
+		margin-top:24rpx;
 	}
 	html:not([data-scale]) .am-card:not(.am-card-full) {
 	    position: relative;
@@ -699,6 +767,7 @@
 	    flex-direction: column;
 	    background-color: #fff;
 		margin: 0 24rpx;
+		margin-top:24rpx;
 	}
 	.blcaAD {
 	    padding: 12px;
