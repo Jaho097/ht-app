@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<view>
+		<!-- <view>
 			<view class="pay-title">
 				<text v-show="AffirmStatus === 1">请输入原支付密码(初始默认为手机号后6位)</text>
 				<text v-show="AffirmStatus === 2">请设置新6位支付密码</text>
@@ -30,7 +30,30 @@
 				<text>忘记支付密码？</text>
 			</view>
 		</view>
-		<CodeKeyboard ref="CodeKeyboard" passwrdType="pay" @KeyInfo="KeyInfo"></CodeKeyboard>
+		<CodeKeyboard ref="CodeKeyboard" passwrdType="pay" @KeyInfo="KeyInfo"></CodeKeyboard> -->
+		
+		<view class="page-number">
+			<view class="setting-password">
+				<view class="inpu-password">
+					<text class="text">原支付密码</text>
+					<input :password='!isPassword_o' v-model="oldpwd" placeholder="请输入原支付密码" />
+				</view>
+				<view class="inpu-password">
+					<text class="text">新支付密码</text>
+					<input :password='!isPassword_n' v-model="newpwd" placeholder="请输入新支付密码" />
+				</view>
+				<view class="inpu-password">
+					<text class="text">确认新密码</text>
+					<input :password='!isPassword_s' v-model="subpwd" placeholder="请再次输入新支付密码" />
+				</view>
+			</view>
+			<view class="uni-mt-10 uni-px-8">
+				<button type="warn" style="width:100%;" class="uni-radius-5" @click="onClick">确认提交</button>
+			</view>
+			<!-- <view class="btn" @click="onClick">
+				<text>确认</text>
+			</view> -->
+		</view>
 	</view>
 </template>
 
@@ -49,6 +72,12 @@
 				oldPasswordArr: [],
 				newPasswordArr: [],
 				afPasswordArr: [],
+				isPassword_o: false,
+				isPassword_n: false,
+				isPassword_s: false,
+				oldpwd: '',
+				newpwd: '',
+				subpwd: '',
 			};
 		},
 		onLoad() {
@@ -57,6 +86,39 @@
 			this.token = loginRes[2];
 		},
 		methods:{
+			async onClick(){
+				if(!this.oldpwd){
+					uni.showToast({title: '请输入原密码',icon: 'none'});
+					return;
+				}
+				if(!this.newpwd){
+					uni.showToast({title: '请输入新密码',icon: 'none'});
+					return;
+				}
+				if(this.subpwd != this.newpwd){
+					uni.showToast({title: '两次新密码输入不一致',icon: 'none'});
+					return;
+				}
+				uni.request({
+					url: this.apiServer+'/apicom/profile/paypass',
+					header: {'content-type' : "application/x-www-form-urlencoded"},
+					method: 'POST',
+					timeout: 5000,
+					data:{
+						token : this.token,
+						oldpwd: this.oldpwd,
+						newpwd: this.newpwd,
+						subpwd: this.subpwd,
+					},
+					success: res => {
+						if(res.data.status == 1){
+							uni.showToast({title: '修改成功！',icon: 'none'})
+						}else{
+							uni.showToast({title: res.data.message,icon: 'none'})
+						}
+					}
+				});
+			},
 			/**
 			 * 唤起键盘
 			 */

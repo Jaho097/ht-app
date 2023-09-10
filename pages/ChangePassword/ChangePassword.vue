@@ -36,21 +36,18 @@
 				<view class="inpu-password">
 					<text class="text">原登陆密码</text>
 					<input :password='!isPassword_o' v-model="oldpwd" placeholder="请输入原登陆密码" />
-					<text class="iconfont" :class="isPassword_o?'icon-xianshikejian':'icon-yincangbukejian'" @click="isPassword_o = !isPassword_o"></text>
 				</view>
 				<view class="inpu-password">
 					<text class="text">新登陆密码</text>
 					<input :password='!isPassword_n' v-model="newpwd" placeholder="请输入新登陆密码" />
-					<text class="iconfont" :class="isPassword_n?'icon-xianshikejian':'icon-yincangbukejian'" @click="isPassword_n = !isPassword_n"></text>
 				</view>
 				<view class="inpu-password">
 					<text class="text">确认新密码</text>
 					<input :password='!isPassword_s' v-model="subpwd" placeholder="请再次输入新登陆密码" />
-					<text class="iconfont" :class="isPassword_s?'icon-xianshikejian':'icon-yincangbukejian'" @click="isPassword_s = !isPassword_s"></text>
 				</view>
 			</view>
 			<view class="uni-mt-10 uni-px-8">
-				<button type="warn" style="width:100%;" class="uni-radius-5" @click="onClick">确认</button>
+				<button type="warn" style="width:100%;" class="uni-radius-5" @click="onClick">确认提交</button>
 			</view>
 			<!-- <view class="btn" @click="onClick">
 				<text>确认</text>

@@ -10,14 +10,14 @@
 				<text>操盘中</text>
 				<text class="line"></text>
 			</view>
-			<view class="tab" :class="{'action':OrderType==2}" @click="onOrderTab(2)">
+			<!-- <view class="tab" :class="{'action':OrderType==2}" @click="onOrderTab(2)">
 				<text>审核中</text>
 				<text class="line"></text>
 			</view>
 			<view class="tab" :class="{'action':OrderType==3}" @click="onOrderTab(3)">
 				<text>未通过</text>
 				<text class="line"></text>
-			</view>
+			</view> -->
 			<view class="tab" :class="{'action':OrderType==5}" @click="onOrderTab(5)">
 				<text>已结束</text>
 				<text class="line"></text>
@@ -28,27 +28,29 @@
 			<view class="order-li" v-for="(item,index) in PeiziList" :key="index">
 				<view class="order-number" @click="goDetails(token,item.id)">
 					<view class="number">
-						<!-- 操盘中 -->
-						<uni-tag v-if="item.status_text === '操盘中'" :mark="true" :circle="true" :text="item.status_text" 
-							custom-style="background-color: #DE4A29; border-color: #DE4A29; color: #fff;margin-right:10rpx;" size="mini"/>
+												
 						
-						<!-- 审核中 -->
-						<uni-tag v-else-if="item.status_text === '审核中'" :mark="true" :circle="true" :text="item.status_text" 
-							custom-style="background-color: #f0ad4e; border-color: #f0ad4e; color: #fff;margin-right:10rpx;" size="mini"/>
 						
-						<!-- 未通过 -->
-						<uni-tag disabled v-else-if="item.status_text === '未通过'" :mark="true" :circle="true" :text="item.status_text" 
-							custom-style="background-color: #DE4A29; border-color: #DE4A29; color: #fff;margin-right:10rpx;" size="mini"/>
-						
-						<!-- 已结束 -->
-						<uni-tag disabled v-else :mark="true" :circle="true" :text="item.status_text" 
-							custom-style="background-color: #8f939c; border-color: #8f939c; color: #fff;margin-right:10rpx;" size="mini"/>						
-						
-						<text><text class="orderid">申请单号：</text>{{item.order_id}}</text>
+						<text><text class="orderid">子账号：</text>{{item.sub_account}}</text>
+						<view class="type">
+							<uni-tag :inverted="true" :text="item.type.substr(1,1)" custom-style="background-color: none; border-color: #DE4A29; color: #DE4A29;" size="mini"/>
+						</view>
 					</view>
-					<view class="type">
-						<uni-tag :inverted="true" :text="item.type" custom-style="background-color: none; border-color: #DE4A29; color: #DE4A29;" size="mini"/>
-					</view>
+					<!-- 操盘中 -->
+					<uni-tag v-if="item.status_text === '操盘中'" :text="item.status_text" :inverted="true"
+						custom-style="border: none; color: rgb(253, 68, 0);margin-right:10rpx;font-size: 14px;" size="mini"/>
+					
+					<!-- 审核中 -->
+					<uni-tag v-else-if="item.status_text === '审核中'" :text="item.status_text" 
+						custom-style="border: none; color: rgb(253, 68, 0);margin-right:10rpx;font-size: 14px;" size="mini"/>
+					
+					<!-- 未通过 -->
+					<uni-tag disabled v-else-if="item.status_text === '未通过'" :text="item.status_text" 
+						custom-style="border: none; color: rgb(253, 68, 0);margin-right:10rpx;font-size: 14px;" size="mini"/>
+					
+					<!-- 已结束 -->
+					<uni-tag disabled v-else :text="item.status_text" 
+						custom-style="border: none; color: rgb(253, 68, 0);margin-right:10rpx;font-size: 14px;" size="mini"/>
 				</view>
 				<view class="goods-list" @click="goDetails(token,item.id)">
 					<view class="list">
@@ -60,10 +62,10 @@
 							<text class="big">可用余额</text>
 							<text class="sub">{{calculate(item.avail)}}</text>
 						</view>
-						<view class="info">
+						<!-- <view class="info">
 							<text class="big">操盘账户</text>
 							<text class="sub blue">{{item.sub_account || '--'}}</text>
-						</view>
+						</view> -->
 						<view class="info">
 							<text class="big">预计盈亏</text>
 							<text class="sub" :class="{'red':parseInt(item.return_money)>=0}">{{calculate(item.return_money)}}</text>
@@ -75,14 +77,15 @@
 						<text class="time-section">操盘时间：</text>
 						<text>{{item.verify_time}}至{{item.end_time}}</text>
 					</view>
-					<view class="switch-setting" v-if="item.types<4 && item.status==1">
+					<!-- <view class="switch-setting" v-if="item.types<4 && item.status==1">
 						<text class="action">自动续期</text>
 						<switch class="red sm" color="red !important" v-if="item.renewal==1" checked="true" @change="onRenewal(index,item.id)" style="transform:scale(0.7)"></switch>
 						<switch class="red sm" color="red !important" v-else  @change="onRenewal(index,item.id)" style="transform:scale(0.7)"></switch>
-					</view>
+					</view> -->
 				</view>
 			</view>
 		</view>
+		<div class="am-list-footer"><div style="text-align: center;">---- 已到底部 ----</div></div>
 		
 	</view>
 </template>
@@ -131,6 +134,7 @@
 							var list = res.data.data.data;
 							this.PeiziList = list;
 							//console.log(res.data.data);
+							console.log(this.PeiziList, 'this.PeiziList');
 						}
 					},
 					fail:function(e){
@@ -204,8 +208,9 @@
 .order-list .order-li{padding: 0;border-radius:0;}
 .order-list .order-li .order-number{padding-right: 20rpx;}
 .order-list .order-li .goods-list .list{padding: 12rpx 0;height: auto;}
-.order-list .order-li .order-status{border-top: 1px #c8c4c4 dashed;padding: 0 8rpx 0 20rpx;}
-.order-list .order-li .goods-list .list .sub{height: auto;line-height: normal;padding: 12px 0 0;}
-.order-list .order-li .order-number .number .orderid, .order-list .order-li .order-status .time-section{color: #333333;}
+.order-list .order-li .order-status{    padding: 5px 10px;
+    font-size: 12px;}
+.order-list .order-li .goods-list .list .sub{height: auto;line-height: normal;}
+.order-list .order-li .order-number .number .orderid,.time-section{color: #333333;}
 
 </style>

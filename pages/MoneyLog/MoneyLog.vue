@@ -29,48 +29,32 @@
 		</view>
 		<!-- 订单列表 -->
 		<view class="order-list">
-			<!--view class="title">
+			<view class="title bWvahM">
 				<text>日期</text>
 				<text>类型</text>
-				<text>金额</text>
-				<text>余额</text>
-			</view-->
+				<text>金额/余额</text>
+				<text>管理费/余额</text>
+			</view>
 			<view class="order-li" v-for="(item,index) in MoneyList" :key="index">
-				<view class="order-status">
-					<view class="switch-setting">
-						<uni-tag  :mark="true" :circle="true" :text="'类型：'+item.type_name" 
-							custom-style="background-color: #DE4A29; border-color: #DE4A29; color: #fff;margin-right:10rpx;" size="mini"/>
-					</view>
-					<view class="status">
-						<text>日期：</text>
-						<text>{{item.happend_date}}</text>
-					</view>
-					
-				</view>
 				<view class="goods-list">
 					<view class="list">
 						<view class="info">
-							<text class="big">发生金额</text>
+							<text style="color: #252525;">{{item.happend_time}}</text>
+							<text>{{item.happend_date}}</text>
+							
+						</view>
+						<view class="info" style="color: #252525;">
+							{{item.type_name}}
+						</view>
+						<view class="info">
 							<text class='green' :class="{'red':item.affect>0}">{{calculate(item.affect)}}元</text>
+							<text style="color: #252525;">{{calculate(item.account)}}元</text>
 						</view>
 						<view class="info">
-							<text class="big">账户余额</text>
-							<text>{{calculate(item.account)}}元</text>
-						</view>
-						<view class="info">
-							<text class="big">发生时间</text>
-							<text>{{item.happend_time}}</text>
+							<text class='green' :class="{'red':item.affect>0}">{{calculate(item.fee_affect)}}</text>
+							<text style="color: #252525;">{{item.fee_remain}}</text>
 						</view>
 					</view>
-				</view>
-				<view class="order-number">
-					<view class="number">
-						<text>说明：{{item.info}}</text>
-					</view>
-					<!--view class="type">
-						<text>{{item.sub_account}}</text>
-						<text class="red">{{item.status_text}}</text>
-					</view-->
 				</view>
 			</view>
 		</view>
@@ -126,6 +110,7 @@
 						if(res.data.status==1){
 							var list = res.data.data;
 							this.MoneyList = list;
+							console.log(this.MoneyList, 'this.MoneyList');
 							//console.log(res.data.data);
 						}
 					},

@@ -8,29 +8,28 @@
 						<view class="slot-box bank-name">
 							{{findBank(item.bank)}} 
 							<!-- 银行标识图标 {{item.bank}} -->
-							<uni-tag :text="item.bank" circle="true" type="error" size="mini"/>
 							<!-- <uni-icons custom-prefix="iconfont" v-if="item.bank === 'ABC'" type="icon-nongyeyinhang" size="14" color="#148F79"></uni-icons> -->
 						</view>
 					</template>
 					<template v-slot:footer>
 						<view class="slot-box">
-							<text class="bank-khh">开户行:</text>
+							<text class="bank-khh">开户支行:</text>
 							<text class="bank-area">{{item.branch}}</text>
 						</view>						
 					</template>
 				</uni-list-item>
 				<uni-list-item>
 					<template v-slot:header>
-						<view class="slot-box bank-num">卡号：{{item.card.substr(0,3)+"***********"+item.card.substr(15,19)}}</view>
+						<view class="slot-box bank-num">卡号：<span>{{item.card.substr(0,4)+"***********"+item.card.substr(15,19)}}</span></view>
 					</template>
 					<template v-slot:footer>
 						<view class="slot-box">
 							<uni-tag inverted="true" text="修改" @click="onAddressEdit(1,item.id)"
-								custom-style="border-color: rgba(0,0,0,0); color: #2979FF;"
+								custom-style="border-color: rgba(0,0,0,0); color: rgb(69, 157, 245);font-weight: 400;"
 								type="primary" size="mini" class="bank-btn uni-mr-4"/>
 								
 							<uni-tag inverted="true" text="删除"  @click="onAddressDel(item.id)"
-								custom-style="border-color: rgba(0,0,0,0); color: #E43D33;"
+								custom-style="border-color: rgba(0,0,0,0); color: rgb(142, 141, 146);font-weight: 400;"
 								size="mini" class="bank-btn"/>
 						</view>
 					</template>
@@ -66,7 +65,7 @@
 		
 		<view class="add-address">
 			<view class="uni-py-10 uni-px-8" style="width: 100%;">
-				<button type="warn" style="width:100%;" class="uni-radius-5" @click="onAddressEdit(2)">添加新银行卡</button>
+				<button type="warn" style="width:100%;" class="uni-radius-5" @click="onAddressEdit(2)">+ 添加新银行卡</button>
 			</view>
 			<!-- <view class="btn" @click="onAddressEdit(2)">
 				<text>添加新银行卡</text>
@@ -113,6 +112,7 @@
 						if(res.data.status == 1){
 							this.bankL = res.data.data.bank;
 							this.banks = res.data.data.banks;
+							console.log(this.banks, 'this.banks');
 						}
 					}
 				});
@@ -163,7 +163,21 @@
 		}
 	}
 </script>
-
+<style>
+	.address-list /deep/.uni-list {
+		padding: 5px 15px;
+	}
+	.bank-num span{color: rgb(142, 141, 146);}
+	.add-address uni-button{
+		background-color: #fff;
+		color: rgb(142, 141, 146);
+		font-size: 14px;
+		border: none;
+	}
+	.add-address uni-button:after{
+		content: none;
+	}
+</style>
 <style scoped lang="scss">
 	@import 'AddressList.scss';
 	

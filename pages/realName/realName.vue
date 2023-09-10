@@ -108,4 +108,28 @@
 
 <style scoped lang="scss">
 	@import 'realName.scss';
+	uni-button[disabled][type=warn] {
+	    opacity: 0.4;
+	    color: rgba(255, 255, 255, 0.6);
+	    pointer-events: none;
+	}
+	button {
+	    background-color: rgb(179, 141, 74);
+	    background-image: linear-gradient(112deg, rgb(220, 190, 127) 0%, rgb(179, 141, 74) 100%);
+	    border-radius: 4px;
+	    font-family: PingFangSC-Semibold;
+	    font-size: 16px;
+	    color: rgb(255, 255, 255);
+	    font-weight: 600;
+	    border: none;
+	    display: flex;
+	    -webkit-box-pack: center;
+	    justify-content: center;
+	    -webkit-box-align: center;
+	    align-items: center;
+	    padding-left: 8px;
+	    padding-right: 8px;
+	    height: 44px;
+	}
+	.inpu-password input{text-align: right;}
 </style>

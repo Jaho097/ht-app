@@ -11,7 +11,7 @@
 .address-list{
 	width: 100%;
 	background-color: #FFFFFF;
-	padding-bottom: 120rpx;
+	padding-bottom: 15px;
 	.list{
 		padding: 0 4%;
 		height: 160rpx;
@@ -95,7 +95,6 @@
 
 /* 添加地址 */
 .add-address{
-	position: fixed;
 	left: 0;
 	bottom: 20rpx;
 	display: flex;
@@ -109,7 +108,8 @@
 		justify-content: center;
 		width: 80%;
 		height: 70rpx;
-		background: linear-gradient(to right,$base,$change-clor);
+		color: rgb(142, 141, 146);
+		background: #fff;
 		border-radius: 70rpx;
 		box-shadow: 0 10rpx 10rpx $base;
 		text{

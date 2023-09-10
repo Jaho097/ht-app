@@ -70,7 +70,7 @@
 					</a>
 				</div>
 				<a class="sc-cqCuEk jIbFUK" @click="onWallet('MyShare')">
-					<div class="text-left">目前已推广 <span class="text-bold">0</span> 人</div>
+					<div class="text-left">目前已推广 <span class="text-bold">{{ConfData.count_m}}</span> 人</div>
 					<div class="text-right">继续推广获取更多</div>
 					<span class="arrow-icon" style="background-image: url(static/icon-promotion-arrow.png);"></span>
 				</a>
@@ -119,6 +119,7 @@
 				goodsList: [],
 				confData: uni.getStorageSync('confData'),
 				isZiChan: false,
+				ConfData: [],
 			};
 		},
 		onShow() {
@@ -133,6 +134,7 @@
 			//console.log(loginRes);
 			this.myMobile = loginRes[1];
 			this.token = loginRes[2];
+			this.getConf(loginRes[2]);
 		},
 		onReady() {
 			uni.hideTabBar();
@@ -141,6 +143,35 @@
 			this.scrollTop = e.scrollTop;
 		},
 		methods: {
+			async getConf(token) {
+				//uni.showLoading({'title':"加载中"});
+				uni.request({
+					url: this.apiServer + '/apicom/Invite/conf',
+					header: {
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					method: 'POST',
+					timeout: 50000,
+					data: {
+						token: token
+					},
+					success: res => {
+						if (res.data.status == 1) {
+							this.ConfData = res.data.data;
+						}
+					},
+					complete: function() {
+						//uni.stopPullDownRefresh();
+					},
+					fail: (e) => {
+						uni.showToast({
+							title: "加载失败!",
+							icon: "none"
+						});
+						console.log(e);
+					}
+				});
+			},
 			async getMember(token) {
 				uni.request({
 					url: this.apiServer + '/apicom/member',
@@ -213,7 +244,7 @@
 						break;
 					case 'MyShare':
 						uni.navigateTo({
-							url: '/pages/MyShare/MyShare',
+							url: '/pages/MyShare/MyShare?type=0',
 						})
 						break;
 					case 'AccountInfo':
