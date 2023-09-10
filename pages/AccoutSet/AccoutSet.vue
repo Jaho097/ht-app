@@ -3,60 +3,59 @@
 		<!-- 设置列表 -->
 		<view class="setting-list">
 			<uni-list>
-			
-				<uni-list-item showArrow link
-					v-if="details.type_code==1||details.type_code==2||details.type_code==3"
+				<uni-list-item
+					@click="subwin = true" 
+					title="申请单号" :rightText="details.order_id"/>
+				<uni-list-item
+					@click="subwin = true" 
+					title="操盘期限" :rightText="details.verify_time+'至'+details.end_time"/>
+				<uni-list-item  
+					v-if="true||details.type_code==1||details.type_code==2||details.type_code==3"
 					@click="onSetting('addmoney',id)" 
-					title="保证金" :note="calculate(details.deposit_money)" rightText="追加资金"/>
+					title="保证金"  :rightText="calculate(details.deposit_money)"/>
+					<!-- title="保证金" :note="calculate(details.deposit_money)" rightText="追加资金"/> -->
 					
-				<uni-list-item showArrow link
-					v-if="details.type_code==1||details.type_code==2||details.type_code==3"
+				<uni-list-item  
+					v-if="true||details.type_code==1||details.type_code==2||details.type_code==3"
 					@click="onSetting('expend',id)"
-					title="总操盘资金" :note="calculate(details.init_money)" rightText="扩大配资"/>
+					title="总操盘资金"  :rightText="calculate(details.init_money)" />
 					
-				<uni-list-item showArrow link
-					v-if="details.type_code==1||details.type_code==2||details.type_code==3"
+				<uni-list-item  
+					v-if="true||details.type_code==1||details.type_code==2||details.type_code==3"
 					@click="onSetting('profit',id)"
-					title="预计盈亏" :note="''+calculate(details.return_money)" rightText="提取盈利"/>
+					title="预计盈亏" :rightText="calculate(details.return_money)" />
 					
-			</uni-list>
-			<uni-list>
+			<!-- </uni-list>
+			<uni-list> -->
+				<uni-list-item
+					@click="subwin = true" 
+					title="交易账户" :rightText="details.sub_account"/>
 				<uni-list-item title="警戒线" :rightText="calculate(details.loss_warn_money)"/>
 				<uni-list-item title="平仓线" :rightText="calculate(details.loss_close_money)"/>
 				<uni-list-item title="总利息" :rightText="calculate(details.borrow_interest)"/>
 					
 				
-				<uni-list-item 
+				<!-- <uni-list-item 
 					@click="onSetting('account')"
 					title="总资产" :rightText="calculate(accountInfo.total_money)"/>
 									
 				<uni-list-item 
 					@click="subwin = true" 
 					title="配资模式" :rightText="details.type"/>
-					<!--multiple=1:天；2:周；3:月；5:免息-->
-					
 				<uni-list-item 
 					@click="subwin = true" 
 					title="操盘状态" :rightText="details.status"/>
 				<uni-list-item 
 					@click="subwin = true" 
 					title="交易账户" :rightText="details.sub_account"/>
-				<uni-list-item 
-					@click="subwin = true" 
-					title="申请单号" :rightText="details.order_id"/>
-				<uni-list-item 
-					@click="subwin = true" 
-					title="操盘期限" :rightText="details.verify_time+'至'+details.end_time"/>
-				
-				
-				<uni-list-item showArrow link
-					@click="onSetting('agreement')"
-					title="查看合同" rightText="《平台操盘协议》"/>
 				
 				<uni-list-item showArrow link
 					@click="onSetting('renewal',id)"
-					title="自动续期" rightText="申请延期"/>
-				
+					title="自动续期" rightText="申请延期"/> -->
+				<uni-list-item showArrow link
+					style="color:blue"
+					@click="onSetting('agreement')"
+					title="查看合同" rightText="《平台操盘协议》"/>
 				
 				<!-- <view class="list uni-px-7">
 					<view class="title">
@@ -288,7 +287,6 @@
 
 <style scoped lang="scss">
 	@import 'AccoutSet.scss';
-
 // lz
 .setting-list{padding: 0;margin-top: 0;}
 </style>
