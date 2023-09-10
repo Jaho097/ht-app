@@ -89,7 +89,10 @@
 							>
 							<!-- class="am-checkbox am-checkbox-checked"> -->
 							<input type="checkbox" @click="agree()" class="am-checkbox-input"
-								checked=""><span class="am-checkbox-inner"></span></span></label><span
+								checked=""><span class="am-checkbox-inner"></span>
+								</span>
+								</label>
+								<span
 						class="link">我已阅读并同意 <a style="color:blue" @click="toAgree()" >《实盘交易平台操盘协议》</a></span></div>
 			</div>
 		</div>
