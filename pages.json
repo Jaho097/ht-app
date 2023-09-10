@@ -134,6 +134,12 @@
 				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
+			"path" : "pages/AccoutSet/query",
+			"style" : {
+				"navigationStyle":"custom"
+			}
+		}
+		,{
 			"path" : "pages/Renewal/Renewal",
 			"style" : {
 				"navigationBarTitleText": "申请延期",
@@ -243,7 +249,8 @@
 			"style" : {
 				"navigationStyle":"custom"
 			}
-		},{
+		}
+		,{
 			"path" : "pages/MyOrderList/QueryOrder",
 			"style" : {
 				"navigationBarTitleText": "交易查询",

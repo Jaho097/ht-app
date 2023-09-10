@@ -92,7 +92,7 @@
 
 		<!-- 订单信息 -->
 		<view class="order-info">
-			<view class="list" style="width:25%" @click="onSkipOrder(1)" v-for="(item,index) in iconList">
+			<view class="list" style="width:25%" @click="onSkipOrder(item.idx)" v-for="(item,index) in iconList">
 				<view class="icon">
 					<image class="iconfont" style="height: 60rpx;width:60rpx;" :src="item.icon" mode=""></image>
 				</view>
@@ -332,27 +332,35 @@
 			return {
 				iconList: [{
 					name: '买入',
+					idx:1,
 					icon: '/static/new/mairu.svg'
 				}, {
 					name: '卖出',
+					idx:1,
 					icon: '/static/new/maichu.svg'
 				}, {
 					name: '撤单',
+					idx:1,
 					icon: '/static/new/chedan.svg'
 				}, {
 					name: '委托',
+					idx:1,
 					icon: '/static/new/weituo.svg'
 				}, {
 					name: '持仓',
+					idx:1,
 					icon: '/static/new/chicang.svg'
 				}, {
 					name: '成交记录',
+					idx:1,
 					icon: '/static/new/chengjiao.svg'
 				}, {
 					name: '交割查询',
+					idx:1,
 					icon: '/static/new/jiaoge.svg'
 				}, {
 					name: '查询',
+					idx:5,
 					icon: '/static/new/chaxun.svg'
 				}],
 				scrollTop: 0,
