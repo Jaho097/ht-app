@@ -91,7 +91,7 @@
 							<br>{{Number(item.transfer_fee)+Number(item.stamp_duty)+Number(item.commission)}}</td>
 					</tr>
 				</tbody>
-				<tfoot v-show="OrderType==3&&deliveryList==[]">
+				<tfoot v-show="OrderType==3&&deliveryList.length==0">
 					<tr>
 						<td colspan="4" class="empty">
 							<view class="sc-hrWEMg eaPlaU">
@@ -112,7 +112,7 @@
 							<br>{{item.status}}</td>
 					</tr>
 				</tbody>
-				<tfoot v-show="OrderType==1&&trustList==[]">
+				<tfoot v-show="OrderType==1&&trustList.length==0">
 					<tr>
 						<td colspan="4" class="empty">
 							<view class="sc-hrWEMg eaPlaU">
@@ -133,7 +133,7 @@
 							<br>{{item.status}}</td>
 					</tr>
 				</tbody>
-				<tfoot v-show="OrderType==2&&dealList==[]">
+				<tfoot v-show="OrderType==2&&dealList.length==0">
 					<tr>
 						<td colspan="4" class="empty">
 							<view class="sc-hrWEMg eaPlaU">
@@ -241,7 +241,6 @@
 		},
 		onLoad(params) {
 			this.OrderType = params.type;
-			this.accounId = 430
 			switch (this.OrderType) {
 				case '1':
 					this.action = 'trust';
@@ -262,8 +261,11 @@
 			this.token = loginRes[2];
 			this.myMobile = loginRes[1];
 			if (!this.accountData) {
+				console.log('no accountData!!!')
 				this.getSubAccount(this.token); //加载子账户信息
 			}
+			// this.accounId = this.accountData[i].id; //将array【改变索引】的值赋给定义的picker变量
+			// console.log('accounId!!!',this.accounId)
 			// 	this.getOrderList(this.token, this.accounId, this.OrderType); //accList[0].id是子账户ID
 		},
 		methods: {
@@ -857,4 +859,5 @@
 			height: 6rem;
 		}
 	}
+	
 </style>

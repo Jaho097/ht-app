@@ -39,6 +39,26 @@
 
 		<!-- 订单tab -->
 		<view class="order-tab">
+			<!-- <view class="tab" :class="{'action':OrderType==2}" @click="onOrderTab(2)">
+				<text>买入</text>
+				<text class="line"></text>
+			</view>
+			<view class="tab" :class="{'action':OrderType==3}" @click="onOrderTab(3)">
+				<text>卖出</text>
+				<text class="line"></text>
+			</view> -->
+			<view class="tab" :class="{'action':OrderType==3}" @click="onOrderTab(3)">
+				<text>买入</text>
+				<text class="line"></text>
+			</view>
+			<view class="tab" :class="{'action':OrderType==4}" @click="onOrderTab(4)">
+				<text>卖出</text>
+				<text class="line"></text>
+			</view>
+			<view class="tab" :class="{'action':OrderType==2}" @click="onOrderTab(2)">
+				<text>撤单</text>
+				<text class="line"></text>
+			</view>
 			<view class="tab" :class="{'action':OrderType==1}" @click="onOrderTab(1)">
 				<text>持仓</text>
 				<text class="line"></text>
@@ -47,48 +67,42 @@
 				<text>撤单</text>
 				<text class="line"></text>
 			</view-->
-			<view class="tab" :class="{'action':OrderType==3}" @click="onOrderTab(3)">
+			<!-- <view class="tab" :class="{'action':OrderType==4}" @click="onOrderTab(4)">
 				<text>委托</text>
 				<text class="line"></text>
 			</view>
-			<view class="tab" :class="{'action':OrderType==4}" @click="onOrderTab(4)">
+			<view class="tab" :class="{'action':OrderType==6}" @click="onOrderTab(6)">
 				<text>成交</text>
 				<text class="line"></text>
 			</view>
-			<view class="tab" :class="{'action':OrderType==5}" @click="onOrderTab(5)">
+			<view class="tab" :class="{'action':OrderType==7}" @click="onOrderTab(7)">
 				<text>交割</text>
 				<text class="line"></text>
-			</view>
-			<view class="tab" :class="{'action':OrderType==6}" @click="onOrderTab(6)">
+			</view> -->
+			<view class="tab" :class="{'action':OrderType==8}" @click="onOrderTab(8)">
 				<text>查询</text>
 				<text class="line"></text>
 			</view>
 		</view>
-		<view class="user-info" v-if="OrderType>2&&OrderType!=6">
+		<!-- <view class="user-info" >
 			<view class="date-list">
 				<view class="size-list" style="display: flex;">
 					<uni-tag v-for="(item,index) in DateList" :key="index" :class="{'on':DateIndex === index}"
 						@click="onDateList(item,index)" class="date-tags" :text="item.date" :circle="true" size="small">
 					</uni-tag>
-					<!-- <div class="list" v-for="(item,index) in DateList" 
-					:class="{'action':DateIndex === index}"
-					@click.stop="onDateList(item,index)" :key="index">
-						<text>{{item.date}}</text>
-					</div> -->
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<!-- 查询列表 -->
 		<mescroll-body ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback" :down="downOption"
 			:up="upOption" :top="0">
 			<view class="order-list">
 				<!--持仓-->
-				<view class="order-position" v-if="OrderType==1">
+				<!-- <view class="order-position" v-if="OrderType==1">
 					<view class="list" v-for="(item,index) in positionList" :key="index"
 						@click="toDeails(item.gupiao_code)">
 						<view class="order-number">
 							<view class="number">
-								<!-- <text class="on-top">{{getHouse(item.gupiao_code)}}</text> -->
 								<text class="bl">{{item.gupiao_name}}</text>
 								<text>{{item.gupiao_code}}</text>
 							</view>
@@ -125,19 +139,122 @@
 								</view>
 							</view>
 						</view>
-						<!-- <view class="order-status">
-						<view class="buy-status">
-							<text>买一{{item.buy_one_price}}</text>
-							<text>买二{{item.buy_two_price}}</text>
-							<text>买三{{item.buy_three_price}}</text>
-						</view>
-						<view class="buy-status">
-							<text>卖一{{item.sell_one_price}}</text>
-							<text>卖二{{item.sell_two_price}}</text>
-							<text>卖三{{item.sell_three_price}}</text>
-						</view>
-					</view> -->
 					</view>
+				</view> -->
+				<!-- 买入 -->
+				<view class="position" v-if="OrderType==3">
+					<view class="sc-daURTG ScOSY">
+						<view class="sc-bXGyLb icUOfo">
+							<view class="stock">
+								<view class="name">兰花科创</view>
+								<view class="code">600123</view>
+							</view>
+							<view class="price"><span class="sc-jTzLTM hluaBw">9.070</span></view>
+							<view class="range"><span class="sc-jTzLTM hluaBw"> -0.25</span></view>
+							<view class="rate"><span class="sc-jTzLTM hluaBw"> -2.68%</span></view>
+						</view>
+						<a @click="toSearch()" class="sc-lkqHmb geobGM" href="javascript:void(0);">
+							<icon type="search" color="red" size="15" />搜索股票
+						</a>
+					</view>
+					<view class="sc-eLExRp hHbrIs">
+						<view class="item"><span class="label">最高</span><span class="value">9.32</span></view>
+						<view class="item"><span class="label">最低</span><span class="value">9.06</span></view>
+						<view class="item"><span class="label">涨停</span><span class="value">10.25</span></view>
+						<view class="item"><span class="label">跌停</span><span class="value">8.39</span></view>
+					</view>
+					<view class="sc-iuJeZd iBrlkI">
+						<view class="sc-esOvli ivADoO">
+							<view class="hd">买盘档</view>
+							<view class="bd">
+								<view class="sc-cmthru hBjiPG"><span>买一</span><span><span
+											class="sc-jTzLTM hluaBw">9.060</span></span><span>617</span></view>
+								<view class="sc-cmthru hBjiPG"><span>买二</span><span><span
+											class="sc-jTzLTM hluaBw">9.050</span></span><span>1224</span></view>
+								<view class="sc-cmthru hBjiPG"><span>买三</span><span><span
+											class="sc-jTzLTM hluaBw">9.040</span></span><span>1238</span></view>
+								<view class="sc-cmthru hBjiPG"><span>买四</span><span><span
+											class="sc-jTzLTM hluaBw">9.030</span></span><span>395</span></view>
+								<view class="sc-cmthru hBjiPG"><span>买五</span><span><span
+											class="sc-jTzLTM hluaBw">9.020</span></span><span>1323</span></view>
+							</view>
+						</view>
+						<view class="sc-esOvli ivADoO">
+							<view class="hd">卖盘档</view>
+							<view class="bd">
+								<view class="sc-cmthru hBjiPG"><span>卖一</span><span><span
+											class="sc-jTzLTM hluaBw">9.070</span></span><span>229</span></view>
+								<view class="sc-cmthru hBjiPG"><span>卖二</span><span><span
+											class="sc-jTzLTM hluaBw">9.080</span></span><span>491</span></view>
+								<view class="sc-cmthru hBjiPG"><span>卖三</span><span><span
+											class="sc-jTzLTM hluaBw">9.090</span></span><span>935</span></view>
+								<view class="sc-cmthru hBjiPG"><span>卖四</span><span><span
+											class="sc-jTzLTM hluaBw">9.100</span></span><span>1683</span></view>
+								<view class="sc-cmthru hBjiPG"><span>卖五</span><span><span
+											class="sc-jTzLTM hluaBw">9.110</span></span><span>768</span></view>
+							</view>
+						</view>
+					</view>
+					<view class="sc-fOKMvo kMAsAF">
+						<view class="sc-cbkKFq bFQDYR">
+							<view class="hd">
+								<view>限价 <uni-icons type="bottom" size="20"></uni-icons>
+								</view>
+							</view>
+							<view class="bd">
+								<view class="input-group">
+									<view class="button decrease">+</view><input type="text" name="price" value="9.07">
+									<view class="button increase">-</view>
+								</view>
+							</view>
+						</view>
+						<view class="am-whitespace am-whitespace-md"></view>
+						<view class="sc-cbkKFq bFQDYR">
+							<view class="hd">数量</view>
+							<view class="bd">
+								<view class="input-group">
+									<view class="button decrease">+</view><input type="number" name="amount"
+										placeholder="可买0股" value="">
+									<view class="button increase">-</view>
+								</view>
+							</view>
+						</view>
+						<view class="am-whitespace am-whitespace-md"></view>
+						<view class="sc-fYiAbW bWpkzL">
+							<view class="item  buy">全仓</view>
+							<view class="item  buy">1 / 2</view>
+							<view class="item  buy">1 / 3</view>
+							<view class="item  buy">1 / 4</view>
+						</view>
+						<view class="sc-dUjcNx lpulDT">
+							<view>委托金额：<span class="sc-fjdhpX cEvEJT">--</span></view>
+							<view>可用资金：<span class="sc-fjdhpX cEvEJT">0.00</span></view>
+						</view><button class="sc-kkGfuU hoqqAL new-button-large">买入</button>
+					</view>
+					<view class="sc-eilVRo frpTkh">
+						<view class="hd">持仓<view class="sc-gHboQg sc-eerKOB juPcCQ"></view>
+						</view>
+						<table class="sc-jhAzac ikhgZz">
+							<thead>
+								<tr>
+									<th label="名称" class="sc-fBuWsC kTZnlD">名称</th>
+									<th label="可用/持仓" class="sc-fBuWsC kTZnlD">可用/持仓</th>
+									<th label="现价/成本" class="sc-fBuWsC kTZnlD">现价/成本</th>
+									<th label="盈亏/市值" class="sc-fBuWsC kTZnlD">盈亏/市值</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<td colspan="4" class="empty">暂无数据</td>
+								</tr>
+							</tfoot>
+						</table>
+					</view>
+				</view>
+				<!-- 卖出 -->
+				<view class="position" v-if="OrderType==4">
+					123123
+
 				</view>
 				<!--撤单-->
 				<view class="position" v-if="OrderType==2">
@@ -155,6 +272,26 @@
 						<view class="info"><text
 								class="big">{{toDate(item.trust_date)}}</text><text>{{item.trust_time}}</text></view>
 						<view class="info"><text class="big">{{item.flag2}}</text><text>{{item.status}}</text></view>
+					</view>
+				</view>
+				<!--持仓-->
+				<view class="position" v-if="OrderType==1">
+					<view class="title">
+						<text>名称/代码</text>
+						<text>可用/持仓</text>
+						<text>现价/成本</text>
+						<text>盈亏/市值</text>
+					</view>
+					<view class="list" v-for="(item,index) in positionList" :key="index">
+						<view class="info"><text
+								class="big">{{item.gupiao_name}}</text><text>{{item.gupiao_code}}</text></view>
+						<view class="info"><text
+								class="big">{{item.canbuy_count}}</text><text>{{item.stock_count}}</text></view>
+						<view class="info"><text class="big">{{item.now_price}}</text><text>{{item.ck_price}}</text>
+						</view>
+						<view class="info"><text
+								class="big">{{item.ck_profit}}</text><text>{{parseFloat(item.now_price*item.stock_count).toFixed(2)}}</text>
+						</view>
 					</view>
 				</view>
 				<!--委托-->
@@ -279,13 +416,13 @@
 						</view>
 					</view>
 				</view>
-				<view class="" v-if="OrderType==6">
+				<view class="" v-if="OrderType==8">
 					<uni-list>
 						<uni-list-item title="委托记录" :showArrow="true" link @click="toQuery(1)" />
-						<uni-list-item title="成交记录" :showArrow="true" link @click="toQuery(2)"/>
-						<uni-list-item title="交割查询" :showArrow="true" link @click="toQuery(3)"/>
-						<uni-list-item title="资金流水" :showArrow="true" link @click="toQuery(4)"/>
-						<uni-list-item title="除权除息" :showArrow="true" link @click="toQuery(5)"/> 
+						<uni-list-item title="成交记录" :showArrow="true" link @click="toQuery(2)" />
+						<uni-list-item title="交割查询" :showArrow="true" link @click="toQuery(3)" />
+						<uni-list-item title="资金流水" :showArrow="true" link @click="toQuery(4)" />
+						<uni-list-item title="除权除息" :showArrow="true" link @click="toQuery(5)" />
 					</uni-list>
 				</view>
 
@@ -374,10 +511,15 @@
 			//this.getSubAccount(this.token);//获取子账号信息
 		},
 		methods: {
-			toQuery(id){
+			toSearch(){
+				uni.navigateTo({
+					url: '/pages/search/search'
+				})
+			},
+			toQuery(id) {
 				console.log(123123)
 				uni.navigateTo({
-					url:'/pages/AccoutSet/query?type='+id
+					url: '/pages/AccoutSet/query?type=' + id
 				})
 			},
 			/*获取交易账户信息*/
@@ -497,7 +639,7 @@
 						if (res.data.status) {
 							setTimeout(() => {
 								this.getOrderList(this.token, this.accounId, this
-								.OrderType); //accList[0].id是子账户ID
+									.OrderType); //accList[0].id是子账户ID
 							}, 1000)
 						}
 					},
@@ -563,7 +705,11 @@
 			/*订单tab点击*/
 			onOrderTab(type) {
 				this.OrderType = type;
-				this.getOrderList(this.token, this.accounId, type);
+				if (type == 4 || type == 6 || type == 7) {
+
+				} else {
+					this.getOrderList(this.token, this.accounId, type);
+				}
 				// #ifdef H5
 				/*uni.redirectTo({
 					url: '/pages/MyOrderList/MyOrderList?type=' + type,
@@ -633,7 +779,7 @@
 	}
 
 	.order-list {
-		margin-top: 100rpx;
+		// margin-top: 100rpx;
 	}
 
 	.order-list .list {
@@ -735,5 +881,377 @@
 			border: #FFF 1px solid;
 			border-radius: 10rpx;
 		}
+	}
+
+	.ScOSY {
+		display: flex;
+		background-color: rgb(255, 255, 255);
+		padding: 10px 15px;
+		padding-right: 0;
+		border-top: 1px solid rgb(242, 242, 242);
+	}
+
+	.ScOSY {
+		display: flex;
+		background-color: rgb(255, 255, 255);
+		padding: 10px 15px;
+		border-top: 1px solid rgb(242, 242, 242);
+	}
+
+	.icUOfo {
+		width: 75%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center
+	}
+
+	.icUOfo .stock {
+		line-height: 1;
+	}
+
+	.icUOfo .stock .name {
+		color: rgb(37, 37, 37);
+		font-size: 16px;
+	}
+
+	.icUOfo .stock .code {
+		font-size: 12px;
+		color: rgb(142, 142, 147);
+		line-height: 1.3;
+	}
+
+	.icUOfo .price {
+		font-size: 22px;
+		color: rgb(255, 69, 0);
+		line-height: 1.2;
+		text-align: center;
+	}
+
+	.hluaBw {
+		color: rgb(5, 170, 59);
+	}
+
+	.icUOfo .range {
+		line-height: 30px;
+		text-align: center;
+	}
+
+	.hluaBw {
+		color: rgb(5, 170, 59);
+	}
+
+	.icUOfo .rate {
+		line-height: 30px;
+		text-align: center;
+	}
+
+	.geobGM {
+		display: flex;
+		color: rgb(255, 74, 7);
+		border: 1px solid rgb(255, 74, 7);
+		-webkit-box-align: center;
+		align-items: center;
+		border-radius: 4px;
+		flex: 1 1 0%;
+		height: 30px;
+		line-height: 30px;
+		padding: 4px 8px;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	.am-icon {
+		fill: currentColor;
+		background-size: cover;
+		width: 22px;
+		height: 22px;
+	}
+
+	.am-icon {
+		fill: currentColor;
+		background-size: cover;
+		width: 22px;
+		height: 22px;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	.hHbrIs {
+		display: flex;
+		padding: 0px 15px;
+		background-color: rgb(255, 255, 255);
+	}
+
+	.hHbrIs>.item {
+		flex: 1 1 0%;
+		font-size: 14px;
+		padding: 10px 0px;
+		display: flex;
+		border-top: 1px solid rgb(242, 242, 242);
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+	}
+
+	.hHbrIs>.item .label {
+		color: rgb(142, 142, 147);
+	}
+
+	.hHbrIs>.item .value {
+		color: rgb(37, 37, 37);
+		text-align: center;
+		width: 50%;
+	}
+
+	.iBrlkI {
+		background-color: rgb(255, 255, 255);
+		margin-top: 10px;
+		padding: 0px 15px;
+		display: flex;
+	}
+
+	.ivADoO:first-child {
+		padding-right: 10px;
+	}
+
+	.ivADoO {
+		flex: 1 1 0%;
+		color: rgb(142, 142, 147);
+	}
+
+	.ivADoO .hd {
+		line-height: 40px;
+		text-align: center;
+		color: rgb(37, 37, 37);
+		font-size: 14px;
+		border-bottom: 1px solid rgb(244, 244, 244);
+	}
+
+	.hBjiPG {
+		display: flex;
+		line-height: 30px;
+	}
+
+	.hBjiPG span:first-child {
+		text-align: left;
+	}
+
+	.hBjiPG span {
+		flex: 1 1 0%;
+		text-align: center;
+	}
+
+	.hBjiPG span {
+		flex: 1 1 0%;
+		text-align: center;
+	}
+
+	.hBjiPG span:last-child {
+		text-align: right;
+	}
+
+	.hBjiPG span:first-child {
+		text-align: left;
+	}
+
+	.hluaBw {
+		color: rgb(5, 170, 59);
+	}
+
+	.kMAsAF {
+		margin: 10px 15px;
+	}
+
+	.bFQDYR {
+		background-color: rgb(255, 255, 255);
+		border-radius: 4px;
+		border: 1px solid rgb(232, 232, 232);
+		display: flex;
+		flex-direction: row;
+	}
+
+	.bFQDYR .hd {
+		width: 80px;
+		text-align: center;
+		height: 50px;
+		line-height: 50px;
+		font-size: 16px;
+		color: rgb(37, 37, 37);
+		border-right: 1px solid rgb(232, 232, 232);
+		flex-shrink: 0;
+		-webkit-box-flex: 0;
+		flex-grow: 0;
+	}
+
+	.bFQDYR .bd {
+		flex-shrink: 1;
+		-webkit-box-flex: 1;
+		flex-grow: 1;
+		-webkit-box-align: center;
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+		overflow: hidden;
+	}
+
+	.dFONSk {
+		position: relative;
+		display: inline-block;
+		width: 6px;
+		height: 6px;
+	}
+
+	.bFQDYR .input-group {
+		display: flex;
+		flex-direction: row;
+		flex-shrink: 0;
+		-webkit-box-flex: 0;
+		flex-grow: 0;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.bFQDYR .input-group .button.decrease {
+		background-color: rgb(255, 69, 0);
+	}
+
+	.bFQDYR .input-group .button {
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 20px;
+		color: rgb(255, 255, 255);
+		margin: 0px 10px;
+		border-radius: 5px;
+		flex-shrink: 0;
+		-webkit-box-flex: 0;
+		flex-grow: 0;
+	}
+
+	.bFQDYR .input-group input {
+		flex-shrink: 1;
+		-webkit-box-flex: 1;
+		flex-grow: 1;
+		text-align: center;
+		background-color: rgb(244, 245, 246);
+		color: rgb(37, 37, 37);
+		border: 1px solid rgb(232, 232, 232);
+		border-radius: 4px;
+		line-height: calc(28px);
+		width: calc((100% - 120px) - 40px) !important;
+	}
+
+	.bFQDYR .input-group .button {
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 20px;
+		color: rgb(255, 255, 255);
+		margin: 0px 10px;
+		border-radius: 5px;
+		flex-shrink: 0;
+		-webkit-box-flex: 0;
+		flex-grow: 0;
+	}
+
+	.bFQDYR .input-group .button.increase {
+		background-color: rgb(5, 170, 59);
+	}
+
+	.am-whitespace.am-whitespace-md {
+		height: 9px;
+	}
+
+	.bWpkzL {
+		display: flex;
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+	}
+
+	.bWpkzL .item.buy {
+		color: rgb(255, 69, 0);
+		border: 1px solid rgb(255, 69, 0);
+	}
+
+	.bWpkzL .item {
+		width: 20%;
+		line-height: 24px;
+		text-align: center;
+		background-color: rgb(255, 255, 255);
+		border-radius: 4px;
+	}
+
+	.lpulDT {
+		display: flex;
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+		line-height: 30px;
+	}
+
+	.frpTkh {
+		background-color: rgb(255, 255, 255);
+		border-radius: 5px;
+	}
+
+	.frpTkh .hd {
+		padding: 3px 10px 0px;
+		line-height: 35px;
+		font-size: 16px;
+		color: rgb(37, 37, 37);
+		position: relative;
+	}
+
+	.juPcCQ {
+		width: 22px;
+		height: 22px;
+		background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAgCAYAAACRpmGNAAADRUlEQVRYhbXYW4hVdRTH8c9MZmhl5IxS0gW7EERYJmEU9TDVaCNB+VB0oRctbbxQ9BAEEUQ9RDSJpfOQCD1076FAm3xoIAMjpB6KQHMwEqEatQgjdcqZHtY5tM//7HPOPuPZPzhw1trrv/d3/y/rv/67a2joddNQF27CAJZiIXowF3/hCA5gDz7D3uk8ZEab8TOxBhtxVYOYOZXflViOF7Afm7AdE0Uf1t0G2HL8gM1NwBrpGgzjR9xdtFFRuAcw0gRqUgzlQRzG6QZxl+NTbFFg1IrC9ef4fhZDdjvOw3wxlJfiXNyCF3Eop+0gdmJ2J+A+wr+V/0exTvTi8/gSJ5L4U/gKz+FqPI5jSUw/PsTZZwo3giV4sAK1NQPbShN4E9fii+TaAF4+Uzj4Du/hzzbaZDUueuvjxP8kbs5rkAd3Pu6YJkArTYjFtSfj68IbOCsNzoN7Fe+ICV6GJvCISNZVLcGKNDCFW4bVFbDhkuDgJ7yS+NamQVm4C7FNdDOsxMOloIW24GTGXiYZrSzcJlyS3GAzFpSCFqllJGHpkzjgXjyac4O5Ig2UpdHEXpw1utGr+fwawKoOQ1U1lth1w7oVF7W4yWtiX+y0xhN7Xtboxv1iEXSpnQOwqOKfI/bSTugykcin8E1ybUXFP4X301RyJLF7OgSU1SE81SLmVwymcL8l9o0dQ6rVdlGVNNJaHEvhvk3sOzuKVKvH8HuO/y18Qv0OMSoKx6r6cHEpaPyC9YnvsMyQp3Dj2JWxzxHnhbL0rqgViUWwGn80gqM+523EFaWghZ4Qc32b2o7JhdspareqZosqZWZJcEfxEJ5OL+TBTWKD6OaqlopCsyzAURxPnY0q4d0YSnz3iSQ93TrvAtFDNxRt0KxMfwY7El8fvhd7bdED+Qxx2hrD2+L0X1dYtgt3WpTUuxL/fDF5D+IlcQSclcTMwm3i6DgmarfeDOzKInCt3v5v3CM2/kH/F6LE+fTZym9SbDknxT7ck8RmNaX+hXNV5PT1j0iWd6kvcbL3WSBSTm8TsH3ic8QHnYKr6nNcJ3pwXxvtiJfagOsV7DXa/8p0SiTpYfEJrB+3ilP9PLEiT4gh3o+vxbeRvWpTUyH9BzO+nkxGrXr/AAAAAElFTkSuQmCC") center center / 100% no-repeat;
+		float: right;
+		margin: 6px 0px;
+	}
+
+	.ikhgZz {
+		width: 100%;
+		border-collapse: collapse;
+		text-align: center;
+	}
+
+	.kTZnlD {
+		padding: 0px 10px;
+		font-weight: normal;
+		color: rgb(142, 142, 147);
+		font-size: 13px;
+		line-height: 35px;
+		background-color: rgb(243, 247, 255);
+		text-align: center;
+	}
+
+	.ikhgZz tfoot td.empty {
+		padding: 20px 0px;
+	}
+
+	.hoqqAL {
+		background-color: rgb(179, 141, 74);
+		background-image: linear-gradient(112deg, rgb(220, 190, 127) 0%, rgb(179, 141, 74) 100%);
+		border-radius: 4px;
+		font-family: PingFangSC-Semibold;
+		font-size: 16px;
+		color: rgb(255, 255, 255);
+		font-weight: 600;
+		border: none;
+		display: flex;
+		-webkit-box-pack: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		align-items: center;
+		padding-left: 8px;
+		padding-right: 8px;
+		height: 44px;
+	}
+
+	.cEvEJT {
+		color: rgb(255, 69, 0);
 	}
 </style>

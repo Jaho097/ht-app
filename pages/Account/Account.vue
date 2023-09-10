@@ -336,31 +336,31 @@
 					icon: '/static/new/mairu.svg'
 				}, {
 					name: '卖出',
-					idx:1,
+					idx:2,
 					icon: '/static/new/maichu.svg'
 				}, {
 					name: '撤单',
-					idx:1,
+					idx:3,
 					icon: '/static/new/chedan.svg'
 				}, {
 					name: '委托',
-					idx:1,
+					idx:4,
 					icon: '/static/new/weituo.svg'
 				}, {
 					name: '持仓',
-					idx:1,
+					idx:5,
 					icon: '/static/new/chicang.svg'
 				}, {
 					name: '成交记录',
-					idx:1,
+					idx:6,
 					icon: '/static/new/chengjiao.svg'
 				}, {
 					name: '交割查询',
-					idx:1,
+					idx:7,
 					icon: '/static/new/jiaoge.svg'
 				}, {
 					name: '查询',
-					idx:5,
+					idx:8,
 					icon: '/static/new/chaxun.svg'
 				}],
 				scrollTop: 0,
@@ -614,9 +614,28 @@
 					});
 					return;
 				} else {
-					uni.navigateTo({
-						url: '/pages/MyOrderList/MyOrderList?type=' + type,
-					})
+					if(type==4||type==6||type==7){
+						let id 
+						switch(type){
+							case 4:
+								id  = 1
+							break
+							case 6:
+								id  = 2
+							break
+							case 7:
+								id  = 3
+							break
+						}
+						uni.navigateTo({
+							url: '/pages/AccoutSet/query?type=' + id,
+						})
+					}else{
+						uni.navigateTo({
+							url: '/pages/MyOrderList/MyOrderList?type=' + type,
+						})
+					}
+					
 				}
 			},
 			/**
