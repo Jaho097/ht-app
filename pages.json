@@ -620,6 +620,13 @@
 				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
+			"path" : "pages/Task/Task",
+			"style" : {
+				"navigationBarTitleText": "新手任务",
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
+			}
+		},{
 			"path" : "pages/ArticleInfo/ArticleInfo",
 			"style" : {
 				"navigationBarTitleText": "新闻中心",

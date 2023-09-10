@@ -1,12 +1,12 @@
 <template>
 	<view class="page">
 		<view class="about-list">
+			<image style="height:322rpx;width: 100%;background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;" src="/static/new/banner.jpg" mode=""></image>
 			<uni-list>
-				<uni-list-item :title="confData.website" :note="versionName" 
-					:thumb="confData.weblogo"
-					thumb-size="lg" :rightText="versionCode" />
-				<uni-list-item showArrow link @click="onSkip('help')" title="使用帮助" />
-				<uni-list-item showArrow link @click="onSkip('aboutus')" title="隐私政策" />
+				<uni-list-item showArrow link @click="onSkip('task')" title="新手任务" />
+				<uni-list-item showArrow @click="onMessage(item.id,item.model)" v-for="(item,index) in notice" :key="index" link :title="item.title" />
 			</uni-list>
 		</view>
 		<view class="copyright">
@@ -27,6 +27,7 @@
 				confData : uni.getStorageSync('confData'),
 				versionCode : '',
 				versionName : '',
+				notice: [],
 			};
 		},
 		onLoad(params){
@@ -34,6 +35,7 @@
 			loginRes = this.checkLogin();
 			if(!loginRes){return;}
 			this.token = loginRes[2];
+			this.getColumns(this.token,params.id,params.page);//获取子账号信息
 		},
 		onReady(){
 			// #ifdef APP-PLUS
@@ -45,6 +47,32 @@
 			// #endif
 		},
 		methods:{
+			async getColumns(token,id,page){
+				uni.request({
+					url: this.apiServer+'/apicom/column/index?id='+id+'&page='+page,
+					header: {'content-type' : "application/x-www-form-urlencoded"},
+					method: 'GET',
+					timeout: 5000,
+					success: res => {
+						if(res.data.status == 1){
+							this.notice = res.data.data;
+							console.log(this.notice);
+						}
+					},
+					fail:function(e){
+						uni.showToast({title:"加载失败!",icon:"none"});
+					}
+				});
+			},
+			/**
+			 * 消息点击
+			 * @param {String} type
+			 */
+			onMessage(id,model){
+				uni.navigateTo({
+					url: '/pages/ArticleInfo/ArticleInfo?id='+id+'&model='+model,
+				})			
+			},
 			async getconf(){
 				uni.request({
 					url: this.apiServer+'/apicom/index/getconf',
@@ -87,6 +115,11 @@
 			},
 			onSkip(type,url){
 				switch (type){
+					case 'task':
+						uni.navigateTo({
+							url: '/pages/Task/Task'
+						})
+						break;
 					case 'updata':
 						uni.navigateTo({
 							url: '/pages/WebOnline/WebOnline?url='+url
