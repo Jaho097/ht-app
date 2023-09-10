@@ -38,12 +38,12 @@
 		{
 			"path":"pages/Market/Market",
 			"style":{
-				"app-plus":{
-					"titleNView":false
-				},
+				// "app-plus":{
+				// 	"titleNView":false
+				// },
 				"navigationBarTextStyle":"black",
 				"navigationBarBackgroundColor": "#f4e4b7",
-				"navigationBarTitleText": "自选"
+				"navigationBarTitleText": "牛股诊断"
 			}
 		},
 		{

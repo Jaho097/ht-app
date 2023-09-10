@@ -734,7 +734,7 @@
 						})
 						break;
 					case 'Market':
-						uni.switchTab({
+						uni.navigateTo({
 							url: '/pages/Market/Market'
 						})
 						break;
