@@ -155,7 +155,7 @@
 				</view>
 			</view>
 			<view class="sc-cmTdod kTszrt" @click="onWarnTip(3)">
-				<view class="sc-jwKygS eaOZDH">？？</view>
+				<view class="sc-jwKygS eaOZDH">--</view>
 				<view class="sc-btzYZH fsrSGa">
 					<view style="display: flex; align-items: center;"><span>距离警戒线</span><img
 							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
@@ -165,7 +165,7 @@
 				</view>
 			</view>
 			<view class="sc-cmTdod kTszrt" @click="onWarnTip(4)">
-				<view class="sc-jwKygS eaOZDH">？？</view>
+				<view class="sc-jwKygS eaOZDH">--</view>
 				<view class="sc-btzYZH fsrSGa">
 					<view style="display: flex; align-items: center;"><span>距离平仓线</span><img
 							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
@@ -601,7 +601,7 @@
 					return;
 				} else {
 					uni.navigateTo({
-						url: '/pages/AccoutSet/AccoutSet?token=' + token + '&id=' + id,
+						url: '/pages/AfterSalesOrder/AfterSalesOrder',
 					})
 				}
 			},

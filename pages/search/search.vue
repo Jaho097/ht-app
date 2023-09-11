@@ -204,12 +204,20 @@
 			},
 			/*搜索框输入内容*/
 			onInput(e) {
+				loginRes = this.checkLogin();
+				if (!loginRes) {
+					return;
+				}
 				this.keyword = e.target.value; //监听获取输入框改变值
+				this.uid = loginRes[0];
 				if (this.keyword) {
 					uni.request({
 						url: this.apiServer + '/market/index/stock_search?key=' + this.keyword,
 						header: {
 							'content-type': "application/x-www-form-urlencoded"
+						},
+						data: {
+							uid: this.uid,
 						},
 						method: 'GET',
 						timeout: 5000,
