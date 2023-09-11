@@ -332,15 +332,15 @@
 			return {
 				iconList: [{
 					name: '买入',
-					idx:1,
+					idx:3,
 					icon: '/static/new/mairu.svg'
 				}, {
 					name: '卖出',
-					idx:2,
+					idx:4,
 					icon: '/static/new/maichu.svg'
 				}, {
 					name: '撤单',
-					idx:3,
+					idx:2,
 					icon: '/static/new/chedan.svg'
 				}, {
 					name: '委托',
@@ -348,7 +348,7 @@
 					icon: '/static/new/weituo.svg'
 				}, {
 					name: '持仓',
-					idx:5,
+					idx:1,
 					icon: '/static/new/chicang.svg'
 				}, {
 					name: '成交记录',

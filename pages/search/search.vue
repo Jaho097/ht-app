@@ -5,21 +5,21 @@
 		<!-- 自定义插槽 -->
 		<!-- 搜索历史记录 -->
 		<!-- <form class="am-search am-search-start" action="#">
-			<div class="am-search-input">
-				<div class="am-search-synthetic-ph" style="width: 220px;"><span
+			<view class="am-search-input">
+				<view class="am-search-synthetic-ph" style="width: 220px;"><span
 						class="am-search-synthetic-ph-container"><i class="am-search-synthetic-ph-icon"></i><span
 							class="am-search-synthetic-ph-placeholder" style="visibility: none;">123请输入股票代码 / 名称 /
-							简称</span></span></div>
+							简称</span></span></view>
 							<input type="search" class="am-search-value"
 					placeholder="请输入股票代码 / 名称 / 简称" maxlength="6" value="123">
 					<a class="am-search-clear"></a>
-			</div>
-			<div class="am-search-cancel am-search-cancel-show am-search-cancel-anim" style="margin-right: 0px;">取消
-			</div>
+			</view>
+			<view class="am-search-cancel am-search-cancel-show am-search-cancel-anim" style="margin-right: 0px;">取消
+			</view>
 		</form> -->
-		<view class="am-search" >
-			<input type="search"  class="s-input" 
-			placeholder="请输入股票代码 / 名称 / 简称" maxlength="6" @input="onInput" v-model="keyword">
+		<view class="am-search">
+			<input type="search" class="s-input" placeholder="请输入股票代码 / 名称 / 简称" maxlength="6" @input="onInput"
+				v-model="keyword">
 			<view @click="onBack()" class="" style="width:80rpx;text-align: center;">
 				取消
 			</view>
@@ -37,7 +37,7 @@
 			</view>
 		</view>
 		<!-- 搜索结果 -->
-		<view class="search-found" v-if="!noHistory" >
+		<view class="search-found" v-if="!noHistory">
 			<!-- <view class="search-title">
 				<view class="title" style="font-weight: 600;">搜索发现</view>
 				<view class="iconfont icon-laji"></view>
@@ -51,7 +51,7 @@
 						<text class="code">{{item.code}}</text>
 					</view>
 					<view class="right" @click="onAttention(item)">
-						<text class="iconfont icon-guanzhu-off"></text>
+						<uni-icons type="plus" color="red" size="24"></uni-icons>
 						<!--text>{{ AttentionShow === 0 ? '加入自选' : '取消自选' }}</text-->
 					</view>
 				</view>
@@ -67,13 +67,44 @@
 			<view class="search-title">
 				<view class="title" style="font-weight: 600;">大家都在搜</view>
 				<!-- 清除 -->
-				<view class="iconfont icon-laji" @click="onDel()">清除历史</view>
+				<!-- <view class="iconfont icon-laji" @click="onDel()">清除历史</view> -->
 			</view>
-			<view class="record-list">
-				<view class="list" v-for="(item,index) in SearchRecordArr" @click="onRecord(item.code)" :key="index">
-					<text>{{item.code_title}}</text><text>{{item.code}}</text>
+			<view  class="bd"
+				style="display: flex;flex-wrap: wrap;">
+				<view class="sc-kvZOFW kGsHrI item" v-for="(item,index) in SearchRecordArr" @click="onRecord(item.code)" :key="index">
+					<view class="index item-1" v-show="index==0" style="background-color: rgb(255, 69, 0);">{{index+1}}</view>
+					<view class="index item-1" v-show="index==1" style="background-color: rgb(255, 112, 67);">{{index+1}}</view>
+					<view class="index item-1" v-show="index==2" style="background-color: rgb(251, 192, 45);">{{index+1}}</view>
+					<view class="index item-1" v-show="index>2" >{{index+1}}</view>
+					<view class="title">{{item.code_title}}</view>
+					<view class="code">{{item.code}}</view>
 				</view>
 			</view>
+			<!-- <view class="record-list">
+				<view class="list"
+					style="color:#fff;display: flex;align-items: flex-start;justify-content: space-around;align-items: center;"
+					v-for="(item,index) in SearchRecordArr" @click="onRecord(item.code)" :key="index">
+					<view v-show="index==0" class=""
+						v-show="index==0" style="background-color: rgb(255, 69, 0);">
+						{{index}}
+					</view>
+					<view v-show="index==1" class=""
+						style="width: 40rpx;height: 40rpx;background-color: rgb(255, 112, 67);">
+						{{index}}
+					</view>
+					<view v-show="index==2" class=""
+						style="width: 40rpx;height: 40rpx;background-color: rgb(251, 192, 45);">
+						{{index}}
+					</view>
+					<view v-show="index>2" class=""
+						style="width: 40rpx;height: 40rpx;background-color: rgb(187, 187, 190);">
+						{{index}}
+					</view>
+					<view class="">
+						<text>{{item.code_title}}</text><text>{{item.code}}</text>
+					</view>
+				</view>
+			</view> -->
 		</view>
 
 	</view>
@@ -118,7 +149,7 @@
 		},
 		onLoad() {
 			if (uni.getStorageSync('SearchRecordArr')==[]) {
-				this.SearchRecordArr = JSON.parse(uni.getStorageSync('SearchRecordArr'));
+				this.SearchRecordArr = uni.getStorageSync('SearchRecordArr')&&JSON.parse(uni.getStorageSync('SearchRecordArr'));
 			} else {
 				this.getHistory();
 			}
@@ -126,11 +157,11 @@
 				this.searchRecordData = JSON.parse(uni.getStorageSync('searchRecordData'));
 			}
 		},
-		activated(){
-			this.keyword  = ''
+		activated() {
+			this.keyword = ''
 		},
 		methods: {
-			back(){
+			back() {
 				uni.navigateBack()
 			},
 			async getHistory() {
@@ -454,7 +485,8 @@
 	.search-record .search-title .iconfont {
 		font-size: 14px;
 	}
-	.s-input{
+
+	.s-input {
 		width: 100%;
 		background-color: #fff;
 		// z-index: 2;
@@ -464,9 +496,10 @@
 		height: 28px;
 		font-size: 15px;
 		border: 0;
-		broder-radius:10px;
+		broder-radius: 10px;
 		padding-left: 15px;
 	}
+
 	.am-search,
 	.am-search-input {
 		position: relative;
@@ -548,5 +581,47 @@
 	.am-search-input .am-search-synthetic-ph-placeholder {
 		color: #bbb;
 		font-size: 15px;
+	}
+
+	.cFmxio .bd {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.kGsHrI {
+		width: 33.3333%;
+		border-bottom: 1px solid rgb(221, 221, 221);
+		position: relative;
+		padding: 10px 0px 10px 25px;
+	}
+
+	.kGsHrI .index {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		font-size: 14px;
+		color: rgb(255, 255, 255);
+		border-radius: 3px;
+		background-color: rgb(187, 187, 190);
+		left: 0px;
+		top: 10px;
+	}
+
+	.kGsHrI .title {
+		font-size: 14px;
+		line-height: 1.2;
+		color: rgb(37, 37, 37);
+	}
+
+	.kGsHrI .code {
+		font-size: 12px;
+		line-height: 1.2;
+		color: rgb(142, 142, 147);
+	}
+
+	a {
+		text-decoration: none;
 	}
 </style>

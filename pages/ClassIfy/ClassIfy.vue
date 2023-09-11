@@ -3,13 +3,11 @@
 		<!-- 搜索 -->
 		<!--自选/行情切换-->
 		<!-- 自定义插槽 -->
-		<view class="box-bg" style="padding: 0;">
+		<!-- <view class="box-bg" style="padding: 0;">
 			<uni-nav-bar color="#FFF" backgroundColor="#DE4A29" shadow>
 				<block slot="left">
 					<uni-icons type="left" color="#FFF" size="22" @click="onBack" />
-					<!-- <view>
-						<text class="uni-nav-bar-text">首页</text>
-					</view> -->
+				
 				</block>
 				<view class="lz-tabsbtn-view">
 					<text class="navbar-title">热门行业</text>
@@ -18,7 +16,7 @@
 					<uni-icons custom-prefix="iconfont" type="icon-sousuo" size="25" color="#FFF" @click="onSearch()"></uni-icons>
 				</block>
 			</uni-nav-bar>
-		</view>
+		</view> -->
 			
 			
 		
@@ -64,9 +62,13 @@
 					<view class="list-li" v-for="(item,index) in hotBat" :key="index" @click="toHyinfo(item[0],item[1])">
 						<view class="item">
 							<view class="price list">
-								<view class="retail-price">
-									<text class="max">{{item[1]}}</text>
+								<view class="retail-price" style="">
+									<text class="two-omit" style="text-align: center;">{{item[1]}}</text>
 								</view>
+							</view>
+							<view class="title list">
+								<text class="two-omit" style="text-align: center;color:lightgray">{{item[12]}}</text>
+								<text class="two-omit" style="text-align: center;color:lightgray">{{item[9]}}%</text>
 							</view>
 							<view class="applies list">
 								<view class="tag"
@@ -74,10 +76,7 @@
 									<text>{{parseFloat(item[5]).toFixed(2)}}%</text>
 								</view>
 							</view>
-							<view class="title list">
-								<text class="two-omit">{{item[12]}}</text>
-								<text class="min">{{item[9]}}%</text>
-							</view>
+							
 						</view>
 					</view>
 				</view>

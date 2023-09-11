@@ -7,14 +7,15 @@
 			<uni-nav-bar color="#FFF"  :shadow="true" :border="false">
 				<!-- 页头消息 -->
 				<block slot="left">
-					<image style="width: 180rpx;height: 60rpx" src="/static/logo.jpg" mode=""></image>
+					<image style="width: 180rpx;height: 60rpx" src="/static/new/logo.png" mode=""></image>
 					<!-- <uni-icons custom-prefix="iconfont" type="icon-laba" size="25" color="#FFF" @click="onMessage()"></uni-icons> -->
 					<!-- <view>
 						<text class="uni-nav-bar-text">首页</text>
 					</view> -->
 				</block>
-				<view class="lz-tabsbtn-view">
-					<input style="padding-left:30rpx;color: black;background-color: lightgray;border-radius: 50rpx;width: 100%;height: 60rpx;"  maxlength="26"  placeholder="搜索股票名称">
+				<view class="lz-tabsbtn-view" >
+					 <!-- <uni-icons type="search" size="30"></uni-icons> -->
+					<input @click="toSearch()" style="padding-left:30rpx;color: black;background-color: lightgray;border-radius: 50rpx;width: 100%;height: 60rpx;"  maxlength="26"  placeholder="搜索股票名称">
 					<!-- <text class="navbar-title">{{confData.website}}</text> -->
 				</view>
 				<block slot="right" v-show="false" >
@@ -33,7 +34,7 @@
 		<view class="main">
 			<!-- banner -->
 			<view style="width:100%">
-				<swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+				<swiper class="screen-swiper square-dot" style="height: 480rpx;background:#f4e4b7" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
 					<swiper-item v-for="(item,index) in swiperList" :key="index">
 						<img-cache :src="item.img_url" mode="aspectFill"></img-cache>
 					</swiper-item>
@@ -535,6 +536,11 @@
 			console.log('到底了');
 		},
 		methods:{
+			toSearch(){
+				uni.navigateTo({
+					url: '/pages/search/search'
+				})
+			},
 			toReg(){
 				uni.navigateTo({
 				  url: '/pages/login/login'
@@ -1030,5 +1036,8 @@
 			width: 100%;
 			margin-top:15rpx;
 		}
+	}
+	.screen-swiper uni-image{
+		height: 480rpx !important;
 	}
 </style>
