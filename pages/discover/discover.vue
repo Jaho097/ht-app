@@ -250,7 +250,7 @@
 							</view>
 							<view class="applies list">
 								<view class="min" style="text-align: center;color: rgb(37, 37, 37);" >
-									<text>{{item.high||'0.000'}}</text><text></text>
+									<text>{{ item.yesterday_price == 0 ? '0.00' : parseFloat((item.current_price-item.yesterday_price)/item.yesterday_price).toFixed(2)}}</text><text></text>
 								</view>
 							</view>
 							
