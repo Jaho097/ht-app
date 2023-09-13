@@ -151,9 +151,13 @@
 		},
 		onLoad(params) {
 			this.type = params.type
+			this.getHistory();
+			console.log(uni.getStorageSync('SearchRecordArr') === '', '222');
 			if (uni.getStorageSync('SearchRecordArr')==[]) {
+				console.log(3);
 				this.SearchRecordArr = uni.getStorageSync('SearchRecordArr')&&JSON.parse(uni.getStorageSync('SearchRecordArr'));
 			} else {
+				console.log(2);
 				this.getHistory();
 			}
 			if (uni.getStorageSync('searchRecordData')) {
@@ -167,7 +171,36 @@
 			back() {
 				uni.navigateBack()
 			},
+			// 
+			setHistory(data) {
+				uni.request({
+					url: this.apiServer + '/market/index/addHistory',
+					header: {
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					data: {
+						code: data.code,
+						code_title: data.name
+					},
+					method: 'GET',
+					timeout: 5000,
+					success: res => {
+						//console.log(res.data);
+					},
+					complete: function() {
+						uni.stopPullDownRefresh();
+					},
+					fail: (e) => {
+						uni.showToast({
+							title: "加载失败!",
+							icon: "none"
+						});
+						console.log(e);
+					}
+				});
+			},
 			async getHistory() {
+				console.log(1);
 				uni.request({
 					url: this.apiServer + '/market/index/getHistory_secher',
 					header: {
@@ -228,6 +261,9 @@
 							//console.log(res.data);
 							this.dataList = res.data.data;
 							console.log(this.dataList);
+							this.dataList.forEach((i) => {
+								this.setHistory(i)
+							})
 						},
 						complete: function() {
 							uni.stopPullDownRefresh();
