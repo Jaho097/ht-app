@@ -142,7 +142,7 @@
 					</view>
 				</view> -->
 				<!-- 买入 -->
-				<view class="position" v-if="OrderType==3">
+				<view class="position" v-if="false">
 					<view class="sc-daURTG ScOSY">
 						<view class="sc-bXGyLb icUOfo">
 							<view class="stock">
@@ -252,8 +252,8 @@
 					</view>
 				</view>
 				<!-- 卖出 -->
-				<view class="position" v-if="OrderType==4">
-					<FlashSale v-if="OrderType==4" :type="4" :code="code" :uid="accounId"></FlashSale>
+				<view class="position" v-if="OrderType==4||OrderType==3">
+					<FlashSale v-if="OrderType==4||OrderType==3" :type="4" :head-show="false" :code="code" :uid="accounId"></FlashSale>
 				</view>
 				<!--撤单-->
 				<view class="position" v-if="OrderType==2">
@@ -505,7 +505,7 @@
 			};
 		},
 		onLoad(params) {
-			console.log('onLoad')
+			console.log('onLoad123')
 			this.OrderType = params.type;
 			this.code = params.code
 			loginRes = this.checkLogin();
@@ -518,6 +518,7 @@
 			if (!this.accountData) {
 				this.getSubAccount(this.token); //加载子账户信息
 			}
+			console.log(this.accounId,'this.accounId')
 			this.getOrderList(this.token, this.accounId, this.OrderType); //accList[0].id是子账户ID
 			//this.getSubAccount(this.token);//获取子账号信息
 		},
