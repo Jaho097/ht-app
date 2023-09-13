@@ -64,21 +64,21 @@
 						<div class="bd"><span class="sc-fjdhpX cEvEJT">{{memberMoney.account}}元</span><a class="sc-kxynE dZizzA"
 								 @click="charge()">充值</a></div>
 					</div>
-					<div class="sc-iBEsjs dJjmld">
+					<!-- <div class="sc-iBEsjs dJjmld">
 						<div class="title">本次可抵扣</div>
 						<div class="bd"><span class="text-primary">2.70元</span></div>
 					</div>
 					<div class="sc-iBEsjs dJjmld">
 						<div class="title">单次最多可抵扣</div>
 						<div class="bd"><span class="text-primary">2.70元</span></div>
-					</div>
+					</div> -->
 					<div class="sc-iBEsjs dJjmld">
 						<div class="title">剩余管理费</div>
-						<div class="bd"><span class="text-primary">2087.10元</span></div>
+						<div class="bd"><span class="text-primary">**元</span></div>
 					</div>
 					<div class="sc-iBEsjs dJjmld">
 						<div class="title">确认支付</div>
-						<div class="bd"><span class="text-primary">202.70元</span></div>
+						<div class="bd"><span class="text-primary">**元</span></div>
 					</div>
 				</div>
 				<div class="sc-kaNhvL jDQKpL">
@@ -98,9 +98,9 @@
 		</div>
 
 		<view class="uni-py-10 uni-px-8">
-			<button type="warn" style="width:100%;" class="uni-radius-5" v-if="form.freeze"
+			<button type="warn" style="width:100%;background-color: rgb(179, 141, 74);" class="uni-radius-5" v-if="form.freeze"
 				@click="form.freeze?goNext():''">下一步</button>
-			<button type="warn" style="width:100%;" class="uni-radius-5" v-else disabled="true">下一步</button>
+			<button type="warn" style="width:100%;background-color: rgb(179, 141, 74);" class="uni-radius-5" v-else disabled="true">下一步</button>
 		</view>
 		<!-- 确认申请 -->
 		<goods-coupon ref="GoodsCoupon"></goods-coupon>
@@ -251,6 +251,11 @@
 			this.type = Number(params.type);
 			this.multiple = Number(params.multiple);
 			this.peizi = Number(this.freeze*this.multiple)
+			this.form.type = this.type
+			this.form.multiple = this.multiple
+			this.form.freeze = this.freeze
+			this.form.time = this.time
+			this.form.bigMoney = this.peizi
 			_self = this;
 			loginRes = _self.checkLogin();
 			if (!loginRes) {
@@ -365,7 +370,11 @@
 						//uni.hideLoading();
 						if (res.data.status == 1) {
 							this.applyJson = res.data.data;
-							this.$refs['GoodsCoupon'].show(token, form);
+							uni.showToast({
+								title: res.data.message,
+								icon: "none"
+							});
+							// this.$refs['GoodsCoupon'].show(token, form);
 						} else {
 							uni.showToast({
 								title: res.data.message,
@@ -519,6 +528,13 @@
 				if (!this.form.bigMoney) {
 					uni.showToast({
 						title: "请选择配资金额",
+						icon: "none"
+					});
+					return;
+				}
+				if (!this.isAgree) {
+					uni.showToast({
+						title: "请勾选平台操盘协议",
 						icon: "none"
 					});
 					return;

@@ -21,14 +21,13 @@
 			
 		
 		<!-- 筛选 -->
-		<view class="screen-info">
+		<!-- <view class="screen-info">
 			<view class="screen-list">
 				<view class="list">
 					<text>行业名称</text>
 				</view>
 				<view class="list" @click="onSort(sortType==1?2:1)">
 					<text>涨跌幅</text>
-					<!-- UI排序 -->
 					<view v-if="sortType==1">
 						<uni-icons custom-prefix="iconfont" type="icon-paixu-jiangxu" size="12" color="#d81e06"></uni-icons>
 						<uni-icons custom-prefix="iconfont" type="icon-paixu-shengxu" size="12" color="#cecece"></uni-icons>
@@ -46,7 +45,7 @@
 					<text>领涨股</text>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		
 		
 		<!-- 列表 -->

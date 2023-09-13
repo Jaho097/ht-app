@@ -155,7 +155,7 @@
 				</view>
 			</view>
 			<view class="sc-cmTdod kTszrt" @click="onWarnTip(3)">
-				<view class="sc-jwKygS eaOZDH">--</view>
+				<view class="sc-jwKygS eaOZDH">{{''+calculate(accountInfo.freeze_amount-accountInfo.loss_warn_money)}}</view>
 				<view class="sc-btzYZH fsrSGa">
 					<view style="display: flex; align-items: center;"><span>距离警戒线</span><img
 							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
@@ -165,7 +165,7 @@
 				</view>
 			</view>
 			<view class="sc-cmTdod kTszrt" @click="onWarnTip(4)">
-				<view class="sc-jwKygS eaOZDH">--</view>
+				<view class="sc-jwKygS eaOZDH">{{''+calculate(accountInfo.freeze_amount-accountInfo.loss_close_money)}}</view>
 				<view class="sc-btzYZH fsrSGa">
 					<view style="display: flex; align-items: center;"><span>距离平仓线</span><img
 							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
@@ -188,7 +188,7 @@
 					</view>
 				</view>
 				<view class="sc-jtRfpW cWRzkj">
-					<view class="account-num">{{accountInfo.end_time}}</view>
+					<view class="account-num">{{changeDate(accountInfo.end_time)}}</view>
 					<view class="account-title">有效期<span class="sc-bYSBpT fvzeeK">自动续期</span></view>
 				</view>
 			</view>
@@ -344,11 +344,11 @@
 					icon: '/static/new/chedan.svg'
 				}, {
 					name: '委托',
-					idx:4,
+					idx:1,
 					icon: '/static/new/weituo.svg'
 				}, {
 					name: '持仓',
-					idx:1,
+					idx:10,
 					icon: '/static/new/chicang.svg'
 				}, {
 					name: '成交记录',
@@ -414,6 +414,20 @@
 			this.scrollTop = e.scrollTop;
 		},
 		methods: {
+			changeDate(inputDate){
+			  // 将输入的日期字符串转换成 Date 对象
+			  var date = new Date(inputDate);
+			  
+			  // 获取年、月、日的值
+			  var year = date.getFullYear();
+			  var month = (date.getMonth() + 1).toString().padStart(2, '0'); // 月份从0开始，需要加1，然后补齐两位
+			  var day = date.getDate().toString().padStart(2, '0'); // 补齐两位
+			  
+			  // 构建格式化后的日期字符串
+			  var formattedDate = year + '年' + month + '月' + day + '号';
+			  
+			  return formattedDate;
+			},
 			toAccountSet(){
 				uni.navigateTo({
 					url:'/pages/AccountSet/AccountSet'
@@ -614,10 +628,10 @@
 					});
 					return;
 				} else {
-					if(type==4||type==6||type==7){
+					if(type==1||type==6||type==7){
 						let id 
 						switch(type){
-							case 4:
+							case 1:
 								id  = 1
 							break
 							case 6:

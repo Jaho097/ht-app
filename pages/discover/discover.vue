@@ -142,7 +142,7 @@
 				<view class="recommend-info" v-show="current==0">
 					<view class="recommend-title">
 						<view class="title">
-							<text class="title-name">热门板块</text>
+							<text class="title-name">热门模块</text>
 							<text class="more" @click="toMoreList(0)">更多</text>
 						</view>
 					</view>
@@ -221,7 +221,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="goods-list" v-show="current==1">
+				<view class="goods-list" style="margin-bottom: 50px;" v-show="current==1">
 					<view class="" style="display: flex;justify	-content: space-around;padding-bottom: 20rpx;">
 						<view class="iMmIqG" style="flex:1;text-align: center;">名称</view>
 						<view class="iMmIqG" style="flex:1;text-align: center;">最新</view>
@@ -812,5 +812,7 @@
 	.jzFoqy.active span {
 	    color: rgb(64, 64, 64);
 		border-bottom: 2px solid red;
+	}
+	.mescroll-body{
 	}
 </style>

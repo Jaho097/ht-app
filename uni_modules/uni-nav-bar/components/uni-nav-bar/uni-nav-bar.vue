@@ -322,7 +322,6 @@
 	}
 
 	.uni-navbar--shadow {
-		box-shadow: 0 1px 6px #ccc;
 	}
 
 	.uni-navbar--border {

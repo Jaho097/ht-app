@@ -116,13 +116,13 @@
 							:key="index" size="normal" @click="onclick(item,item*form.freeze,index)" />
 					</view>
 				</view> -->
-			</view>
+			</view> 
 
 
 			<view class="uni-py-10 uni-px-8">
-				<button type="warn" style="width:100%;" class="uni-radius-5" v-if="form.freeze"
+				<button type="warn" style="width:100%;background-color: rgb(179, 141, 74);" class="uni-radius-5" v-if="form.freeze"
 					@click="form.freeze?goNext():''">下一步</button>
-				<button type="warn" style="width:100%;" class="uni-radius-5" v-else disabled="true">下一步</button>
+				<button type="warn" style="width:100%;background-color: rgb(179, 141, 74)" class="uni-radius-5"  v-else disabled="true">下一步</button>
 			</view>
 			<!-- 确认申请 -->
 			<goods-coupon ref="GoodsCoupon"></goods-coupon>

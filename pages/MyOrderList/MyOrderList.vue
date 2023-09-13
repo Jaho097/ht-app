@@ -59,7 +59,7 @@
 				<text>撤单</text>
 				<text class="line"></text>
 			</view>
-			<view class="tab" :class="{'action':OrderType==1}" @click="onOrderTab(1)">
+			<view class="tab" :class="{'action':OrderType==10}" @click="onOrderTab(1)">
 				<text>持仓</text>
 				<text class="line"></text>
 			</view>
@@ -146,12 +146,12 @@
 					<view class="sc-daURTG ScOSY">
 						<view class="sc-bXGyLb icUOfo">
 							<view class="stock">
-								<view class="name">兰花科创</view>
-								<view class="code">600123</view>
+								<view class="name">{{marketData.name}}</view>
+								<view class="code">{{marketData.code}}</view>
 							</view>
-							<view class="price"><span class="sc-jTzLTM hluaBw">9.070</span></view>
-							<view class="range"><span class="sc-jTzLTM hluaBw"> -0.25</span></view>
-							<view class="rate"><span class="sc-jTzLTM hluaBw"> -2.68%</span></view>
+							<view class="price"><span class="sc-jTzLTM hluaBw">9.070{{marketData.current_price}}</span></view>
+							<view class="range"><span class="sc-jTzLTM hluaBw"> -0.25{{marketData.code}}</span></view>
+							<view class="rate"><span class="sc-jTzLTM hluaBw"> -2.68%{{marketData.code}}</span></view>
 						</view>
 						<a @click="toSearch()" class="sc-lkqHmb geobGM" href="javascript:void(0);">
 							<icon type="search" color="red" size="15" />搜索股票
@@ -253,8 +253,7 @@
 				</view>
 				<!-- 卖出 -->
 				<view class="position" v-if="OrderType==4">
-					123123
-
+					<FlashSale v-if="OrderType==4" :type="4" :code="code" :uid="accounId"></FlashSale>
 				</view>
 				<!--撤单-->
 				<view class="position" v-if="OrderType==2">
@@ -275,7 +274,7 @@
 					</view>
 				</view>
 				<!--持仓-->
-				<view class="position" v-if="OrderType==1">
+				<view class="position" v-if="OrderType==10">
 					<view class="title">
 						<text>名称/代码</text>
 						<text>可用/持仓</text>
@@ -454,8 +453,14 @@
 <script>
 	var _self, loginRes;
 	import MescrollMixin from "@/components/mescroll-uni/mescroll-mixins.js";
+	import FlashSale from "@/pages/FlashSale/FlashSale.vue";
+	import Request from '@/js_sdk/luch-request/luch-request/index.js'
+	const http = new Request();
 	export default {
 		mixins: [MescrollMixin], // 使用mixin
+		components:{
+			FlashSale
+		},
 		data() {
 			return {
 				mescroll: null, // mescroll实例对象 (此行可删,mixins已默认)
@@ -493,10 +498,16 @@
 					index: 3,
 					date: '一年'
 				}, ],
+				marketData:[],
+				X:"",
+				Y:"",
+				code:''
 			};
 		},
 		onLoad(params) {
+			console.log('onLoad')
 			this.OrderType = params.type;
+			this.code = params.code
 			loginRes = this.checkLogin();
 			if (!loginRes) {
 				return;
@@ -511,10 +522,48 @@
 			//this.getSubAccount(this.token);//获取子账号信息
 		},
 		methods: {
-			toSearch(){
-				uni.navigateTo({
-					url: '/pages/search/search'
+			/*获取股票信息*/
+			async getMarket(code) {
+				//var codeName = code >= 6 ? "sh"+code : "sz"+code;
+				http.post(this.apiServer + '/market/index/market', {
+					uid: this.accounId,
+					// uid: this.uid,
+					code: 600033,
+					// code: this.code,
+					
+				}, {
+					header: {
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					dataType: 'json',
+					custom: {
+						auth: true
+					},
+				}).then(res => {
+					if (res.data.status == 1) {
+						this.marketData = res.data.data;
+						uni.setStorageSync('market-' + code, res.data.data);
+						this.Y = parseFloat(this.marketData.yesterday_price); //把昨天收盘价赋值给Y
+						this.T = parseFloat(this.marketData.open_price); //把今天开盘价赋值给T
+					}
+				}).catch(err => {
+					uni.showToast({
+						title: "加载失败!",
+						icon: "none"
+					});
 				})
+			},
+			toSearch(){
+				console.log(this.OrderType,'this.OrderTypethis.OrderType')
+				if(this.OrderType==3){
+					uni.navigateTo({
+						url: '/pages/search/search?type=sell'
+					})
+				}else{
+					uni.navigateTo({
+						url: '/pages/search/search?type=buy'
+					})
+				}
 			},
 			toQuery(id) {
 				console.log(123123)
@@ -562,7 +611,7 @@
 			},
 			/*获取持仓信息*/
 			async getOrderList(token, id, type) {
-				if (type == 1) {
+				if (type == 10) {
 					var action = 'position';
 				} //持仓this.positionList = '';
 				if (type == 2) {
@@ -581,6 +630,10 @@
 					title: "加载中",
 					icon: "loading"
 				});
+				if(type==3||type==4){
+					uni.hideLoading();
+					return
+				}
 				uni.request({
 					url: this.apiServer + '/market/trade/' + action,
 					header: {
@@ -597,7 +650,7 @@
 					success: res => {
 						uni.hideLoading();
 						if (res.data.status) {
-							if (type == 1) this.positionList = res.data.data.list; //持仓
+							if (type == 10) this.positionList = res.data.data.list; //持仓
 							if (type == 2) this.cancelList = res.data.data.list; //撤单
 							if (type == 3) this.trustList = res.data.data.list; //委托
 							if (type == 4) this.dealList = res.data.data; //成交

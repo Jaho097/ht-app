@@ -50,8 +50,9 @@
 					<view class="mid" @click="onSearch(item.code,item)">
 						<text class="code">{{item.code}}</text>
 					</view>
-					<view class="right" @click="onAttention(item)">
-						<uni-icons type="plus" color="red" size="24"></uni-icons>
+					<view class="right" @click="onAttention(item,index)">
+						<uni-icons v-if="item.is_my==0" type="plus" color="red" size="24"></uni-icons>
+						<uni-icons v-else type="checkbox" size="24"></uni-icons>
 						<!--text>{{ AttentionShow === 0 ? '加入自选' : '取消自选' }}</text-->
 					</view>
 				</view>
@@ -125,6 +126,7 @@
 				searchRecordData: [],
 				noHistory: true, //默认历史搜索结果
 				noSearchRecordData: true, //默认无搜索历史
+				type:''
 			};
 		},
 		watch: {
@@ -147,7 +149,8 @@
 
 			},
 		},
-		onLoad() {
+		onLoad(params) {
+			this.type = params.type
 			if (uni.getStorageSync('SearchRecordArr')==[]) {
 				this.SearchRecordArr = uni.getStorageSync('SearchRecordArr')&&JSON.parse(uni.getStorageSync('SearchRecordArr'));
 			} else {
@@ -307,13 +310,25 @@
 			 * 记录点击
 			 */
 			onRecord(val) {
-				uni.navigateTo({
-					//url: '/pages/GoodsDetails/Candle?code=' + encodeURIComponent(val),
-					url: '/pages/MarketDetails/MarketDetails?code=' + encodeURIComponent(val),
-				})
+				console.log(this.type,'ttt')
+				if(this.type=='sell'){
+					uni.navigateTo({
+						url: '/pages/MyOrderList/MyOrderList?code=' + encodeURIComponent(val) + '&type='+'3' ,
+					})
+				}
+				else if(this.type=='buy'){
+					uni.navigateTo({
+						url: '/pages/MyOrderList/MyOrderList?code=' + encodeURIComponent(val) + '&type='+'4' ,
+					})
+				}else{
+					uni.navigateTo({
+						//url: '/pages/GoodsDetails/Candle?code=' + encodeURIComponent(val),
+						url: '/pages/MarketDetails/MarketDetails?code=' + encodeURIComponent(val),
+					})
+				}
 			},
 			/* 自选点击*/
-			onAttention(item) {
+			onAttention(item,index) {
 				loginRes = this.checkLogin();
 				if (!loginRes) {
 					return;
@@ -321,8 +336,9 @@
 				console.log(loginRes);
 				this.uid = loginRes[0];
 				this.token = loginRes[2];
-				if (this.AttentionShow === 0) {
-					this.AttentionShow = 1;
+				if (item.is_my === 0) {
+					// this.AttentionShow = 1;
+					this.dataList[index].is_my = 1
 					uni.request({
 						url: this.apiServer + '/market/index/add_my_select',
 						header: {
@@ -355,7 +371,8 @@
 						}
 					});
 				} else {
-					this.AttentionShow = 0;
+					this.dataList[index].is_my = 0
+					// this.AttentionShow = 1;
 					uni.request({
 						url: this.apiServer + '/market/index/del_my_select',
 						header: {

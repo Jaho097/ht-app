@@ -467,18 +467,9 @@
 
 /* 买卖档 */
 .goods-discounts{
-	padding: 0 4%;
 	background-color: #FFFFFF;
 	border-radius: 20rpx;
 	overflow: hidden;
-	margin-top: 120rpx;
-	margin-bottom: 20rpx;
-	margin-left: 20rpx;
-	margin-right: 20rpx;
-	/* #ifdef APP-PLUS */
-	margin-top: calc(120rpx + var(--status-bar-height));
-	/* #endif */
-	height: 380rpx;
 	.list{
 		display: flex;
 		align-items: center;
