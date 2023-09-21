@@ -35,14 +35,14 @@
 							<div class="sc-drMfKT ixeiPN">
 								<div class="money-title">充值金额</div>
 								<div class="money-input">
-									<div class="money-prefix">¥</div><input type="number" placeholder="请输入充值金额"
+									<div class="money-prefix">¥</div><input v-model="Money" type="number" placeholder="请输入充值金额"
 										class="sc-fgfRvd eXCYMX">
 									<div class="money-afton">元</div>
 								</div>
 							</div>
 							<div class="sc-eXNvrr kOZMeW">
 								<div class="user-title">转账用户</div>
-								<input class="sc-cpmKsF bPRfoY form-field" type="text"
+								<input class="sc-cpmKsF bPRfoY form-field" type="text" v-model="Name"
 									placeholder="请输入此次的转账用户名">
 							</div><button class="sc-kkGfuU hoqqAL new-button-large" @click="onSubmit"
 								style="background: linear-gradient(90deg, rgb(244, 228, 182) 0%, rgb(224, 190, 143) 100%);">充值</button>
@@ -90,7 +90,7 @@
 			}
 			//console.log(loginRes);
 			this.token = loginRes[2];
-			// this.getUserInfo(loginRes[2]);
+			this.getUserInfo(loginRes[2]);
 			this.getRecharge(this.token);
 		},
 		methods: {
@@ -185,6 +185,7 @@
 			},
 			/*提交充值点击*/
 			onSubmit() {
+				
 				if (this.isReal != 2) {
 					uni.showToast({
 						title: "请先完成实名认证",
