@@ -883,7 +883,7 @@
 						break;
 					case 'aboutus':
 						uni.navigateTo({
-							url: '/pages/Help/Help?id=8&page=1'
+							url: 'pages/MyShare/MyShare?type=0'
 						})
 						break;
 					case 'inform':
