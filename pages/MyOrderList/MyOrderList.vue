@@ -253,7 +253,7 @@
 				</view>
 				<!-- 卖出 -->
 				<view class="position" v-if="OrderType==4||OrderType==3">
-					<FlashSale v-if="OrderType==4||OrderType==3" :type="4" :head-show="false" :code="code" :uid="accounId"></FlashSale>
+					<FlashSale ref="sale" v-if="OrderType==4||OrderType==3" :type_="OrderType" :head-show="false" :code="code" :uid="accounId"></FlashSale>
 				</view>
 				<!--撤单-->
 				<view class="position" v-if="OrderType==2">
@@ -504,8 +504,10 @@
 				code:''
 			};
 		},
+		onReady(){
+			this.$refs.sale.changeType(this.OrderType)
+		},
 		onLoad(params) {
-			console.log('onLoad123')
 			this.OrderType = params.type;
 			this.code = params.code
 			loginRes = this.checkLogin();
@@ -759,6 +761,9 @@
 			/*订单tab点击*/
 			onOrderTab(type) {
 				this.OrderType = type;
+				if(type == 3 || type == 4){
+					this.$refs.sale.changeType(type)
+				}
 				if (type == 4 || type == 6 || type == 7) {
 
 				} else {
@@ -796,7 +801,7 @@
 				m = m < 10 ? ('0' + m) : m;
 				var d = date.getDate();
 				d = d < 10 ? ('0' + d) : d;
-				var h = date.getHours();
+				var h = date.getHours(); 
 				h = h < 10 ? ('0' + h) : h;
 				var minute = date.getMinutes();
 				var second = date.getSeconds();

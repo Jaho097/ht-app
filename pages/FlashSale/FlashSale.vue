@@ -284,11 +284,16 @@ export default {
 			type:[Number,String],
 			default:''
 		},
+		type_:{
+			type:[Number,String],
+			default:''
+		},
 		// code:'',
 		// uid:''
 	},
 	data(){
 		return {
+			price_:0,
 			headShow_:this.headShow,
 			code_:this.code,
 			uid_:this.uid,
@@ -316,9 +321,11 @@ export default {
 		}
 	},
 	mounted(){
-		console.log('headShow_',this.headShow_)
-		console.log('uid',this.uid)
-		console.log('code',this.code)
+		// console.log('headShow_',this.headShow_)
+		// console.log('uid',this.uid)
+		// console.log('code',this.code)
+		console.log(this.type_,'params.type')
+		this.changeType(3)
 		this.getMarket(this.code);
 		_self = this;
 		loginRes = _self.checkLogin();
@@ -363,6 +370,7 @@ export default {
 		_self = this;
 		loginRes = _self.checkLogin();
 		if(!loginRes){return;}
+		console.log(params.type,'params.type')
 		_self.Btype = parseFloat(params.type);
 		_self.uid   = loginRes[0];
 		_self.token = loginRes[2];
@@ -380,6 +388,10 @@ export default {
 	},
 	methods: 
 	{
+		changeType(type){
+			console.log(type,'type')
+			this.Btype = type == 3 ? 1 : 2
+		},
 		toSearch(){
 			if(this.type==3){
 				uni.navigateTo({
@@ -665,7 +677,10 @@ export default {
 		},
 		/*价格输入框变动函数*/
 		onInputPrice(e){
-			var price = parseFloat(e.target.value);
+			console.log(this.price,'eee')
+			
+			// var price = parseFloat(e.target.value);
+			var price = this.price;
 			if(price < 0)this.price = 0;
 			var amount = parseFloat(price) * parseFloat(this.count);//计算总价
 			if(amount <= this.accountInfo.avail){//如果总价小于余额
