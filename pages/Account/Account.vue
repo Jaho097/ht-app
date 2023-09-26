@@ -69,7 +69,7 @@
 			<view class="sc-gxMtzJ iTMaeS">
 				<view class="sc-iyvyFf iQhmBv">
 					<view class="account-title">总资产(元)</view>
-					<view class="account-num"> {{''+calculate(accountInfo.freeze_amount)}}</view>
+					<view class="account-num"> {{''+calculate(accountInfo.total_money)}}</view>
 				</view>
 				<view class="sc-iyvyFf iQhmBv">
 					<view class="account-title">持仓市值</view>
@@ -155,7 +155,7 @@
 				</view>
 			</view>
 			<view class="sc-cmTdod kTszrt" @click="onWarnTip(3)">
-				<view class="sc-jwKygS eaOZDH">{{''+calculate(accountInfo.freeze_amount-accountInfo.loss_warn_money)}}</view>
+				<view class="sc-jwKygS eaOZDH">{{''+calculate(accountInfo.avail-accountInfo.loss_warn_money)}}</view>
 				<view class="sc-btzYZH fsrSGa">
 					<view style="display: flex; align-items: center;"><span>距离警戒线</span><img
 							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
@@ -165,7 +165,7 @@
 				</view>
 			</view>
 			<view class="sc-cmTdod kTszrt" @click="onWarnTip(4)">
-				<view class="sc-jwKygS eaOZDH">{{''+calculate(accountInfo.freeze_amount-accountInfo.loss_close_money)}}</view>
+				<view class="sc-jwKygS eaOZDH">{{''+calculate(accountInfo.avail-accountInfo.loss_close_money)}}</view>
 				<view class="sc-btzYZH fsrSGa">
 					<view style="display: flex; align-items: center;"><span>距离平仓线</span><img
 							src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
@@ -178,7 +178,7 @@
 		<view class="am-card page-module-card" style="margin-top: 16px;position: relative;top: -60px;" >
 			<view class="sc-lhVmIH kUGkvE">
 				<view class="sc-jtRfpW cWRzkj" @click="onWarnTip(5)">
-					<view class="account-num">-21.32</view>
+					<view class="account-num">{{accountInfo.return_money}}</view>
 					<view class="account-title" style="display: flex; justify-content: center;">
 						<view style="display: flex; align-items: center;"><span>累计盈亏</span><img
 								src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA3lBMVEWOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpOOjpMAAADAoxyZAAAASHRSTlMAHni54/jz17ghpvz6/U7ymUgUAxlGlFlv/p0VEppxV/ldWlsREKVF9kSnHxOWkXc17u84lQYE5GT7GEeYIJzbDVhcm3OXAiJc2JqmAAAAAWJLR0RJhwXkfAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGCA8mKs6VwKkAAAEUSURBVCjPZVLrWsIwDM02VyeuOm5qFF2BKTrQeR+ICKho3v+JXOk68kl/rOfkfEvSkwCY47jeji92A3cP+HFq+0QU6o+sOZv4wSGJqN6AZqt9VMBjGz+ReHpmSeec8MLAGFWX5+0pjNf5BfZNJLk0d5+ErnNFkeED//rGoIhSgKEUI0Nvie4MGgk5hMz+APcPj08lfKYMAqrbqi+vFrUpgJwalo7HVc+Ugx9WfSpVQV9xgcii5kTxVBvhrUjl0XRb0MUzet8WdLszKTr/heKBM4CUPko+nwOzhJm4WJQm4tpEWKL65LbHCpfVoL6qnpMI8ZuPdjVN4Kc10KPtsWVIZbEHaqKXIXV4Xr0+eRjmnvtbBv4A8tkhotnooa8AAAAASUVORK5CYII="
@@ -481,10 +481,12 @@
 						uni.hideLoading();
 						if (res.data.status == 1 && res.data.data.length != 0) {
 							this.accountData = res.data.data;
+							console.log(this.accountData);
 							uni.setStorageSync('accountData', this.accountData); //子账户数据储存缓存到本地
 							this.accounId = this.accountData[0].id; //默认获取第一个账号的信息
 							this.getacInfo(this.token, this.accounId);
 							this.sub_account = this.accountData[0].sub_account;
+							this.borrow_id = this.accountData[0].borrow_id;
 							uni.setStorageSync('sub_account', this.sub_account);
 							uni.setStorageSync('accounId', this.accounId);
 							uni.setStorageSync('sub_account', this.sub_account);
@@ -521,6 +523,7 @@
 					success: res => {
 						if (res.data.status == 1) {
 							this.accountInfo = res.data.data;
+							this.borrow_id = this.accountInfo.borrow_id
 							/*if(res.data.data.b_status!=1){
 								this.getSubAccount(this.token);//获取子账号信息
 							}*/
@@ -553,6 +556,8 @@
 				}*/
 				this.accounId = this.accountData[i].id; //将array【改变索引】的值赋给定义的picker变量
 				this.sub_account = this.accountData[i].sub_account;
+				this.borrow_id = this.accountData[i].borrow_id;
+				console.log(this.accountData[i]);
 				uni.setStorageSync('accounId', this.accounId);
 				uni.setStorageSync('sub_account', this.sub_account);
 				this.subwin = false;
@@ -590,8 +595,13 @@
 			},*/
 			/*计算单位*/
 			calculate(number) {
-				number = parseInt(number);
+				number = Number(number);
+				
 				if (number == 0 || !number) return 0;
+				
+				var unit = number.toFixed(2);
+				return unit;
+				
 				if (number.toString().length >= 13) {
 					var unit = (number / 1000000000000).toFixed(2);
 					return unit + '万亿';
@@ -602,8 +612,7 @@
 					var unit = (number / 10000).toFixed(2);
 					return unit + '万';
 				} else {
-					var unit = number.toFixed(2);
-					return unit;
+					
 				}
 			},
 			goDetails(token, id) {
@@ -614,8 +623,12 @@
 					});
 					return;
 				} else {
+					// uni.navigateTo({
+					// 	url: '/pages/AfterSalesOrder/AfterSalesOrder',
+					// })
+					console.log(this.borrow_id, 'this.borrow_id');
 					uni.navigateTo({
-						url: '/pages/AfterSalesOrder/AfterSalesOrder',
+						url: `/pages/AccoutSet/AccoutSet?token=${token}&&id=${this.borrow_id}`,
 					})
 				}
 			},

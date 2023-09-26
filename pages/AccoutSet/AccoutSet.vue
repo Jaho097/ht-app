@@ -9,27 +9,26 @@
 				<uni-list-item
 					@click="subwin = true" 
 					title="操盘期限" :rightText="details.verify_time+'至'+details.end_time"/>
-				<uni-list-item  
+				<uni-list-item  link
 					v-if="true||details.type_code==1||details.type_code==2||details.type_code==3"
 					@click="onSetting('addmoney',id)" 
 					title="保证金"  :rightText="calculate(details.deposit_money)"/>
 					<!-- title="保证金" :note="calculate(details.deposit_money)" rightText="追加资金"/> -->
 					
-				<uni-list-item  
+				<uni-list-item  link
 					v-if="true||details.type_code==1||details.type_code==2||details.type_code==3"
 					@click="onSetting('expend',id)"
 					title="总操盘资金"  :rightText="calculate(details.init_money)" />
 					
-				<uni-list-item  
+				<uni-list-item  link
 					v-if="true||details.type_code==1||details.type_code==2||details.type_code==3"
 					@click="onSetting('profit',id)"
 					title="预计盈亏" :rightText="calculate(details.return_money)" />
 					
 			<!-- </uni-list>
 			<uni-list> -->
-				<uni-list-item
-					@click="subwin = true" 
-					title="交易账户" :rightText="details.sub_account"/>
+				<uni-list-item @click="subwin = true" title="交易账户" :rightText="details.sub_account"/>
+				<uni-list-item title="总资产" :rightText="details.avail"/>
 				<uni-list-item title="警戒线" :rightText="calculate(details.loss_warn_money)"/>
 				<uni-list-item title="平仓线" :rightText="calculate(details.loss_close_money)"/>
 				<uni-list-item title="总利息" :rightText="calculate(details.borrow_interest)"/>
@@ -76,9 +75,11 @@
 		</view>
 		
 		<!-- 按钮 -->
-		<view class="uni-py-10 uni-px-8">
-			<button type="warn" style="width:100%;" class="uni-radius-5" v-if="details.status=='未通过'" @click="form.freeze?goNext():''" disabled="true">未通过</button>
-			<button type="warn" style="width:100%;" class="uni-radius-5" v-else @click="onStot(token,id)">终止操盘</button>
+		<view class="uni-py-10 uni-px-8" style="display: flex;">
+			<button type="warn" style="width:45%;    background-color: rgb(179, 141, 74);
+    background-image: linear-gradient(112deg, rgb(220, 190, 127) 0%, rgb(179, 141, 74) 100%);" class="uni-radius-5" @click="onStot(token,id)">实盘交易</button>
+			<button type="warn" style="width:45%;" class="uni-radius-5" v-if="details.status=='未通过'" @click="form.freeze?goNext():''" disabled="true">未通过</button>
+			<button type="warn" style="width:45%;background: rgb(255, 69, 0);" class="uni-radius-5" v-else @click="onStot(token,id)">终止操盘</button>
 		</view>
 		
 		<!-- 退出 -->
@@ -115,6 +116,7 @@
 			if(!loginRes){return;}
 			this.token = params.token;
 			this.id    = params.id;
+			console.log(this.id, 'this.id');
 			this.getDetails(params.token,params.id);
 			//this.getacInfo(params.token,params.id);
 		},
@@ -137,7 +139,7 @@
 							}else{
 								this.$set(this.treatmentStatu, 'checked', false)
 							}
-							//console.log(this.details);
+							console.log(this.details);
 						}
 					},
 					fail:function(e){
@@ -201,7 +203,7 @@
 			 * @param {String} type
 			 */
 			onSetting(type,id){
-				//console.log(type);
+				console.log(type);
 				switch(type) {
 					case 'renewal':
 						uni.navigateTo({

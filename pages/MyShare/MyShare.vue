@@ -171,7 +171,16 @@
 		methods: {
 			/* 订单tab切换状态 */
 			onOrderTab(type) {
+				console.log(type);
 				this.OrderType = type;
+				switch (this.OrderType) {
+					case 0:
+						this.getInvite(this.token, 1); //获取下级信息
+						break;
+					case 1:
+						this.getAwards(this.token, 1); //获取下级信息
+						break;
+				}
 				/*uni.navigateTo({
 					url: '/pages/ShareList/ShareList?type='+type,
 				})*/
@@ -214,6 +223,7 @@
 			},
 			/*获取佣金信息*/
 			async getAwards(token, page) {
+				console.log(123);
 				uni.showLoading({
 					title: "加载中",
 					icon: "loading"
