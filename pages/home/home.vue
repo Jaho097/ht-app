@@ -7,7 +7,7 @@
 			<uni-nav-bar color="#FFF" :border="false" style="background-color: rgba(254, 234, 192, 0);">
 				<!-- 页头消息 -->
 				<block slot="left">
-					<image style="width: 180rpx;height: 60rpx" src="/static/new/logo.png" mode=""></image>
+					<image style="width: 180rpx;height: 60rpx" src="/static/logo.jpg" mode=""></image>
 					<!-- <uni-icons custom-prefix="iconfont" type="icon-laba" size="25" color="#FFF" @click="onMessage()"></uni-icons> -->
 					<!-- <view>
 						<text class="uni-nav-bar-text">首页</text>
@@ -883,7 +883,7 @@
 						break;
 					case 'aboutus':
 						uni.navigateTo({
-							url: 'pages/MyShare/MyShare?type=0'
+							url: '/pages/MyShare/MyShare?type=0'
 						})
 						break;
 					case 'inform':

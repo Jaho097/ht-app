@@ -374,6 +374,9 @@
 								title: res.data.message,
 								icon: "none"
 							});
+							uni.navigateTo({
+								url: '/pages/AfterSalesOrder/AfterSalesOrder',
+							})
 							// this.$refs['GoodsCoupon'].show(token, form);
 						} else {
 							uni.showToast({

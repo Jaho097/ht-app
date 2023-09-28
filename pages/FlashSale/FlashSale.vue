@@ -39,8 +39,8 @@
 						</a>
 			</view>
 			<view class="list">
-				<view class="title br-red"   :class="{'action':Btype==1}" @click="Btype=1;onPriceList(0)"><text>买入</text></view>
-				<view class="title br-green" :class="{'action':Btype==2}" @click="Btype=2;onPriceList(0)"><text>卖出</text></view>
+				<view class="title br-red"   :class="{'action':Btype==1}" @click="Btype=1;onPriceList(0)"><text>买入1</text></view>
+				<view class="title br-green" :class="{'action':Btype==2}" @click="Btype=2;onPriceList(0)"><text>卖出2</text></view>
 			</view>
 			<view class="flex">
 				<view class="flex-sub margin-xs radius">
@@ -155,7 +155,7 @@
 						<uni-icons custom-prefix="iconfont" type="icon-zengjia" size="24" color="#FF4500" @click="onIncrease('price')"></uni-icons>
 					</view>
 				</view>
-				<view class="attr-number text-center" v-if="Btype === 1">
+				<view class="attr-number text-center" v-if="Btype == 1">
 					<view class="tit">数量：</view>
 					<view class="number">
 						<!-- <text class="kuang iconfont icon-jian" @click="onReduction('count')"></text> -->
@@ -166,7 +166,7 @@
 						<uni-icons custom-prefix="iconfont" type="icon-zengjia" size="24" color="#FF4500" @click="onIncrease('count')"></uni-icons>
 					</view>
 				</view>
-				<view class="attr-number text-center" v-if="Btype === 2">
+				<view class="attr-number text-center" v-if="Btype == 2">
 					<view class="tit">数量：</view>
 					<view class="number">
 						<!-- <text class="kuang iconfont icon-jian" @click="onReduction('count')"></text> -->
@@ -197,12 +197,12 @@
 				</view>
 			</view>
 			<view class="uni-py-10 uni-px-8" style="width: 100%;">
-				<button type="warn" style="width:100%;" class="uni-radius-5" v-if="Btype === 1" @click="onConfirm(Btype)">确认买入</button>
-				<button type="warn" style="width:100%;background-color: #03AA3A;" class="uni-radius-5" v-if="Btype === 2" @click="onConfirm(Btype)">确认卖出</button>
+				<button type="warn" style="width:100%;" class="uni-radius-5" v-if="Btype == 1" @click="onConfirm(Btype)">确认买入</button>
+				<button type="warn" style="width:100%;background-color: #03AA3A;" class="uni-radius-5" v-if="Btype == 2" @click="onConfirm(Btype)">确认卖出</button>
 			</view>
 			<!-- <view class="attr-btn">
-				<view class="add-buy"  v-if="Btype === 1" @click="onConfirm(Btype)">确认买入</view>
-				<view class="add-sell" v-if="Btype === 2" @click="onConfirm(Btype)">确认卖出</view>
+				<view class="add-buy"  v-if="Btype == 1" @click="onConfirm(Btype)">确认买入</view>
+				<view class="add-sell" v-if="Btype == 2" @click="onConfirm(Btype)">确认卖出</view>
 			</view> -->
 		</view>
 		<!-- 持仓 -->
@@ -325,12 +325,12 @@ export default {
 		// console.log('uid',this.uid)
 		// console.log('code',this.code)
 		console.log(this.type_,'params.type')
-		this.changeType(3)
+		// this.changeType(3)
 		this.getMarket(this.code);
 		_self = this;
 		loginRes = _self.checkLogin();
 		if(!loginRes){return;}
-		_self.Btype = parseFloat(this.type);
+		// _self.Btype = this.type;
 		// _self.uid   = loginRes[0];
 		_self.token = loginRes[2];
 		// _self.code  = params.code;
@@ -345,6 +345,17 @@ export default {
 		this.sub_account = uni.getStorageSync('sub_account');
 		this.accountData = uni.getStorageSync('accountData');
 		this.Position    = uni.getStorageSync('Position');
+		// 获取路径参数
+		    const launchOptions = uni.getLaunchOptionsSync();
+		    
+		    // 检查是否包含参数 query
+		    if (launchOptions.query) {
+		      const paramValue = launchOptions.query;
+			  this.Btype = paramValue.type;
+		      // 在这里处理参数值 paramValue
+		      console.log('参数值为：', paramValue.type);
+		    }
+		// 
 		console.log(this.accounId);
 		if(this.Btype===1 && this.PriceIndex==0){//当点击买入时，且为限价模式时
 			this.price = this.marketData.sell_one_price;
@@ -371,7 +382,7 @@ export default {
 		loginRes = _self.checkLogin();
 		if(!loginRes){return;}
 		console.log(params.type,'params.type')
-		_self.Btype = parseFloat(params.type);
+		// _self.Btype = params.type;
 		_self.uid   = loginRes[0];
 		_self.token = loginRes[2];
 		_self.code  = params.code;
@@ -390,7 +401,7 @@ export default {
 	{
 		changeType(type){
 			console.log(type,'type')
-			this.Btype = type == 3 ? 1 : 2
+			this.Btype = type
 		},
 		toSearch(){
 			if(this.type==3){

@@ -41,7 +41,12 @@
 													</span> </span>
 											</view>
 											<svg @click="subwin = true" class="am-icon am-icon-down am-icon-s"
-												style="position: relative; margin-left: 2px; color: rgb(41, 30, 3); border: 1px solid rgba(255, 251, 241, 0.5); border-radius: 4px;">
+												style="position: relative; margin-left: 2px; color: rgb(41, 30, 3); border: 1px solid rgba(255, 251, 241, 0.5); border-radius: 4px;width: 10px;
+    height: 10px;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);">
 												<!-- <use xlink:href="#down"></use> -->
 											</svg>
 										</view>
