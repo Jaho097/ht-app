@@ -98,6 +98,13 @@
 		</div>
 		<!-- tabbar -->
 		<TabBar :tabBarShow="4"></TabBar>
+		
+		<!-- 退出 -->
+		<view class="uni-py-10 uni-px-8 layout">
+			<button type="warn" style="width:100%;" class="uni-radius-5" @click="onQuitLogin">退出登录</button>
+		</view>
+		<!-- 提示框 -->
+		<DialogBox ref="DialogBox"></DialogBox>
 	</view>
 </template>
 
@@ -143,6 +150,27 @@
 			this.scrollTop = e.scrollTop;
 		},
 		methods: {
+			/**
+			 * 退出点击
+			 */
+			onQuitLogin(){
+				this.$refs['DialogBox'].confirm({
+					title: '提示',
+					content: '是否要退出登录?',
+					DialogType: 'inquiry',
+					animation: 0
+				}).then(()=>{
+					uni.clearStorageSync();
+					/*uni.removeStorageSync('UID');//清除账号ID
+					uni.removeStorageSync('MOBILE');//清除账号
+					uni.removeStorageSync('TOKEN');//清除TOKEN
+					uni.removeStorageSync('accountData');//清除子账户缓存数据*/
+					setTimeout(function(){
+						uni.reLaunch({url: '/pages/login/login'});
+					}, 1000);
+					//uni.navigateBack();
+				})
+			},
 			async getConf(token) {
 				//uni.showLoading({'title':"加载中"});
 				uni.request({
@@ -330,4 +358,25 @@
 
 <style scoped lang="scss">
 	@import 'my.scss';
+	.layout uni-button {
+	    background-color: rgb(179, 141, 74);
+	    background-image: linear-gradient(112deg, rgb(220, 190, 127) 0%, rgb(179, 141, 74) 100%);
+	    border-radius: 4px;
+	    font-family: PingFangSC-Semibold;
+	    font-size: 16px;
+	    color: rgb(255, 255, 255);
+	    font-weight: 600;
+	    border: none;
+	    display: flex;
+	    -webkit-box-pack: center;
+	    justify-content: center;
+	    -webkit-box-align: center;
+	    align-items: center;
+	    padding-left: 8px;
+	    padding-right: 8px;
+	    height: 44px;
+	}
+	.page-total{
+		z-index: 9;
+	}
 </style>

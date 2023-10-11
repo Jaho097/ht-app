@@ -3,7 +3,7 @@
 		<!-- <view class="logo" style="margin-top: 20px; margin-bottom: 20px;">
 			<image src="/static/120.png" style="width: 120px; height: 120px;"></image>
 		</view> -->
-		<div class="sc-iAyFgw boDnnU"><img src="/static/logo-h.jpg" alt="logo"></div>
+		<div class="sc-iAyFgw boDnnU"><img src="/static/logo.jpg" alt="logo"></div>
 		<!-- 填写区 -->
 		<view class="input-info">
 			<view class="info hAXICq">

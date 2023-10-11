@@ -205,6 +205,9 @@
 						success: res => {
 							if(res.data.status == 1){
 								uni.showToast({title:res.data.message,icon:"none"});
+								uni.navigateTo({
+									url: '/pages/Account/Account'
+								})
 							}else{
 								uni.showToast({title:res.data.message,icon:"none"});
 							}

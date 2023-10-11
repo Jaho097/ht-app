@@ -79,7 +79,7 @@
 		</view>
 		<!-- 提交 -->
 		<view class="uni-py-10 uni-px-8">
-			<button type="warn" style="width:100%;" class="uni-radius-5" @click="form.payable?onSubmit(token,id):getRate(form.freeze)">{{form.payable?'提交续期申请':'下一步'}}</button>
+			<button type="warn" style="width:100%;" class="uni-radius-5" @click="form.payable?onSubmit(token,id):getRate(form.freeze)">{{form.payable?'提交扩大配资申请':'下一步'}}</button>
 		</view>
 		<!-- <view class="quit-login" @click.stop="form.payable?onSubmit(token,id):getRate(form.freeze)">
 			<text>{{form.payable?'提交续期申请':'下一步'}}</text>
@@ -268,6 +268,9 @@
 						success: res => {
 							if(res.data.status == 1){
 								uni.showToast({title:res.data.message,icon:"none"});
+								uni.navigateTo({
+									url: '/pages/Account/Account'
+								})
 							}else{
 								uni.showToast({title:res.data.message,icon:"none"});
 							}

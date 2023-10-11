@@ -4,7 +4,77 @@
 	//bottom: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #f6f6f6;
+	background-color: #fff;
+}
+
+.hpiOGL {
+    flex-shrink: 1;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    overflow: auto;
+    padding-bottom: 32px;
+    background-color: white;
+}
+.dTFFiD {
+    margin: 0px 0px 15px;
+    padding-left: 15px;
+    background-color: rgb(255, 255, 255);
+}
+.kzEmcX {
+    position: relative;
+    min-height: 44px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 10px;
+    font-size: 14px;
+}
+.kzEmcX > .title {
+    font-size: 16px;
+    flex: 1 1 0%;
+    color: rgb(37, 37, 37);
+}
+.kzEmcX > .bd {
+    flex-basis: 65%;
+    color: rgb(142, 142, 147);
+}
+.kzEmcX:not(:last-child)::after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0px;
+    left: 0px;
+    transform: scale(1, 0.5);
+    background-color: rgb(232, 232, 232);
+}
+.frDHQL {
+    display: inline-block;
+    width: 75px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: rgb(69, 157, 245);
+    border: 1px solid rgb(69, 157, 245);
+    border-radius: 4px;
+    background: transparent;
+}
+.hDhpLC {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.hluaBw {
+    color: rgb(5, 170, 59);
+}
+.cEvEJT {
+    color: rgb(255, 69, 0);
+}
+a{
+	text-decoration: none;
 }
 /* 设置列表 */
 .setting-list{

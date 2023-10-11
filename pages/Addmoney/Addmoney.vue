@@ -60,7 +60,7 @@
 		</view>
 		<!-- 提交 -->
 		<view class="uni-py-10 uni-px-8">
-			<button type="warn" style="width:100%;" class="uni-radius-5" @click="onSubmit(token,id)">提交续期申请</button>
+			<button type="warn" style="width:100%;" class="uni-radius-5" @click="onSubmit(token,id)">提交追加申请</button>
 		</view>
 		<!-- <view class="quit-login" @click="onSubmit(token,id)">
 			<text>提交续期申请</text>
@@ -247,6 +247,9 @@
 						success: res => {
 							if(res.data.status == 1){
 								uni.showToast({title:res.data.message,icon:"none"});
+								uni.navigateTo({
+									url: '/pages/Account/Account'
+								})
 							}else{
 								uni.showToast({title:res.data.message,icon:"none"});
 							}
