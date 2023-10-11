@@ -35,7 +35,7 @@
 					
 					
 				</view><a style="text-decoration: none;" @click="toSearch()" class="sc-lkqHmb geobGM" href="javascript:void(0);">
-							<icon type="search" color="red" size="15" @click="Btype=1;onPriceList(0)"/>搜索股票
+							<icon type="search" color="red" size="15" />搜索股票
 						</a>
 			</view>
 			<view class="list">
@@ -320,6 +320,9 @@ export default {
 			AttrList:[{index: 0,size: '全仓'},{index: 1,size: '1/2'},{index: 2,size: '1/3'},{index: 3,size: '1/4'},],
 		}
 	},
+	activated(){
+		this.Btype = 1
+	},
 	mounted(){
 		// console.log('headShow_',this.headShow_)
 		// console.log('uid',this.uid)
@@ -390,7 +393,8 @@ export default {
 		
 		_self.marketData = uni.getStorageSync('market-'+params.code);
 		this.getSubAccount(_self.token);//获取子账号信息
-		_self.Btype = 1
+		this.Btype=1;
+		this.onPriceList(0);
 	},
 	
 	onReady(){
@@ -406,15 +410,18 @@ export default {
 			this.Btype = type
 		},
 		toSearch(){
-			if(this.type==3){
-				uni.navigateTo({
-					url: '/pages/search/search?type=sell'
-				})
-			}else{
-				uni.navigateTo({
-					url: '/pages/search/search?type=buy'
-				})
-			}
+			// setTimeout(()=>{
+				if(this.type==3){
+					uni.navigateTo({
+						url: '/pages/search/search?type=sell'
+					})
+				}else{
+					uni.navigateTo({
+						url: '/pages/search/search?type=buy'
+					})
+				}
+			// },1000)
+			
 		},
 		/*获取股票信息*/
 		async getMarket(code){
