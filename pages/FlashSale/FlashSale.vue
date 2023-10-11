@@ -155,7 +155,7 @@
 						<uni-icons custom-prefix="iconfont" type="icon-zengjia" size="24" color="#FF4500" @click="onIncrease('price')"></uni-icons>
 					</view>
 				</view>
-				<view class="attr-number text-center" v-if="Btype === 1">
+				<view class="attr-number text-center" v-if="Btype == 1">
 					<view class="tit">数量：</view>
 					<view class="number">
 						<!-- <text class="kuang iconfont icon-jian" @click="onReduction('count')"></text> -->
@@ -375,9 +375,10 @@ export default {
 		_self.uid   = loginRes[0];
 		_self.token = loginRes[2];
 		_self.code  = params.code;
+		
 		_self.marketData = uni.getStorageSync('market-'+params.code);
 		this.getSubAccount(_self.token);//获取子账号信息
-		
+		_self.Btype = 1
 	},
 	
 	onReady(){
@@ -405,7 +406,6 @@ export default {
 		},
 		/*获取股票信息*/
 		async getMarket(code){
-			console.trace(code,'code')
 			if(!code){
 				return
 			}
