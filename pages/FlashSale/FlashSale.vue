@@ -35,12 +35,12 @@
 					
 					
 				</view><a style="text-decoration: none;" @click="toSearch()" class="sc-lkqHmb geobGM" href="javascript:void(0);">
-							<icon type="search" color="red" size="15" />搜索股票
+							<icon type="search" color="red" size="15" @click="Btype=1;onPriceList(0)"/>搜索股票
 						</a>
 			</view>
 			<view class="list">
-				<view class="title br-red"   :class="{'action':Btype==1}" @click="Btype=1;onPriceList(0)"><text>买入1</text></view>
-				<view class="title br-green" :class="{'action':Btype==2}" @click="Btype=2;onPriceList(0)"><text>卖出2</text></view>
+				<view class="title br-red"   :class="{'action':Btype==1}" @click="Btype=1;onPriceList(0)"><text>买入</text></view>
+				<view class="title br-green" :class="{'action':Btype==2}" @click="Btype=2;onPriceList(0)"><text>卖出</text></view>
 			</view>
 			<view class="flex">
 				<view class="flex-sub margin-xs radius">
@@ -328,6 +328,7 @@ export default {
 		// this.changeType(3)
 		this.getMarket(this.code);
 		_self = this;
+		_self.Btype = 1
 		loginRes = _self.checkLogin();
 		if(!loginRes){return;}
 		// _self.Btype = this.type;
@@ -362,7 +363,7 @@ export default {
 			this.count  = '';
 			if(this.accountInfo.avail)this.Canbuy = parseInt(this.accountInfo.avail/this.price);//计算可买股数
 		}else if(this.PriceIndex==1){
-			this.price = '';
+			this.price = ''; 
 		}
 		if(this.Btype===2 && this.PriceIndex==0){//当点击买入时，且为限价模式时
 			this.price = this.marketData.buy_one_price;
