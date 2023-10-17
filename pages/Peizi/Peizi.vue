@@ -416,7 +416,7 @@
 								this.peiziJson = res.data.data;
 								this.timeArray = res.data.data.week_use_time;
 								this.rateCount = res.data.data.week_rate_a;
-								this.dataName = '周';
+								this.dataName = '月';
 								this.form.type = 2;
 								console.log(this.peiziJson);
 							}
@@ -503,12 +503,16 @@
 					});
 					return;
 				}
-				if (!this.form.time) {
+				
+				if (!this.form.time&&this.OrderType!=0) {
 					uni.showToast({
 						title: "请选择操盘期限",
 						icon: "none"
 					});
 					return;
+				}
+				if(this.OrderType==0){
+					this.form.time = 20
 				}
 				if (!this.form.bigMoney) {
 					uni.showToast({
@@ -527,6 +531,9 @@
 			 */
 			onOrderTab(type) {
 				this.OrderType = type;
+				if(type==0){
+					this.form.time = 20
+				}
 				// this.pickerDesc = this.pickerList[this.OrderType].item
 				uni.redirectTo({
 					url: '/pages/Peizi/Peizi?type=' + type,
