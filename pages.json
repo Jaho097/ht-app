@@ -134,6 +134,13 @@
 				"navigationBarBackgroundColor": "#f4e4b7"
 			}
 		},{
+			"path" : "pages/AccoutSet/detail",
+			"style" : {
+				"navigationBarTitleText": "交割详情",
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#f4e4b7"
+			}
+		},{
 			"path" : "pages/AccoutSet/query",
 			"style" : {
 				"navigationStyle":"custom"

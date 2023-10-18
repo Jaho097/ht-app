@@ -83,11 +83,11 @@
 				<tbody v-show="OrderType==3">
 					<tr class="sc-gwVKww bLsDll" v-for="item in deliveryList">
 						<td>{{item.gupiao_name}}<br>{{item.deal_price}}</td>
-						<td>{{item.residual_quantity}}<br>{{item.volume }}</td>
+						<td ><span style="color:red">{{item.residual_quantity}}</span><br>{{item.volume }}</td>
 						<td>{{toDate(item.deal_date)}}
-							<div>{{toDate(item.deal_date,1)}}</div>
+							<div style="color:red">{{toDate(item.deal_date,1)}}</div>
 						</td>
-						<td>{{item.business_name}}
+						<td><span style="color:red" @click="toDetail(item)">{{item.business_name}}</span>
 							<br>{{Number(item.transfer_fee)+Number(item.stamp_duty)+Number(item.commission)}}</td>
 					</tr>
 				</tbody>
@@ -125,12 +125,12 @@
 				<tbody v-show="OrderType==2">
 					<tr class="sc-gwVKww bLsDll" v-for="item in dealList">
 						<td>{{item.gupiao_name}}<br>{{item.amount}}</td>
-						<td>{{item.trust_count}}<br>{{item.mini_trans }}</td>
-						<td>{{toDate(item.deal_date)}}
-							<div>{{toDate(item.deal_date,1)}}</div>
+						<td ><span style="color:red">{{item.trust_count}}</span><br>{{item.mini_trans }}</td>
+						<td >{{toDate(item.deal_date)}}
+							<div style="color:red">{{item.deal_time}}</div>
 						</td>
 						<td>{{item.flag2}}
-							<br>{{item.status}}</td>
+							<br ><span style="color:red">{{item.status}}</span></td>
 					</tr>
 				</tbody>
 				<tfoot v-show="OrderType==2&&dealList.length==0">
@@ -269,6 +269,13 @@
 			// 	this.getOrderList(this.token, this.accounId, this.OrderType); //accList[0].id是子账户ID
 		},
 		methods: {
+			toDetail(item){
+				console.log(item,'item')
+				let obj = JSON.stringify(item)
+				uni.navigateTo({
+					url: '/pages/AccoutSet/detail?obj='+encodeURIComponent(obj)
+				})
+			},
 			getData() {
 				uni.request({
 					url: this.apiServer + '/market/trade/' + this.action,
